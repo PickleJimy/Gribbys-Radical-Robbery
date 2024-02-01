@@ -22,6 +22,7 @@ public class PlayerMovement : MonoBehaviour
     public float crouchSpeed;
     public float crouchYScale;
     private float startYScale;
+    public float crouchForce;
 
     [Header("Keybinds")]
     public KeyCode jumpKey = KeyCode.Space;
@@ -103,7 +104,7 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKeyDown(crouchKey))
         {
             transform.localScale = new Vector3(transform.localScale.x, crouchYScale, transform.localScale.z);
-            rb.AddForce(Vector3.down * 5f, ForceMode.Impulse);
+            rb.AddForce(Vector3.down * crouchForce, ForceMode.Impulse);
         }
 
         // stop crouch
