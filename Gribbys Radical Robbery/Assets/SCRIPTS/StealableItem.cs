@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class StealableItem : MonoBehaviour
 {
-    public GameObject player;
+    private GameObject player;
     private bool inStealingRange;
     public KeyCode grabKey;
 
     private void Start()
     {
+        player = GameObject.Find("Player");
         grabKey = player.gameObject.GetComponent<GrabAndStab>().grabKey;
     }
 
