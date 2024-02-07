@@ -13,7 +13,11 @@ TagManager:
   - whatIsGround
   - Water
   - UI
+<<<<<<< Updated upstream
   - whatIsDamager
+=======
+  - whatIsPlayer
+>>>>>>> Stashed changes
   - 
   - 
   - 
