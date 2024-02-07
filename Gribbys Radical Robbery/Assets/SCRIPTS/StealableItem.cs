@@ -5,6 +5,7 @@ using UnityEngine;
 public class StealableItem : MonoBehaviour
 {
     private GameObject player;
+    private GameObject playerUI;
     private bool inStealingRange;
     public KeyCode grabKey;
 
@@ -12,6 +13,7 @@ public class StealableItem : MonoBehaviour
     {
         player = GameObject.Find("Player");
         grabKey = player.gameObject.GetComponent<GrabAndStab>().grabKey;
+        playerUI = GameObject.Find("Grab Text");
     }
 
     private void OnTriggerEnter(Collider other)
@@ -28,10 +30,21 @@ public class StealableItem : MonoBehaviour
 
     private void OnMouseOver()
     {
+        if (inStealingRange)
+        {
+            playerUI.SetActive(true);
+        }
+        
         if (inStealingRange && Input.GetKey(grabKey))
         {
             player.gameObject.GetComponent<PlayerStats>().stolenGoods ++;
+            playerUI.SetActive(false);
             Destroy(gameObject);
         }
+    }
+
+    private void OnMouseExit()
+    {
+        playerUI.SetActive(false);
     }
 }

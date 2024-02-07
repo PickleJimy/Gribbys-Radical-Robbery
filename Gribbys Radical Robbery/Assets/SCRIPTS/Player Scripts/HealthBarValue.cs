@@ -7,6 +7,7 @@ public class HealthBarValue : MonoBehaviour
 {
     private Slider healthSlider;
     public GameObject player;
+    private GameObject playerUI;
     public float health;
 
     // Start is called before the first frame update
@@ -15,6 +16,8 @@ public class HealthBarValue : MonoBehaviour
         healthSlider = GetComponent<Slider>();
         health = player.GetComponent<PlayerStats>().health;
         SetHealthSlider();
+        playerUI = GameObject.Find("Grab Text");
+        playerUI.SetActive(false);
     }
 
     // Update is called once per frame
