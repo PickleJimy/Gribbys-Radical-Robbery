@@ -15,7 +15,6 @@ public class PlayerStats : MonoBehaviour
 
     public TextMeshProUGUI stolenGoodsCounter;
 
-
     // Start is called before the first frame update
     void Start()
     {
