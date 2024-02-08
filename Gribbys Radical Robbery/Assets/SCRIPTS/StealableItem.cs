@@ -34,6 +34,11 @@ public class StealableItem : MonoBehaviour
         {
             playerUI.SetActive(true);
         }
+
+        if (!inStealingRange)
+        {
+            playerUI.SetActive(false);
+        }
         
         if (inStealingRange && Input.GetKey(grabKey))
         {
