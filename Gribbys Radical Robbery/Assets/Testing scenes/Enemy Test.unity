@@ -856,6 +856,10 @@ PrefabInstance:
       propertyPath: stolenGoodsCounter
       value: 
       objectReference: {fileID: 800626909}
+    - target: {fileID: 2913803744542789647, guid: 47babaa94ded2e742be2f2db781f8344, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 5557487080505797831, guid: 47babaa94ded2e742be2f2db781f8344, type: 3}
       propertyPath: m_Name
       value: Gribby
