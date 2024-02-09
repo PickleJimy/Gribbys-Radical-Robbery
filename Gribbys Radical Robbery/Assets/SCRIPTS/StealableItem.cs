@@ -14,7 +14,6 @@ public class StealableItem : MonoBehaviour
         player = GameObject.Find("Player");
         grabKey = player.gameObject.GetComponent<GrabAndStab>().grabKey;
         playerUI = GameObject.Find("Grab Text");
-        playerUI.SetActive(false);
     }
 
     private void OnTriggerEnter(Collider other)

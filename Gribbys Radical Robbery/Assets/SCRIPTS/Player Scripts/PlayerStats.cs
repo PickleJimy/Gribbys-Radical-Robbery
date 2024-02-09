@@ -14,11 +14,18 @@ public class PlayerStats : MonoBehaviour
     public int stolenGoods;
 
     public TextMeshProUGUI stolenGoodsCounter;
+    private GameObject playerUI;
 
-    // Start is called before the first frame update
+
     void Start()
     {
+        Invoke("HideGrab", 0.1f);  
+    }
 
+    void HideGrab()
+    {
+        playerUI = GameObject.Find("Grab Text");
+        playerUI.SetActive(false);
     }
 
     // Update is called once per frame
