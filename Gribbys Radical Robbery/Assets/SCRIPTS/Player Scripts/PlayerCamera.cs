@@ -5,8 +5,7 @@ using UnityEngine;
 
 public class PlayerCamera : MonoBehaviour
 {
-    public float sensX = 2;
-    public float sensY = 2;
+    public float sens = 5;
 
     public Transform orientation;
 
@@ -23,8 +22,8 @@ public class PlayerCamera : MonoBehaviour
     private void Update()
     {
         // get mouse input
-        float mouseX = Input.GetAxisRaw("Mouse X") * Time.deltaTime * sensX * 1000;
-        float mouseY = Input.GetAxisRaw("Mouse Y") * Time.deltaTime * sensY * 1000;
+        float mouseX = Input.GetAxisRaw("Mouse X") * Time.deltaTime * sens * 1000;
+        float mouseY = Input.GetAxisRaw("Mouse Y") * Time.deltaTime * sens * 1000;
 
         yRotation += mouseX;
 
