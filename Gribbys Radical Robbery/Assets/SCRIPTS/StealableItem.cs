@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class StealableItem : MonoBehaviour
@@ -39,10 +37,10 @@ public class StealableItem : MonoBehaviour
         {
             playerUI.SetActive(false);
         }
-        
+
         if (inStealingRange && Input.GetKey(grabKey))
         {
-            player.gameObject.GetComponent<PlayerStats>().stolenGoods ++;
+            player.gameObject.GetComponent<PlayerStats>().stolenGoods++;
             playerUI.SetActive(false);
             Destroy(gameObject);
         }

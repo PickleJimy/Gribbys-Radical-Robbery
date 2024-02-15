@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -120,17 +117,17 @@ public class PlayerMovement : MonoBehaviour
     private void StateHandler()
     {
         // Mode - Crouching
-        if(Input.GetKey(crouchKey)) 
+        if (Input.GetKey(crouchKey))
         {
             state = MovementState.crouching;
             moveSpeed = crouchSpeed;
         }
 
         // Mode - Sprinting
-        else if(grounded && Input.GetKey(sprintKey))
+        else if (grounded && Input.GetKey(sprintKey))
         {
             state = MovementState.sprinting;
-            moveSpeed = sprintSpeed;     
+            moveSpeed = sprintSpeed;
         }
 
         // Mode - Walking
@@ -150,7 +147,7 @@ public class PlayerMovement : MonoBehaviour
     private void MovePlayer()
     {
         // Calculate movement direction
-        moveDirection = orientation.forward *verticalInput + orientation.right * horizontalInput;
+        moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
 
         // on slope
         if (OnSlope() && !exitingSlope)
@@ -166,7 +163,7 @@ public class PlayerMovement : MonoBehaviour
             rb.AddForce(moveDirection.normalized * moveSpeed * 20f, ForceMode.Force);
 
         // in air
-        else if(!grounded)
+        else if (!grounded)
             rb.AddForce(moveDirection.normalized * moveSpeed * 20f * airMultiplier, ForceMode.Force);
 
         // turn gravity off while on slope
@@ -174,7 +171,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     private void SpeedControl()
-    { 
+    {
         // limit speed on slope
         if (OnSlope() && !exitingSlope)
         {
@@ -225,7 +222,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     private Vector3 GetSlopeMoveDirection()
-    { 
+    {
         return Vector3.ProjectOnPlane(moveDirection, slopeHit.normal).normalized;
     }
 }

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GrabAndStab : MonoBehaviour
@@ -27,7 +25,7 @@ public class GrabAndStab : MonoBehaviour
 
     public void Grab()
     {
-        if(Input.GetKey(grabKey))
+        if (Input.GetKey(grabKey))
         {
             Debug.Log("GRAB");
         }

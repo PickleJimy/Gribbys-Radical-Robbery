@@ -1,11 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Xml.Serialization;
 using UnityEngine;
 
 public class PlayerCamera : MonoBehaviour
 {
-    [Range(1,60)]
+    [Range(1, 60)]
     public int sens = 30;
 
     public Transform orientation;

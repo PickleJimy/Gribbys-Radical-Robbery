@@ -1,12 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
+using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
 {
-    [Range(0,100)]
+    [Range(0, 100)]
     public int health;
 
     public int damageDealt;
@@ -19,7 +16,7 @@ public class PlayerStats : MonoBehaviour
 
     void Start()
     {
-        Invoke("HideGrab", 0.1f);  
+        Invoke("HideGrab", 0.1f);
     }
 
     void HideGrab()
