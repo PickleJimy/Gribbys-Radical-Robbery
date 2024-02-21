@@ -45,6 +45,8 @@ public class PlayerMovement : MonoBehaviour
 
     Rigidbody rb;
 
+    public Animator GribbyRun;
+
     public MovementState state;
     public enum MovementState
     {
@@ -128,6 +130,7 @@ public class PlayerMovement : MonoBehaviour
         {
             state = MovementState.sprinting;
             moveSpeed = sprintSpeed;
+            GribbyRun.SetFloat("Speed", 1);
         }
 
         // Mode - Walking
@@ -135,6 +138,7 @@ public class PlayerMovement : MonoBehaviour
         {
             state |= MovementState.walking;
             moveSpeed = walkSpeed;
+            GribbyRun.SetFloat("Speed", 0);
         }
 
         // Mode - Air

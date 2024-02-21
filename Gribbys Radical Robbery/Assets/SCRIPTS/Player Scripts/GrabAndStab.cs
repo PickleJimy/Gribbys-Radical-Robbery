@@ -10,8 +10,6 @@ public class GrabAndStab : MonoBehaviour
     public GameObject arms;
 
     public Animator GribbyAnim;
-    //public bool Grabbing = false;
-    //public bool Stabbing = false;
 
     void Start()
     {
@@ -25,7 +23,7 @@ public class GrabAndStab : MonoBehaviour
     {
         Grab();
         Stab();
-        GribbyAnim = GetComponent<Animator>();
+//GribbyAnim = gameObject.GetComponent<Animator>();
     }
 
     public void Grab()
@@ -33,7 +31,6 @@ public class GrabAndStab : MonoBehaviour
         if (Input.GetKey(grabKey))
         {
             Debug.Log("GRAB");
-            //Grabbing = true;
             GribbyAnim.SetTrigger("isGrabbing");
         }
     }
@@ -43,7 +40,6 @@ public class GrabAndStab : MonoBehaviour
         if (Input.GetKey(stabKey))
         {
             Debug.Log("STAB");
-            //Stabbing = true;
             GribbyAnim.SetTrigger("isStabbing");
         }
     }
