@@ -1,0 +1,117 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!319 &31900000
+AvatarMask:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: GrabAnimation
+  m_Mask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+  m_Elements:
+  - m_Path: 
+    m_Weight: 1
+  - m_Path: Gribby
+    m_Weight: 1
+  - m_Path: Gribby Bones
+    m_Weight: 1
+  - m_Path: Gribby Bones/Spine_3
+    m_Weight: 0
+  - m_Path: Gribby Bones/Spine_3/Shoulder_R
+    m_Weight: 1
+  - m_Path: Gribby Bones/Spine_3/Shoulder_R/Arm_Upper_R
+    m_Weight: 1
+  - m_Path: Gribby Bones/Spine_3/Shoulder_R/Arm_Upper_R/Arm_Lower_R
+    m_Weight: 1
+  - m_Path: Gribby Bones/Spine_3/Shoulder_R/Arm_Upper_R/Arm_Lower_R/Hand_R
+    m_Weight: 1
+  - m_Path: Gribby Bones/Spine_3/Shoulder_R/Arm_Upper_R/Arm_Lower_R/Hand_R/Thumb_1_R
+    m_Weight: 1
+  - m_Path: Gribby Bones/Spine_3/Shoulder_R/Arm_Upper_R/Arm_Lower_R/Hand_R/Thumb_1_R/Thumb_2_R
+    m_Weight: 1
+  - m_Path: Gribby Bones/Spine_3/Shoulder_R/Arm_Upper_R/Arm_Lower_R/Hand_R/Thumb_1_R/Thumb_2_R/Thumb_3_R
+    m_Weight: 1
+  - m_Path: Gribby Bones/Spine_3/Shoulder_R/Arm_Upper_R/Arm_Lower_R/Hand_R/Thumb_1_R/Thumb_2_R/Thumb_3_R/Thumb_3_R_end
+    m_Weight: 1
+  - m_Path: Gribby Bones/Spine_3/Shoulder_R/Arm_Upper_R/Arm_Lower_R/Hand_R/Index_1_R
+    m_Weight: 1
+  - m_Path: Gribby Bones/Spine_3/Shoulder_R/Arm_Upper_R/Arm_Lower_R/Hand_R/Index_1_R/Index_2_R
+    m_Weight: 1
+  - m_Path: Gribby Bones/Spine_3/Shoulder_R/Arm_Upper_R/Arm_Lower_R/Hand_R/Index_1_R/Index_2_R/Index_3_R
+    m_Weight: 1
+  - m_Path: Gribby Bones/Spine_3/Shoulder_R/Arm_Upper_R/Arm_Lower_R/Hand_R/Index_1_R/Index_2_R/Index_3_R/Index_3_R_end
+    m_Weight: 1
+  - m_Path: Gribby Bones/Spine_3/Shoulder_R/Arm_Upper_R/Arm_Lower_R/Hand_R/Middle_1_R
+    m_Weight: 1
+  - m_Path: Gribby Bones/Spine_3/Shoulder_R/Arm_Upper_R/Arm_Lower_R/Hand_R/Middle_1_R/Middle_2_R
+    m_Weight: 1
+  - m_Path: Gribby Bones/Spine_3/Shoulder_R/Arm_Upper_R/Arm_Lower_R/Hand_R/Middle_1_R/Middle_2_R/Middle_3_R
+    m_Weight: 1
+  - m_Path: Gribby Bones/Spine_3/Shoulder_R/Arm_Upper_R/Arm_Lower_R/Hand_R/Middle_1_R/Middle_2_R/Middle_3_R/Middle_3_R_end
+    m_Weight: 1
+  - m_Path: Gribby Bones/Spine_3/Shoulder_R/Arm_Upper_R/Arm_Lower_R/Hand_R/Ring_1_R
+    m_Weight: 1
+  - m_Path: Gribby Bones/Spine_3/Shoulder_R/Arm_Upper_R/Arm_Lower_R/Hand_R/Ring_1_R/Ring_2_R
+    m_Weight: 1
+  - m_Path: Gribby Bones/Spine_3/Shoulder_R/Arm_Upper_R/Arm_Lower_R/Hand_R/Ring_1_R/Ring_2_R/Ring_3_R
+    m_Weight: 1
+  - m_Path: Gribby Bones/Spine_3/Shoulder_R/Arm_Upper_R/Arm_Lower_R/Hand_R/Ring_1_R/Ring_2_R/Ring_3_R/Ring_3_R_end
+    m_Weight: 1
+  - m_Path: Gribby Bones/Spine_3/Shoulder_R/Arm_Upper_R/Arm_Lower_R/Hand_R/Pinky_1_R
+    m_Weight: 1
+  - m_Path: Gribby Bones/Spine_3/Shoulder_R/Arm_Upper_R/Arm_Lower_R/Hand_R/Pinky_1_R/Pinky_2_R
+    m_Weight: 1
+  - m_Path: Gribby Bones/Spine_3/Shoulder_R/Arm_Upper_R/Arm_Lower_R/Hand_R/Pinky_1_R/Pinky_2_R/Pinky_3_R
+    m_Weight: 1
+  - m_Path: Gribby Bones/Spine_3/Shoulder_R/Arm_Upper_R/Arm_Lower_R/Hand_R/Pinky_1_R/Pinky_2_R/Pinky_3_R/Pinky_3_R_end
+    m_Weight: 1
+  - m_Path: Gribby Bones/Spine_3/Shoulder_L
+    m_Weight: 0
+  - m_Path: Gribby Bones/Spine_3/Shoulder_L/Arm_Upper_L
+    m_Weight: 0
+  - m_Path: Gribby Bones/Spine_3/Shoulder_L/Arm_Upper_L/Arm_Lower_L
+    m_Weight: 0
+  - m_Path: Gribby Bones/Spine_3/Shoulder_L/Arm_Upper_L/Arm_Lower_L/Hand_L
+    m_Weight: 0
+  - m_Path: Gribby Bones/Spine_3/Shoulder_L/Arm_Upper_L/Arm_Lower_L/Hand_L/Thumb_1_L
+    m_Weight: 0
+  - m_Path: Gribby Bones/Spine_3/Shoulder_L/Arm_Upper_L/Arm_Lower_L/Hand_L/Thumb_1_L/Thumb_2_L
+    m_Weight: 0
+  - m_Path: Gribby Bones/Spine_3/Shoulder_L/Arm_Upper_L/Arm_Lower_L/Hand_L/Thumb_1_L/Thumb_2_L/Thumb_3_L
+    m_Weight: 0
+  - m_Path: Gribby Bones/Spine_3/Shoulder_L/Arm_Upper_L/Arm_Lower_L/Hand_L/Thumb_1_L/Thumb_2_L/Thumb_3_L/Thumb_3_L_end
+    m_Weight: 0
+  - m_Path: Gribby Bones/Spine_3/Shoulder_L/Arm_Upper_L/Arm_Lower_L/Hand_L/Index_1_L
+    m_Weight: 0
+  - m_Path: Gribby Bones/Spine_3/Shoulder_L/Arm_Upper_L/Arm_Lower_L/Hand_L/Index_1_L/Index_2_L
+    m_Weight: 0
+  - m_Path: Gribby Bones/Spine_3/Shoulder_L/Arm_Upper_L/Arm_Lower_L/Hand_L/Index_1_L/Index_2_L/Index_3_L
+    m_Weight: 0
+  - m_Path: Gribby Bones/Spine_3/Shoulder_L/Arm_Upper_L/Arm_Lower_L/Hand_L/Index_1_L/Index_2_L/Index_3_L/Index_3_L_end
+    m_Weight: 0
+  - m_Path: Gribby Bones/Spine_3/Shoulder_L/Arm_Upper_L/Arm_Lower_L/Hand_L/Middle_1_L
+    m_Weight: 0
+  - m_Path: Gribby Bones/Spine_3/Shoulder_L/Arm_Upper_L/Arm_Lower_L/Hand_L/Middle_1_L/Middle_2_L
+    m_Weight: 0
+  - m_Path: Gribby Bones/Spine_3/Shoulder_L/Arm_Upper_L/Arm_Lower_L/Hand_L/Middle_1_L/Middle_2_L/Middle_3_L
+    m_Weight: 0
+  - m_Path: Gribby Bones/Spine_3/Shoulder_L/Arm_Upper_L/Arm_Lower_L/Hand_L/Middle_1_L/Middle_2_L/Middle_3_L/Middle_3_L_end
+    m_Weight: 0
+  - m_Path: Gribby Bones/Spine_3/Shoulder_L/Arm_Upper_L/Arm_Lower_L/Hand_L/Ring_1_L
+    m_Weight: 0
+  - m_Path: Gribby Bones/Spine_3/Shoulder_L/Arm_Upper_L/Arm_Lower_L/Hand_L/Ring_1_L/Ring_2_L
+    m_Weight: 0
+  - m_Path: Gribby Bones/Spine_3/Shoulder_L/Arm_Upper_L/Arm_Lower_L/Hand_L/Ring_1_L/Ring_2_L/Ring_3_L
+    m_Weight: 0
+  - m_Path: Gribby Bones/Spine_3/Shoulder_L/Arm_Upper_L/Arm_Lower_L/Hand_L/Ring_1_L/Ring_2_L/Ring_3_L/Ring_3_L_end
+    m_Weight: 0
+  - m_Path: Gribby Bones/Spine_3/Shoulder_L/Arm_Upper_L/Arm_Lower_L/Hand_L/Pinky_1_L
+    m_Weight: 0
+  - m_Path: Gribby Bones/Spine_3/Shoulder_L/Arm_Upper_L/Arm_Lower_L/Hand_L/Pinky_1_L/Pinky_2_L
+    m_Weight: 0
+  - m_Path: Gribby Bones/Spine_3/Shoulder_L/Arm_Upper_L/Arm_Lower_L/Hand_L/Pinky_1_L/Pinky_2_L/Pinky_3_L
+    m_Weight: 0
+  - m_Path: Gribby Bones/Spine_3/Shoulder_L/Arm_Upper_L/Arm_Lower_L/Hand_L/Pinky_1_L/Pinky_2_L/Pinky_3_L/Pinky_3_L_end
+    m_Weight: 0
+  - m_Path: Stabber
+    m_Weight: 0
