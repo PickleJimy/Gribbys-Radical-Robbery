@@ -12,6 +12,8 @@ public class EnemyAiTutorial : MonoBehaviour
 
     public float health;
 
+    public Rigidbody enemyRb;
+
     //Patroling
     public Vector3 walkPoint;
     bool walkPointSet;
@@ -23,13 +25,14 @@ public class EnemyAiTutorial : MonoBehaviour
     public GameObject projectile;
 
     //States
-    public float sightRange, attackRange;
-    public bool playerInSightRange, playerInAttackRange;
+    public float sightRange, attackRange, jumpRange;
+    public bool playerInSightRange, playerInAttackRange, playerInJumpRange;
 
     private void Awake()
     {
-        player = GameObject.Find("PlayerObj").transform;
+        player = GameObject.Find("Player").transform;
         agent = GetComponent<NavMeshAgent>();
+        enemyRb = GetComponent<Rigidbody>();
     }
 
     private void Update()
@@ -37,11 +40,12 @@ public class EnemyAiTutorial : MonoBehaviour
         //Check for sight and attack range
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
+        playerInJumpRange = Physics.CheckSphere(transform.position, jumpRange, whatIsPlayer);
 
         if (!playerInSightRange && !playerInAttackRange) Patroling();
         if (playerInSightRange && !playerInAttackRange) ChasePlayer();
         if (playerInAttackRange && playerInSightRange) AttackPlayer();
-        
+        if (!playerInJumpRange && playerInSightRange) JumpAtPlayer();
     }
 
     private void Patroling()
@@ -93,6 +97,13 @@ public class EnemyAiTutorial : MonoBehaviour
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
         }
     }
+
+    private void JumpAtPlayer()
+    {
+        agent.SetDestination(player.position);
+        enemyRb.AddForce(transform.up * 10f, ForceMode.Impulse);
+    }
+
     private void ResetAttack()
     {
         alreadyAttacked = false;
@@ -115,5 +126,7 @@ public class EnemyAiTutorial : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, attackRange);
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, sightRange);
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(transform.position, jumpRange);
     }
 }
