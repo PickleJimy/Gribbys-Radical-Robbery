@@ -23,7 +23,6 @@ public class GrabAndStab : MonoBehaviour
     {
         Grab();
         Stab();
-//GribbyAnim = gameObject.GetComponent<Animator>();
     }
 
     public void Grab()
