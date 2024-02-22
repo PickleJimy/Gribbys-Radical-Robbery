@@ -136,7 +136,7 @@ public class PlayerMovement : MonoBehaviour
         // Mode - Walking
         else if (grounded)
         {
-            state |= MovementState.walking;
+            state = MovementState.walking;
             moveSpeed = walkSpeed;
             GribbyRun.SetFloat("Speed", 0);
         }
