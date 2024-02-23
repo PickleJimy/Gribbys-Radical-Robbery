@@ -40,9 +40,9 @@ public class StealableItem : MonoBehaviour
 
         if (inStealingRange && Input.GetKey(grabKey))
         {
-            player.gameObject.GetComponent<PlayerStats>().stolenGoods++;
             playerUI.SetActive(false);
             Destroy(gameObject);
+            player.gameObject.GetComponent<PlayerStats>().stolenGoods++;
         }
     }
 
