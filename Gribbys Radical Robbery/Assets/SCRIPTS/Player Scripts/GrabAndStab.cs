@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class GrabAndStab : MonoBehaviour
@@ -11,12 +12,15 @@ public class GrabAndStab : MonoBehaviour
 
     public Animator GribbyAnim;
 
+    [Header("Damage")]
+    [Range(0, 100)]
+    public int damage;
+    public bool dealDamage;
+
     void Start()
     {
-
+        DelayDealDamge(0f);
     }
-
-
 
     // Update is called once per frame
     void Update()
@@ -40,6 +44,19 @@ public class GrabAndStab : MonoBehaviour
         {
             Debug.Log("STAB");
             GribbyAnim.SetTrigger("isStabbing");
+            DelayDealDamge(0.1f);
+            DelayDealDamge(0.5f);
         }
+    }
+
+    public IEnumerator DealDamage(float f)
+    {
+        yield return new WaitForSeconds(f);
+        dealDamage = !dealDamage;
+    }
+
+    public void DelayDealDamge(float n)
+    {    
+        StartCoroutine(DealDamage(n));
     }
 }

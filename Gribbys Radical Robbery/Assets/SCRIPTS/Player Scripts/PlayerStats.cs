@@ -33,7 +33,7 @@ public class PlayerStats : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "EnemyDamager" && other.GetComponent<EnemyDealDamage>().dealDamage)
+        if (other.CompareTag("EnemyDamager") && other.GetComponent<EnemyDealDamage>().dealDamage)
         {
             Debug.Log("YEEOWCH");
             damageDealt = other.GetComponent<EnemyDealDamage>().damage;
