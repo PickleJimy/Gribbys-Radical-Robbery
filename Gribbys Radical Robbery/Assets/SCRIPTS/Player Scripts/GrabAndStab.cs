@@ -16,12 +16,12 @@ public class GrabAndStab : MonoBehaviour
     [Range(0, 100)]
     public int damage;
     public bool dealDamage;
-    private float stabCooldown = 0.5f;
+    public float stabCooldown;
     bool readyToStab;
 
     void Start()
     {
-        DelayDealDamage(0f, true);
+        DelayDealDamage(0f, false, true);
     }
 
     // Update is called once per frame
@@ -46,20 +46,21 @@ public class GrabAndStab : MonoBehaviour
         {
             Debug.Log("STAB");
             GribbyAnim.SetTrigger("isStabbing");
-            DelayDealDamage(0.02f, false);
-            DelayDealDamage(stabCooldown, true);
+            DelayDealDamage(0.08f, true, false);
+            DelayDealDamage(stabCooldown, false, true);
         }
     }
 
-    public IEnumerator DealDamage(float f, bool g)
+    public IEnumerator DealDamage(float time, bool dmg, bool stab)
     {
-        yield return new WaitForSeconds(f);
-        dealDamage = !dealDamage;
-        readyToStab = g;
+        yield return new WaitForSeconds(time);
+        dealDamage = dmg;
+        readyToStab = stab;
+        
     }
 
-    public void DelayDealDamage(float n, bool m)
+    public void DelayDealDamage(float time, bool dmg, bool stab)
     {    
-        StartCoroutine(DealDamage(n, m));
+        StartCoroutine(DealDamage(time, dmg, stab));
     }
 }
