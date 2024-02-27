@@ -142,7 +142,8 @@ public class PlayerMovement : MonoBehaviour
         {
             state = MovementState.sprinting;
             moveSpeed = sprintSpeed;
-            GribbyRun.SetFloat("Speed", 1);
+            Debug.Log(rb.velocity.magnitude);
+            GribbyRun.SetFloat("Speed",  rb.velocity.magnitude);
             isJumping = false;
             JumpingAnimation();
         }
