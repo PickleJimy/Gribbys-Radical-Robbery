@@ -13,7 +13,7 @@ public class PlayerMovement : MonoBehaviour
     public float jumpForce;
     public float jumpCooldown;
     public float airMultiplier;
-    public bool readyToJump;
+    bool readyToJump;
 
     [Header("Crouching")]
     public float crouchSpeed;
@@ -29,7 +29,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("Ground Check")]
     public float playerHeight;
     public LayerMask whatIsGround;
-    public bool grounded;
+    bool grounded;
 
     [Header("Slope Handling")]
     public float maxSlopeAngle;
@@ -142,8 +142,7 @@ public class PlayerMovement : MonoBehaviour
         {
             state = MovementState.sprinting;
             moveSpeed = sprintSpeed;
-            // Debug.Log(rb.velocity.magnitude);
-            GribbyRun.SetFloat("Speed",  rb.velocity.magnitude);
+            GribbyRun.SetFloat("Speed", 1);
             isJumping = false;
             JumpingAnimation();
         }
