@@ -9,10 +9,12 @@ public class EnemyStats : MonoBehaviour
     
     private int damageDealt;
 
+    private bool mouseOver;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        mouseOver = false;
     }
 
     // Update is called once per frame
@@ -23,10 +25,20 @@ public class EnemyStats : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("PlayerWeapon") && other.GetComponent<PlayerDealDamage>().dealDamage)
+        if (other.CompareTag("PlayerWeapon") && mouseOver && other.GetComponent<PlayerDealDamage>().dealDamage)
         {
             damageDealt = other.GetComponent<PlayerDealDamage>().damage;
             health -= damageDealt;
         }
+    }
+
+    private void OnMouseOver()
+    {
+        mouseOver = true;
+    }
+
+    private void OnMouseExit()
+    {
+        mouseOver = false;
     }
 }
