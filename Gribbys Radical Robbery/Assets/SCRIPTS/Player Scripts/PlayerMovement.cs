@@ -13,7 +13,7 @@ public class PlayerMovement : MonoBehaviour
     public float jumpForce;
     public float jumpCooldown;
     public float airMultiplier;
-    bool readyToJump;
+    public bool readyToJump;
 
     [Header("Crouching")]
     public float crouchSpeed;
@@ -46,7 +46,7 @@ public class PlayerMovement : MonoBehaviour
     Rigidbody rb;
 
     public Animator GribbyRun;
-
+    public bool isJumping;
     public MovementState state;
     public enum MovementState
     {
@@ -79,7 +79,7 @@ public class PlayerMovement : MonoBehaviour
         else
             rb.drag = 0;
 
-        Debug.Log(rb.velocity.magnitude);
+        // Debug.Log(rb.velocity.magnitude);
     }
 
     private void FixedUpdate()
@@ -116,6 +116,18 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    private void JumpingAnimation()
+    {
+        if (isJumping)
+        {
+            GribbyRun.SetBool("isOnGround", false);
+        }
+        else if (!isJumping)
+        {
+            GribbyRun.SetBool("isOnGround", true);
+        }
+    }
+
     private void StateHandler()
     {
         // Mode - Crouching
@@ -130,7 +142,10 @@ public class PlayerMovement : MonoBehaviour
         {
             state = MovementState.sprinting;
             moveSpeed = sprintSpeed;
-            GribbyRun.SetFloat("Speed", 1);
+            // Debug.Log(rb.velocity.magnitude);
+            GribbyRun.SetFloat("Speed",  rb.velocity.magnitude);
+            isJumping = false;
+            JumpingAnimation();
         }
 
         // Mode - Walking
@@ -139,12 +154,16 @@ public class PlayerMovement : MonoBehaviour
             state = MovementState.walking;
             moveSpeed = walkSpeed;
             GribbyRun.SetFloat("Speed", 0);
+            isJumping = false;
+            JumpingAnimation();
         }
 
         // Mode - Air
         else
         {
             state = MovementState.air;
+            isJumping = true;
+            JumpingAnimation();
         }
     }
 
