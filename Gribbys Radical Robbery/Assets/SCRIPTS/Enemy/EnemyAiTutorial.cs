@@ -8,11 +8,33 @@ public class EnemyAiTutorial : MonoBehaviour
 
     public Transform player;
 
-    public LayerMask whatIsGround, whatIsPlayer;
+    public LayerMask whatIsPlayer;
 
     public float health;
 
-    public Rigidbody enemyRb;
+    public Rigidbody rb;
+
+    public float groundDrag;
+
+    public GameObject enemy;
+
+    public float minJumpHeight;
+
+    public float maxJumpHeight;
+
+    public bool playerInJumpRange;
+
+    public bool playerOnGround;
+
+    [Header("Ground Check")]
+    public float playerHeight;
+    public LayerMask whatIsGround;
+    public bool grounded;
+
+    [Header("Jumping")]
+    public float jumpForce;
+    public float jumpCooldown;
+    public bool readyToJump;
 
     //Patroling
     public Vector3 walkPoint;
@@ -25,27 +47,47 @@ public class EnemyAiTutorial : MonoBehaviour
     public GameObject projectile;
 
     //States
-    public float sightRange, attackRange, jumpRange;
-    public bool playerInSightRange, playerInAttackRange, playerInJumpRange;
+    public float sightRange, attackRange;
+    public bool playerInSightRange, playerInAttackRange;
+
+    public void Start()
+    {
+        rb = GetComponent<Rigidbody>();
+        rb.freezeRotation = true;
+
+        readyToJump = true;
+    }
 
     private void Awake()
     {
         player = GameObject.Find("Player").transform;
         agent = GetComponent<NavMeshAgent>();
-        enemyRb = GetComponent<Rigidbody>();
     }
 
-    private void Update()
+    public void Update()
     {
         //Check for sight and attack range
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
-        playerInJumpRange = Physics.CheckSphere(transform.position, jumpRange, whatIsPlayer);
 
         if (!playerInSightRange && !playerInAttackRange) Patroling();
         if (playerInSightRange && !playerInAttackRange) ChasePlayer();
         if (playerInAttackRange && playerInSightRange) AttackPlayer();
-        if (!playerInJumpRange && playerInSightRange) JumpAtPlayer();
+
+        if (player.transform.position.y >= enemy.transform.position.y + minJumpHeight) playerInJumpRange = true;
+
+        playerOnGround = player.GetComponent<PlayerMovement>().grounded;
+
+        grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, whatIsGround);
+
+        JumpArea();
+
+        if (grounded)
+            rb.drag = groundDrag;
+        else
+            rb.drag = 0;
+
+        Debug.Log(rb.velocity.magnitude);
     }
 
     private void Patroling()
@@ -98,12 +140,6 @@ public class EnemyAiTutorial : MonoBehaviour
         }
     }
 
-    private void JumpAtPlayer()
-    {
-        agent.SetDestination(player.position);
-        enemyRb.AddForce(transform.up * 10f, ForceMode.Impulse);
-    }
-
     private void ResetAttack()
     {
         alreadyAttacked = false;
@@ -120,13 +156,37 @@ public class EnemyAiTutorial : MonoBehaviour
         Destroy(gameObject);
     }
 
+    public void JumpArea()
+    {
+        // when to jump
+        if (readyToJump && grounded && playerInJumpRange)
+        {
+            readyToJump = false;
+
+            Jump();
+
+            Invoke(nameof(ResetJump), jumpCooldown);
+        }
+    }
+
+    public void Jump()
+    {
+        // reset y velocity
+        rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
+
+        rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
+    }
+
+    public void ResetJump()
+    {
+        readyToJump = true;
+    }
+
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, attackRange);
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, sightRange);
-        Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(transform.position, jumpRange);
     }
 }

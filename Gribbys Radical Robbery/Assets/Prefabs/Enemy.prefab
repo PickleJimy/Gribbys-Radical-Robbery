@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 370653707888902711}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -135,7 +135,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 1
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!195 &2999281785369815251
 NavMeshAgent:
@@ -156,7 +156,7 @@ NavMeshAgent:
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 1.9999998
-  m_BaseOffset: 0
+  m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!114 &370653707888902711
@@ -172,22 +172,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 2999281785369815251}
-  player: {fileID: 4764400828090631770, guid: b5c9c6a0d9b26d448b51b45be779e3e1, type: 3}
-  whatIsGround:
-    serializedVersion: 2
-    m_Bits: 8
+  player: {fileID: 0}
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 128
-  health: 0
-  enemyRb: {fileID: 3213309486222693098}
+  health: 6.35
+  rb: {fileID: 3213309486222693098}
+  groundDrag: 0.39
+  enemy: {fileID: 2358648691654089754}
+  playerHeight: 1.57
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 8
+  grounded: 0
+  jumpForce: 2.77
+  jumpCooldown: 0.48
+  readyToJump: 0
   walkPoint: {x: 4.34, y: 0, z: 6.4}
-  walkPointRange: 2.18
+  walkPointRange: 12.92
   timeBetweenAttacks: 4.6
   projectile: {fileID: 4753117414461319581, guid: 41b9afbd1d43cb448bc6995375ed76c5, type: 3}
   sightRange: 8.54
   attackRange: 1.36
-  jumpRange: 0
   playerInSightRange: 0
   playerInAttackRange: 0
-  playerInJumpRange: 0

@@ -4,44 +4,32 @@ using UnityEngine;
 
 public class EnemyJump : MonoBehaviour
 {
-    public Transform player; 
-    
-    public UnityEngine.AI.NavMeshAgent agent;
+    public Transform player;
 
-    public LayerMask whatIsGround, whatIsPlayer;
+    public Transform enemy;
 
-    public Rigidbody enemyRb;
-
-    public float jumpForce;
+    public LayerMask whatIsPlayer;
 
     //States
-    public float sightRange, jumpRange;
-    public bool playerInSightRange, playerInJumpRange;
+
+    public float jumpHeightDetect;
+    public bool playerInJumpRange;
 
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.Find("Player").transform;
-        enemyRb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
-    void Update()
+    public void Update()
     {
-        playerInJumpRange = Physics.CheckSphere(transform.position, jumpRange, whatIsPlayer);
-        if (playerInJumpRange && playerInSightRange) JumpAtPlayer();
-    }
-
-    private void JumpAtPlayer()
-    {
-        enemyRb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
+        playerInJumpRange = Physics.CheckSphere(transform.position, jumpHeightDetect, whatIsPlayer);
     }
 
     private void OnDrawGizmosSelected()
     {
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, sightRange);
         Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(transform.position, jumpRange);
+        Gizmos.DrawWireSphere(transform.position, jumpHeightDetect);
     }
 }
