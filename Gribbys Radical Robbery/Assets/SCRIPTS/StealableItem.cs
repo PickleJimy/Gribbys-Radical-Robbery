@@ -1,3 +1,5 @@
+using System.Collections;
+using System.IO;
 using UnityEngine;
 
 public class StealableItem : MonoBehaviour
@@ -40,10 +42,17 @@ public class StealableItem : MonoBehaviour
 
         if (inStealingRange && Input.GetKey(grabKey))
         {
-            playerUI.SetActive(false);
-            Destroy(gameObject);
-            player.gameObject.GetComponent<PlayerStats>().stolenGoods++;
+            StartCoroutine(DelaySteal(0.4f));
         }
+    }
+
+    public IEnumerator DelaySteal(float time)
+    {
+        yield return new WaitForSeconds(time);
+
+        playerUI.SetActive(false);
+        Destroy(gameObject);
+        player.gameObject.GetComponent<PlayerStats>().stolenGoods++;
     }
 
     private void OnMouseExit()

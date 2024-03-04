@@ -25,7 +25,6 @@ public class EnemyStats : MonoBehaviour
     {
         if (other.CompareTag("PlayerWeapon") && other.GetComponent<PlayerDealDamage>().dealDamage)
         {
-            Debug.Log("W");
             damageDealt = other.GetComponent<PlayerDealDamage>().damage;
             health -= damageDealt;
         }

@@ -1,5 +1,6 @@
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PauseController : MonoBehaviour
@@ -34,6 +35,17 @@ public class PauseController : MonoBehaviour
         if (button.name == "Resume Button")
         {
             UnpauseGame();
+        }
+
+        if (button.name == "Restart Button")
+        {
+            RestartScene();
+            UnpauseGame();
+        }
+
+        if (button.name == "Quit Button")
+        {
+            Application.Quit();
         }
     }
 
@@ -87,4 +99,11 @@ public class PauseController : MonoBehaviour
             child.gameObject.GetComponent<Collider>().enabled = stealability;
         }
     }
+
+    void RestartScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+
 }
