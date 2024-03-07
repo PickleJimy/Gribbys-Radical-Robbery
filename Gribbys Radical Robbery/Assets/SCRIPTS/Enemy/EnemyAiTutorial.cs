@@ -5,8 +5,11 @@ using UnityEngine.AI;
 public class EnemyAiTutorial : MonoBehaviour
 {
     public NavMeshAgent agent;
+    public bool agentEnabled;
 
     public Transform player;
+
+    public GameObject enemy;
 
     public LayerMask whatIsPlayer;
 
@@ -15,8 +18,6 @@ public class EnemyAiTutorial : MonoBehaviour
     public Rigidbody rb;
 
     public float groundDrag;
-
-    public GameObject enemy;
 
     public float minJumpHeight;
 
@@ -38,7 +39,7 @@ public class EnemyAiTutorial : MonoBehaviour
 
     //Patroling
     public Vector3 walkPoint;
-    bool walkPointSet;
+    public bool walkPointSet;
     public float walkPointRange;
 
     //Attacking
@@ -62,6 +63,7 @@ public class EnemyAiTutorial : MonoBehaviour
     {
         player = GameObject.Find("Player").transform;
         agent = GetComponent<NavMeshAgent>();
+        enemy = GameObject.Find("Enemy");
     }
 
     public void Update()
@@ -74,11 +76,13 @@ public class EnemyAiTutorial : MonoBehaviour
         if (playerInSightRange && !playerInAttackRange) ChasePlayer();
         if (playerInAttackRange && playerInSightRange) AttackPlayer();
 
-        if (player.transform.position.y >= enemy.transform.position.y + minJumpHeight) playerInJumpRange = true;
-
+        if (player.transform.position.y >= rb.transform.position.y + minJumpHeight) playerInJumpRange = true;
+        
         playerOnGround = player.GetComponent<PlayerMovement>().grounded;
 
         grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, whatIsGround);
+
+        agentEnabled = agent.enabled;
 
         JumpArea();
 
@@ -90,12 +94,12 @@ public class EnemyAiTutorial : MonoBehaviour
         Debug.Log(rb.velocity.magnitude);
     }
 
-    private void Patroling()
+    public void Patroling()
     {
         if (!walkPointSet) SearchWalkPoint();
 
         if (walkPointSet)
-            agent.SetDestination(walkPoint);
+           agent.SetDestination(walkPoint);
 
         Vector3 distanceToWalkPoint = transform.position - walkPoint;
 
@@ -103,7 +107,7 @@ public class EnemyAiTutorial : MonoBehaviour
         if (distanceToWalkPoint.magnitude < 1f)
             walkPointSet = false;
     }
-    private void SearchWalkPoint()
+    public void SearchWalkPoint()
     {
         //Calculate random point in range
         float randomZ = Random.Range(-walkPointRange, walkPointRange);
@@ -115,17 +119,27 @@ public class EnemyAiTutorial : MonoBehaviour
             walkPointSet = true;
     }
 
-    private void ChasePlayer()
+    public void ChasePlayer()
     {
         agent.SetDestination(player.position);
+
+        if (!agentEnabled)
+        {
+            rb.AddForce(player.position);
+        }
     }
 
-    private void AttackPlayer()
+    public void AttackPlayer()
     {
         //Make sure enemy doesn't move
         agent.SetDestination(transform.position);
 
         transform.LookAt(player);
+
+        if (!agentEnabled)
+        {
+            rb.AddForce(transform.position);  
+        }
 
         if (!alreadyAttacked)
         {
@@ -159,9 +173,11 @@ public class EnemyAiTutorial : MonoBehaviour
     public void JumpArea()
     {
         // when to jump
-        if (readyToJump && grounded && playerInJumpRange)
+        if (readyToJump && grounded && playerInJumpRange && playerOnGround && playerInSightRange)
         {
-            readyToJump = false;
+            readyToJump = true;
+
+            agentEnabled = false;
 
             Jump();
 
@@ -171,18 +187,17 @@ public class EnemyAiTutorial : MonoBehaviour
 
     public void Jump()
     {
-        // reset y velocity
-        rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
-
         rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
+        agentEnabled = false;
     }
 
     public void ResetJump()
     {
         readyToJump = true;
+        agentEnabled = true;
     }
 
-    private void OnDrawGizmosSelected()
+    void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, attackRange);
