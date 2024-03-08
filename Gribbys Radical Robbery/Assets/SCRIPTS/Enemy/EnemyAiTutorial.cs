@@ -5,8 +5,11 @@ using UnityEngine.AI;
 public class EnemyAiTutorial : MonoBehaviour
 {
     public NavMeshAgent agent;
+    public bool agentEnabled;
 
     public Transform player;
+
+    public GameObject enemy;
 
     public LayerMask whatIsPlayer;
 
@@ -15,8 +18,6 @@ public class EnemyAiTutorial : MonoBehaviour
     public Rigidbody rb;
 
     public float groundDrag;
-
-    public GameObject enemy;
 
     public float minJumpHeight;
 
@@ -36,9 +37,11 @@ public class EnemyAiTutorial : MonoBehaviour
     public float jumpCooldown;
     public bool readyToJump;
 
+    public bool hurt;
+
     //Patroling
     public Vector3 walkPoint;
-    bool walkPointSet;
+    public bool walkPointSet;
     public float walkPointRange;
 
     //Attacking
@@ -47,7 +50,7 @@ public class EnemyAiTutorial : MonoBehaviour
     public GameObject projectile;
 
     //States
-    public float sightRange, attackRange;
+    public float sightRange, attackRange, jumpRange;
     public bool playerInSightRange, playerInAttackRange;
 
     public void Start()
@@ -62,6 +65,7 @@ public class EnemyAiTutorial : MonoBehaviour
     {
         player = GameObject.Find("Player").transform;
         agent = GetComponent<NavMeshAgent>();
+        enemy = GameObject.Find("Enemy");
     }
 
     public void Update()
@@ -74,11 +78,15 @@ public class EnemyAiTutorial : MonoBehaviour
         if (playerInSightRange && !playerInAttackRange) ChasePlayer();
         if (playerInAttackRange && playerInSightRange) AttackPlayer();
 
-        if (player.transform.position.y >= enemy.transform.position.y + minJumpHeight) playerInJumpRange = true;
-
+        if (player.transform.position.y >= rb.transform.position.y + minJumpHeight) playerInJumpRange = true;
+        
         playerOnGround = player.GetComponent<PlayerMovement>().grounded;
 
         grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, whatIsGround);
+
+        agentEnabled = agent.enabled;
+
+        hurt = player.GetComponent<GrabAndStab>().dealDamage;
 
         JumpArea();
 
@@ -90,12 +98,12 @@ public class EnemyAiTutorial : MonoBehaviour
         Debug.Log(rb.velocity.magnitude);
     }
 
-    private void Patroling()
+    public void Patroling()
     {
         if (!walkPointSet) SearchWalkPoint();
 
         if (walkPointSet)
-            agent.SetDestination(walkPoint);
+           agent.SetDestination(walkPoint);
 
         Vector3 distanceToWalkPoint = transform.position - walkPoint;
 
@@ -103,7 +111,7 @@ public class EnemyAiTutorial : MonoBehaviour
         if (distanceToWalkPoint.magnitude < 1f)
             walkPointSet = false;
     }
-    private void SearchWalkPoint()
+    public void SearchWalkPoint()
     {
         //Calculate random point in range
         float randomZ = Random.Range(-walkPointRange, walkPointRange);
@@ -115,17 +123,27 @@ public class EnemyAiTutorial : MonoBehaviour
             walkPointSet = true;
     }
 
-    private void ChasePlayer()
+    public void ChasePlayer()
     {
         agent.SetDestination(player.position);
+
+        if (!agentEnabled)
+        {
+            rb.AddForce(player.position);
+        }
     }
 
-    private void AttackPlayer()
+    public void AttackPlayer()
     {
         //Make sure enemy doesn't move
         agent.SetDestination(transform.position);
 
         transform.LookAt(player);
+
+        if (!agentEnabled)
+        {
+            rb.AddForce(transform.position);  
+        }
 
         if (!alreadyAttacked)
         {
@@ -159,9 +177,11 @@ public class EnemyAiTutorial : MonoBehaviour
     public void JumpArea()
     {
         // when to jump
-        if (readyToJump && grounded && playerInJumpRange)
+        if (readyToJump && grounded && playerInJumpRange && playerOnGround && playerInSightRange)
         {
-            readyToJump = false;
+            readyToJump = true;
+
+            agentEnabled = true;
 
             Jump();
 
@@ -171,22 +191,72 @@ public class EnemyAiTutorial : MonoBehaviour
 
     public void Jump()
     {
-        // reset y velocity
-        rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
-
         rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
+        agentEnabled = false;
+
+        // when you want to jump
+        if (grounded)
+        {
+            grounded = true;
+            if (agent.enabled)
+            {
+                // set the agents target to where you are before the jump
+                // this stops it before it jumps. Alternatively, you could
+                // cache this value, and set it again once the jump is complete
+                // to continue the original move
+                agent.SetDestination(transform.position);
+                // disable the agent
+                agent.updatePosition = false;
+                agent.updateRotation = false;
+                agent.isStopped = true;
+            }
+            // make the jump
+            rb.isKinematic = false;
+            rb.useGravity = true;
+            rb.AddForce(new Vector3(0, 5f, 0), ForceMode.Impulse);
+        }
+    }
+
+    /// <summary>
+    /// Check for collision back to the ground, and re-enable the NavMeshAgent
+    /// </summary>
+    public void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider != null && collision.collider.tag == "Ground")
+        {
+            if (grounded)
+            {
+                agent.enabled = true;
+
+                if (agent.enabled)
+                {
+                    agent.updatePosition = true;
+                    agent.updateRotation = true;
+                    agent.isStopped = false;
+                }
+                rb.isKinematic = true;
+                rb.useGravity = true;
+                grounded = true;
+            }
+        }
     }
 
     public void ResetJump()
     {
         readyToJump = true;
+        if (grounded)
+        {
+            agentEnabled = true;
+        }
     }
 
-    private void OnDrawGizmosSelected()
+    void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, attackRange);
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, sightRange);
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(transform.position, jumpRange);
     }
 }
