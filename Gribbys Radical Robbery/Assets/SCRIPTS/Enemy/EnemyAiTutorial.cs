@@ -37,6 +37,8 @@ public class EnemyAiTutorial : MonoBehaviour
     public float jumpCooldown;
     public bool readyToJump;
 
+    public bool hurt;
+
     //Patroling
     public Vector3 walkPoint;
     public bool walkPointSet;
@@ -48,7 +50,7 @@ public class EnemyAiTutorial : MonoBehaviour
     public GameObject projectile;
 
     //States
-    public float sightRange, attackRange;
+    public float sightRange, attackRange, jumpRange;
     public bool playerInSightRange, playerInAttackRange;
 
     public void Start()
@@ -83,6 +85,8 @@ public class EnemyAiTutorial : MonoBehaviour
         grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, whatIsGround);
 
         agentEnabled = agent.enabled;
+
+        hurt = player.GetComponent<GrabAndStab>().dealDamage;
 
         JumpArea();
 
@@ -177,7 +181,7 @@ public class EnemyAiTutorial : MonoBehaviour
         {
             readyToJump = true;
 
-            agentEnabled = false;
+            agentEnabled = true;
 
             Jump();
 
@@ -189,12 +193,61 @@ public class EnemyAiTutorial : MonoBehaviour
     {
         rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
         agentEnabled = false;
+
+        // when you want to jump
+        if (grounded)
+        {
+            grounded = true;
+            if (agent.enabled)
+            {
+                // set the agents target to where you are before the jump
+                // this stops it before it jumps. Alternatively, you could
+                // cache this value, and set it again once the jump is complete
+                // to continue the original move
+                agent.SetDestination(transform.position);
+                // disable the agent
+                agent.updatePosition = false;
+                agent.updateRotation = false;
+                agent.isStopped = true;
+            }
+            // make the jump
+            rb.isKinematic = false;
+            rb.useGravity = true;
+            rb.AddForce(new Vector3(0, 5f, 0), ForceMode.Impulse);
+        }
+    }
+
+    /// <summary>
+    /// Check for collision back to the ground, and re-enable the NavMeshAgent
+    /// </summary>
+    public void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider != null && collision.collider.tag == "Ground")
+        {
+            if (grounded)
+            {
+                agent.enabled = true;
+
+                if (agent.enabled)
+                {
+                    agent.updatePosition = true;
+                    agent.updateRotation = true;
+                    agent.isStopped = false;
+                }
+                rb.isKinematic = true;
+                rb.useGravity = true;
+                grounded = true;
+            }
+        }
     }
 
     public void ResetJump()
     {
         readyToJump = true;
-        agentEnabled = true;
+        if (grounded)
+        {
+            agentEnabled = true;
+        }
     }
 
     void OnDrawGizmosSelected()
@@ -203,5 +256,7 @@ public class EnemyAiTutorial : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, attackRange);
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, sightRange);
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(transform.position, jumpRange);
     }
 }
