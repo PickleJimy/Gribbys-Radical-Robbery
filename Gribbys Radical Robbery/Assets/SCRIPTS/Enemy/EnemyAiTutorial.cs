@@ -36,6 +36,7 @@ public class EnemyAiTutorial : MonoBehaviour
     public float jumpForce;
     public float jumpCooldown;
     public bool readyToJump;
+    public bool preparedToJump;
 
     public bool hurt;
 
@@ -73,12 +74,13 @@ public class EnemyAiTutorial : MonoBehaviour
         //Check for sight and attack range
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
+        playerInJumpRange = Physics.CheckSphere(transform.position, jumpRange, whatIsPlayer);
 
         if (!playerInSightRange && !playerInAttackRange) Patroling();
         if (playerInSightRange && !playerInAttackRange) ChasePlayer();
         if (playerInAttackRange && playerInSightRange) AttackPlayer();
 
-        if (player.transform.position.y >= rb.transform.position.y + minJumpHeight) playerInJumpRange = true;
+        if (player.transform.position.y >= rb.transform.position.y + minJumpHeight && playerInJumpRange) preparedToJump = true;
         
         playerOnGround = player.GetComponent<PlayerMovement>().grounded;
 
@@ -177,11 +179,11 @@ public class EnemyAiTutorial : MonoBehaviour
     public void JumpArea()
     {
         // when to jump
-        if (readyToJump && grounded && playerInJumpRange && playerOnGround && playerInSightRange)
+        if (readyToJump && grounded && preparedToJump && playerOnGround && playerInSightRange)
         {
             readyToJump = true;
 
-            agentEnabled = true;
+            agent.enabled = false;
 
             Jump();
 
@@ -192,12 +194,13 @@ public class EnemyAiTutorial : MonoBehaviour
     public void Jump()
     {
         rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
-        agentEnabled = false;
+        agent.enabled = true;
 
         // when you want to jump
         if (grounded)
         {
             grounded = true;
+            agent.enabled = true;
             if (agent.enabled)
             {
                 // set the agents target to where you are before the jump
