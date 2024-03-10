@@ -96,8 +96,8 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2358648691654089754}
   serializedVersion: 4
-  m_Mass: 5.54
-  m_Drag: 0.27
+  m_Mass: 3
+  m_Drag: 1.31
   m_AngularDrag: 0.23
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
@@ -114,7 +114,7 @@ Rigidbody:
   m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 112
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!114 &370653707888902711
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -136,7 +136,7 @@ MonoBehaviour:
     m_Bits: 128
   health: 6.35
   rb: {fileID: 3213309486222693098}
-  groundDrag: 0.39
+  groundDrag: 0.6
   minJumpHeight: 3
   maxJumpHeight: 5
   playerInJumpRange: 0
@@ -146,9 +146,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   grounded: 0
-  jumpForce: 5.6
+  jumpForce: 4.05
   jumpCooldown: 2.67
   readyToJump: 0
+  preparedToJump: 0
   hurt: 0
   walkPoint: {x: 4.34, y: 0, z: 6.4}
   walkPointSet: 0
@@ -202,9 +203,9 @@ CapsuleCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
-  m_Height: 2
+  m_Height: 2.6046388
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: -0.07045978, z: 0}
 --- !u!114 &32579265675517928
 MonoBehaviour:
   m_ObjectHideFlags: 0

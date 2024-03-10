@@ -970,7 +970,7 @@ MonoBehaviour:
   maxJumpHeight: 0
   playerInJumpRange: 0
   playerOnGround: 0
-  playerHeight: 1.36
+  enemyHeight: 0
   whatIsGround:
     serializedVersion: 2
     m_Bits: 0
@@ -979,6 +979,7 @@ MonoBehaviour:
   jumpCooldown: 0
   readyToJump: 0
   preparedToJump: 0
+  airborne: 0
   hurt: 0
   walkPoint: {x: 6.69, y: 0, z: 6.4}
   walkPointSet: 0
@@ -1509,6 +1510,7 @@ GameObject:
   - component: {fileID: 1868773889}
   - component: {fileID: 1868773888}
   - component: {fileID: 1868773892}
+  - component: {fileID: 1868773893}
   m_Layer: 3
   m_Name: Plane
   m_TagString: Ground
@@ -1624,6 +1626,33 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 10, y: 1.4084573, z: 10}
   m_Center: {x: 0, y: -0.70422864, z: 0}
+--- !u!54 &1868773893
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1868773887}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1904471413
 GameObject:
   m_ObjectHideFlags: 0
@@ -2358,13 +2387,17 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 2028523247}
+    - target: {fileID: 370653707888902711, guid: da1411e0b94d3f74f849adfde326ae40, type: 3}
+      propertyPath: enemyHeight
+      value: 0.8
+      objectReference: {fileID: 0}
     - target: {fileID: 2247804978720256630, guid: da1411e0b94d3f74f849adfde326ae40, type: 3}
       propertyPath: m_LocalPosition.x
       value: -6.16
       objectReference: {fileID: 0}
     - target: {fileID: 2247804978720256630, guid: da1411e0b94d3f74f849adfde326ae40, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.48
+      value: 1.06
       objectReference: {fileID: 0}
     - target: {fileID: 2247804978720256630, guid: da1411e0b94d3f74f849adfde326ae40, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2401,6 +2434,18 @@ PrefabInstance:
     - target: {fileID: 2358648691654089754, guid: da1411e0b94d3f74f849adfde326ae40, type: 3}
       propertyPath: m_Name
       value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 3213309486222693098, guid: da1411e0b94d3f74f849adfde326ae40, type: 3}
+      propertyPath: m_Drag
+      value: 2.09
+      objectReference: {fileID: 0}
+    - target: {fileID: 3213309486222693098, guid: da1411e0b94d3f74f849adfde326ae40, type: 3}
+      propertyPath: m_IsKinematic
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3213309486222693098, guid: da1411e0b94d3f74f849adfde326ae40, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
