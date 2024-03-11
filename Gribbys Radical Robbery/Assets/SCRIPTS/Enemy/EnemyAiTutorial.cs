@@ -11,6 +11,8 @@ public class EnemyAiTutorial : MonoBehaviour
 
     public GameObject enemy;
 
+    public float speed;
+
     public LayerMask whatIsPlayer;
 
     public float health;
@@ -38,6 +40,8 @@ public class EnemyAiTutorial : MonoBehaviour
     public bool readyToJump;
     public bool preparedToJump;
     public bool airborne;
+    public float landingRange;
+    public bool readyToLand;
 
     public bool hurt;
 
@@ -75,12 +79,15 @@ public class EnemyAiTutorial : MonoBehaviour
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
         playerInJumpRange = Physics.CheckSphere(transform.position, jumpRange, whatIsPlayer);
+        readyToLand = Physics.CheckSphere(transform.position, landingRange, whatIsGround);
+
 
         if (!playerInSightRange && !playerInAttackRange) Patroling();
         if (playerInSightRange && !playerInAttackRange) ChasePlayer();
         if (playerInAttackRange && playerInSightRange) AttackPlayer();
 
         if (player.transform.position.y >= rb.transform.position.y + minJumpHeight && playerInJumpRange) preparedToJump = true;
+        if (player.transform.position.y <= rb.transform.position.y + minJumpHeight && playerInJumpRange) preparedToJump = false;
 
         rb = GetComponent<Rigidbody>();
 
@@ -93,6 +100,16 @@ public class EnemyAiTutorial : MonoBehaviour
         if (grounded)
         {
             Debug.Log("On the ground");
+
+            agentEnabled = true;
+            readyToJump = true;
+            
+            agent.updatePosition = true;
+            agent.updateRotation = true;
+            agent.isStopped = false;
+                
+            rb.isKinematic = true;
+            rb.useGravity = true;
         }
 
         agentEnabled = agent.enabled;
@@ -102,13 +119,7 @@ public class EnemyAiTutorial : MonoBehaviour
         // when to jump
         if (readyToJump && grounded && preparedToJump && playerOnGround && playerInSightRange)
         {
-            readyToJump = true;
-
             agentEnabled = false;
-
-            airborne = true;
-
-            Invoke(nameof(ResetJump), jumpCooldown);
 
             agent.SetDestination(transform.position);
             // disable the agent
@@ -160,9 +171,9 @@ public class EnemyAiTutorial : MonoBehaviour
     {
         agent.SetDestination(player.position);
 
-        if (!agentEnabled)
+        if (airborne)
         {
-            rb.AddForce(player.position);
+            rb.AddForce((player.transform.position - transform.position).normalized * speed);
         }
     }
 
@@ -173,7 +184,7 @@ public class EnemyAiTutorial : MonoBehaviour
 
         transform.LookAt(player);
 
-        if (!agentEnabled)
+        if (airborne)
         {
             rb.AddForce(transform.position);
         }
@@ -207,28 +218,6 @@ public class EnemyAiTutorial : MonoBehaviour
         Destroy(gameObject);
     }
 
-    /// <summary>
-    /// Check for collision back to the ground, and re-enable the NavMeshAgent
-    /// </summary>
-    public void ResetJump()
-    {
-        agentEnabled = true;
-        readyToJump = true;
-        if (!grounded)
-        {
-            if (agentEnabled)
-            {
-                agent.updatePosition = true;
-                agent.updateRotation = true;
-                agent.isStopped = false;
-            }
-            rb.isKinematic = true;
-            rb.useGravity = true;
-            grounded = true;
-        }
-
-    }
-
     void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
@@ -237,5 +226,7 @@ public class EnemyAiTutorial : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, sightRange);
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(transform.position, jumpRange);
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(transform.position, landingRange);
     }
 }  

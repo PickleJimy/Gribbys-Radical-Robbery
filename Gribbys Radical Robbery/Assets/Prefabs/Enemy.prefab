@@ -97,7 +97,7 @@ Rigidbody:
   m_GameObject: {fileID: 2358648691654089754}
   serializedVersion: 4
   m_Mass: 3
-  m_Drag: 1.31
+  m_Drag: 2.09
   m_AngularDrag: 0.23
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
@@ -111,10 +111,10 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 1
-  m_IsKinematic: 1
-  m_Interpolate: 0
+  m_IsKinematic: 0
+  m_Interpolate: 1
   m_Constraints: 112
-  m_CollisionDetection: 2
+  m_CollisionDetection: 0
 --- !u!114 &370653707888902711
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -131,6 +131,7 @@ MonoBehaviour:
   agentEnabled: 0
   player: {fileID: 0}
   enemy: {fileID: 2358648691654089754}
+  speed: 5
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 128
@@ -141,15 +142,18 @@ MonoBehaviour:
   maxJumpHeight: 5
   playerInJumpRange: 0
   playerOnGround: 0
-  playerHeight: 1.57
+  enemyHeight: 0.8
   whatIsGround:
     serializedVersion: 2
     m_Bits: 8
   grounded: 0
-  jumpForce: 4.05
+  jumpForce: 34
   jumpCooldown: 2.67
   readyToJump: 0
   preparedToJump: 0
+  airborne: 0
+  landingRange: 1.43
+  readyToLand: 0
   hurt: 0
   walkPoint: {x: 4.34, y: 0, z: 6.4}
   walkPointSet: 0
@@ -190,7 +194,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2358648691654089754}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 0e6aed280e500b447bb75ae1797c2ebe, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 8
@@ -199,7 +203,7 @@ CapsuleCollider:
     m_Bits: 128
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
-  m_ProvidesContacts: 0
+  m_ProvidesContacts: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5

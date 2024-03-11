@@ -960,6 +960,7 @@ MonoBehaviour:
   agentEnabled: 0
   player: {fileID: 4764400828090631770, guid: b5c9c6a0d9b26d448b51b45be779e3e1, type: 3}
   enemy: {fileID: 950685910}
+  speed: 0
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 128
@@ -980,6 +981,8 @@ MonoBehaviour:
   readyToJump: 0
   preparedToJump: 0
   airborne: 0
+  landingRange: 0
+  readyToLand: 0
   hurt: 0
   walkPoint: {x: 6.69, y: 0, z: 6.4}
   walkPointSet: 0
@@ -1198,7 +1201,7 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -1771,6 +1774,7 @@ GameObject:
   - component: {fileID: 1966914739}
   - component: {fileID: 1966914738}
   - component: {fileID: 1966914737}
+  - component: {fileID: 1966914741}
   m_Layer: 3
   m_Name: Cube (2)
   m_TagString: Untagged
@@ -1785,7 +1789,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1966914736}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 0e6aed280e500b447bb75ae1797c2ebe, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -1794,7 +1798,7 @@ BoxCollider:
     m_Bits: 0
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
-  m_ProvidesContacts: 0
+  m_ProvidesContacts: 1
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
@@ -1864,6 +1868,33 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+--- !u!54 &1966914741
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1966914736}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!1 &2008081948
 GameObject:
   m_ObjectHideFlags: 0
@@ -2035,7 +2066,7 @@ MonoBehaviour:
     m_Bits: 8
   m_UseGeometry: 0
   m_DefaultArea: 0
-  m_GenerateLinks: 0
+  m_GenerateLinks: 1
   m_IgnoreNavMeshAgent: 1
   m_IgnoreNavMeshObstacle: 1
   m_OverrideTileSize: 0
@@ -2177,6 +2208,7 @@ GameObject:
   - component: {fileID: 2116564426}
   - component: {fileID: 2116564425}
   - component: {fileID: 2116564424}
+  - component: {fileID: 2116564428}
   m_Layer: 3
   m_Name: Cube (1)
   m_TagString: Untagged
@@ -2191,7 +2223,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2116564423}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 0e6aed280e500b447bb75ae1797c2ebe, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -2200,7 +2232,7 @@ BoxCollider:
     m_Bits: 0
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
-  m_ProvidesContacts: 0
+  m_ProvidesContacts: 1
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
@@ -2270,6 +2302,33 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &2116564428
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2116564423}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!1 &2120146505
 GameObject:
   m_ObjectHideFlags: 0
@@ -2387,10 +2446,6 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 2028523247}
-    - target: {fileID: 370653707888902711, guid: da1411e0b94d3f74f849adfde326ae40, type: 3}
-      propertyPath: enemyHeight
-      value: 0.8
-      objectReference: {fileID: 0}
     - target: {fileID: 2247804978720256630, guid: da1411e0b94d3f74f849adfde326ae40, type: 3}
       propertyPath: m_LocalPosition.x
       value: -6.16
@@ -2434,18 +2489,6 @@ PrefabInstance:
     - target: {fileID: 2358648691654089754, guid: da1411e0b94d3f74f849adfde326ae40, type: 3}
       propertyPath: m_Name
       value: Enemy
-      objectReference: {fileID: 0}
-    - target: {fileID: 3213309486222693098, guid: da1411e0b94d3f74f849adfde326ae40, type: 3}
-      propertyPath: m_Drag
-      value: 2.09
-      objectReference: {fileID: 0}
-    - target: {fileID: 3213309486222693098, guid: da1411e0b94d3f74f849adfde326ae40, type: 3}
-      propertyPath: m_IsKinematic
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3213309486222693098, guid: da1411e0b94d3f74f849adfde326ae40, type: 3}
-      propertyPath: m_CollisionDetection
-      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
