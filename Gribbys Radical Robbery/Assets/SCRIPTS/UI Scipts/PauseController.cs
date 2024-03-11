@@ -12,6 +12,9 @@ public class PauseController : MonoBehaviour
     public static bool gameIsPaused = false;
     public static bool stealability = false;
 
+    public GameObject puaseMain;
+    public GameObject options;
+
     [Header("Input")]
     public KeyCode pauseKey = KeyCode.P;
 
@@ -41,6 +44,12 @@ public class PauseController : MonoBehaviour
         {
             RestartScene();
             UnpauseGame();
+        }
+
+        if (button.name == "Options Button")
+        {
+            puaseMain.SetActive(false);
+            options.SetActive(true);
         }
 
         if (button.name == "Quit Button")

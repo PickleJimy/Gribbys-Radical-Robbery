@@ -2,8 +2,7 @@ using UnityEngine;
 
 public class PlayerCamera : MonoBehaviour
 {
-    [Range(1, 60)]
-    public int sens = 30;
+    public float sens = 15;
 
     public Transform orientation;
 
