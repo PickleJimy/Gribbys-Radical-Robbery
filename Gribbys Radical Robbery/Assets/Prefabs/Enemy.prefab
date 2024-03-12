@@ -16,12 +16,12 @@ GameObject:
   - component: {fileID: 3560887585288343178}
   - component: {fileID: 4134349893121495515}
   - component: {fileID: 32579265675517928}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &2247804978720256630
 Transform:

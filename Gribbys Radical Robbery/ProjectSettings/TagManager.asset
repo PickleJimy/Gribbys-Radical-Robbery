@@ -8,6 +8,7 @@ TagManager:
   - EnemyDamager
   - Stealable
   - Enemy
+  - PlayerWeapon
   layers:
   - Default
   - TransparentFX
@@ -18,7 +19,7 @@ TagManager:
   - whatIsDamager
   - whatIsPlayer
   - viewModel
-  - 
+  - whatIsEnemy
   - 
   - 
   - 

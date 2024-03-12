@@ -11,6 +11,8 @@ public class EnemyAiTutorial : MonoBehaviour
 
     public GameObject enemy;
 
+    public Transform ground;
+
     public float speed;
 
     public LayerMask whatIsPlayer;
@@ -42,6 +44,7 @@ public class EnemyAiTutorial : MonoBehaviour
     public bool airborne;
     public float landingRange;
     public bool readyToLand;
+    public bool landingZone;
 
     public bool hurt;
 
@@ -71,6 +74,8 @@ public class EnemyAiTutorial : MonoBehaviour
         player = GameObject.Find("Player").transform;
         agent = GetComponent<NavMeshAgent>();
         enemy = GameObject.Find("Enemy");
+        ground = GameObject.Find("Traversable").transform;
+        agentEnabled = true;
     }
 
     public void Update()
@@ -97,6 +102,8 @@ public class EnemyAiTutorial : MonoBehaviour
 
         airborne = !grounded;
 
+        agentEnabled = GetComponent<NavMeshAgent>().enabled;
+
         if (grounded)
         {
             Debug.Log("On the ground");
@@ -110,22 +117,27 @@ public class EnemyAiTutorial : MonoBehaviour
                 
             rb.isKinematic = true;
             rb.useGravity = true;
+            readyToLand = false;
         }
 
-        agentEnabled = agent.enabled;
+        if (readyToLand)
+        {
+            agent.transform.position = rb.transform.position;
+        }
+
+        landingZone = ground.GetComponent<Goal>();
 
         hurt = player.GetComponent<GrabAndStab>().dealDamage;
 
         // when to jump
         if (readyToJump && grounded && preparedToJump && playerOnGround && playerInSightRange)
         {
-            agentEnabled = false;
-
             agent.SetDestination(transform.position);
             // disable the agent
             agent.updatePosition = false;
             agent.updateRotation = false;
             agent.isStopped = true;
+            agentEnabled = false;
                 
             // make the jump
             rb.isKinematic = false;
@@ -174,6 +186,7 @@ public class EnemyAiTutorial : MonoBehaviour
         if (airborne)
         {
             rb.AddForce((player.transform.position - transform.position).normalized * speed);
+            agentEnabled = false;
         }
     }
 
