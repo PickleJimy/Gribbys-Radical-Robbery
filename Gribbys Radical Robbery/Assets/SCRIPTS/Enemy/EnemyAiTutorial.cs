@@ -31,6 +31,8 @@ public class EnemyAiTutorial : MonoBehaviour
 
     public bool playerOnGround;
 
+    public bool playerInPosRange;
+
     [Header("Ground Check")]
     public float enemyHeight;
     public LayerMask whatIsGround;
@@ -59,7 +61,7 @@ public class EnemyAiTutorial : MonoBehaviour
     public GameObject projectile;
 
     //States
-    public float sightRange, attackRange, jumpRange;
+    public float sightRange, attackRange, jumpRange, posRange;
     public bool playerInSightRange, playerInAttackRange;
 
     public void Start()
@@ -74,7 +76,7 @@ public class EnemyAiTutorial : MonoBehaviour
         player = GameObject.Find("Player").transform;
         agent = GetComponent<NavMeshAgent>();
         enemy = GameObject.Find("Enemy");
-        ground = GameObject.Find("Traversable").transform;
+        ground = GameObject.Find("Goal").transform;
         agentEnabled = true;
     }
 
@@ -85,6 +87,8 @@ public class EnemyAiTutorial : MonoBehaviour
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
         playerInJumpRange = Physics.CheckSphere(transform.position, jumpRange, whatIsPlayer);
         readyToLand = Physics.CheckSphere(transform.position, landingRange, whatIsGround);
+        playerInPosRange = ground.GetComponent<Goal>().playerInPosRange;
+        posRange = ground.GetComponent<Goal>().posRange;
 
 
         if (!playerInSightRange && !playerInAttackRange) Patroling();
