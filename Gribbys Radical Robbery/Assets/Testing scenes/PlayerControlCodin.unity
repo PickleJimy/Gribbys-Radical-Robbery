@@ -2637,6 +2637,10 @@ PrefabInstance:
       propertyPath: puaseMain
       value: 
       objectReference: {fileID: 1072014894}
+    - target: {fileID: 5010779160603605271, guid: 4aa781173aef9174c84b5c45bc2cd51b, type: 3}
+      propertyPath: playerCamera
+      value: 
+      objectReference: {fileID: 2118119071}
     - target: {fileID: 7790031109450959070, guid: 4aa781173aef9174c84b5c45bc2cd51b, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0

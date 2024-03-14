@@ -9,6 +9,8 @@ public class PlayerCamera : MonoBehaviour
     float xRotation;
     float yRotation;
 
+    float time;
+
     private void Start()
     {
         // make cursor invisible
@@ -16,11 +18,17 @@ public class PlayerCamera : MonoBehaviour
         Cursor.visible = false;
     }
 
+    private void FixedUpdate()
+    {
+        // get mouse input
+        time = Time.deltaTime;
+    }
+
     private void Update()
     {
         // get mouse input
-        float mouseX = Input.GetAxisRaw("Mouse X") * Time.deltaTime * sens * 100;
-        float mouseY = Input.GetAxisRaw("Mouse Y") * Time.deltaTime * sens * 100;
+        float mouseX = Input.GetAxis("Mouse X") * time * sens * 10;
+        float mouseY = Input.GetAxis("Mouse Y") * time * sens * 10;
 
         yRotation += mouseX;
 
