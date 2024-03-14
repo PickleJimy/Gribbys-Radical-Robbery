@@ -11,7 +11,7 @@ public class Options : MonoBehaviour
     public TextMeshProUGUI sensNum;
 
     public GameObject playerCam;
-    public GameObject pauseMain;
+    public GameObject menuMain;
 
     // Start is called before the first frame update
     void Start()
@@ -35,7 +35,7 @@ public class Options : MonoBehaviour
     {
         if (button.name == "Back Button")
         {
-            pauseMain.SetActive(true);
+            menuMain.SetActive(true);
             gameObject.SetActive(false);
         }
     }

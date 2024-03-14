@@ -8,6 +8,7 @@ public class PauseController : MonoBehaviour
     public GameObject pauseMenu;
     private GameObject stealablesParent;
     private GameObject stealablesChild;
+    public GameObject playerCamera;
 
     public static bool gameIsPaused = false;
     public static bool stealability = false;
@@ -66,6 +67,7 @@ public class PauseController : MonoBehaviour
             gameIsPaused = true;
             gameObject.GetComponent<PlayerMovement>().enabled = false;
             gameObject.GetComponent<GrabAndStab>().enabled = false;
+            playerCamera.GetComponent<PlayerCamera>().enabled = false;
             stealability = false;
             ChangeStealables();
             Time.timeScale = 0;
@@ -84,6 +86,7 @@ public class PauseController : MonoBehaviour
         gameIsPaused = false;
         gameObject.GetComponent<PlayerMovement>().enabled = true;
         gameObject.GetComponent<GrabAndStab>().enabled = true;
+        playerCamera.GetComponent<PlayerCamera>().enabled = true;
         stealability = true;
         ChangeStealables();
         Time.timeScale = 1;
