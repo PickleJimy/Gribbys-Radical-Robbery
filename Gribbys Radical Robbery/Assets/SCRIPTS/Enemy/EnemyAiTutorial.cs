@@ -15,7 +15,7 @@ public class EnemyAiTutorial : MonoBehaviour
 
     public float speed;
 
-    public LayerMask whatIsPlayer;
+    public LayerMask whatIsPlayer, enemyLandArea;
 
     public float health;
 
@@ -32,6 +32,8 @@ public class EnemyAiTutorial : MonoBehaviour
     public bool playerOnGround;
 
     public bool playerInPosRange;
+
+    public bool enemyInPosRange;
 
     [Header("Ground Check")]
     public float enemyHeight;
@@ -88,7 +90,6 @@ public class EnemyAiTutorial : MonoBehaviour
         playerInJumpRange = Physics.CheckSphere(transform.position, jumpRange, whatIsPlayer);
         readyToLand = Physics.CheckSphere(transform.position, landingRange, whatIsGround);
         playerInPosRange = ground.GetComponent<Goal>().playerInPosRange;
-        posRange = ground.GetComponent<Goal>().posRange;
 
 
         if (!playerInSightRange && !playerInAttackRange) Patroling();
@@ -126,7 +127,7 @@ public class EnemyAiTutorial : MonoBehaviour
 
         if (readyToLand)
         {
-            agent.transform.position = rb.transform.position;
+            agent.transform.position = new Vector3(rb.transform.position.x, rb.transform.position.y, rb.transform.position.z);
         }
 
         landingZone = ground.GetComponent<Goal>();
@@ -189,8 +190,12 @@ public class EnemyAiTutorial : MonoBehaviour
 
         if (airborne)
         {
-            rb.AddForce((player.transform.position - transform.position).normalized * speed);
             agentEnabled = false;
+
+            if (playerInPosRange)
+            {
+                rb.AddForce((ground.transform.position - transform.position).normalized * speed);
+            }
         }
     }
 

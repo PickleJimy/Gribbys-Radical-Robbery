@@ -992,6 +992,9 @@ MonoBehaviour:
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 128
+  enemyLandArea:
+    serializedVersion: 2
+    m_Bits: 0
   health: 59.94
   rb: {fileID: 950685912}
   groundDrag: 0
@@ -1000,6 +1003,7 @@ MonoBehaviour:
   playerInJumpRange: 0
   playerOnGround: 0
   playerInPosRange: 0
+  enemyInPosRange: 0
   enemyHeight: 0
   whatIsGround:
     serializedVersion: 2
@@ -2435,14 +2439,6 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 2028523247}
-    - target: {fileID: 370653707888902711, guid: da1411e0b94d3f74f849adfde326ae40, type: 3}
-      propertyPath: airborne
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 370653707888902711, guid: da1411e0b94d3f74f849adfde326ae40, type: 3}
-      propertyPath: landingRange
-      value: 6.13
-      objectReference: {fileID: 0}
     - target: {fileID: 2247804978720256630, guid: da1411e0b94d3f74f849adfde326ae40, type: 3}
       propertyPath: m_LocalPosition.x
       value: -6.16
@@ -2487,6 +2483,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 3213309486222693098, guid: da1411e0b94d3f74f849adfde326ae40, type: 3}
+      propertyPath: m_Interpolate
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3213309486222693098, guid: da1411e0b94d3f74f849adfde326ae40, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4134349893121495515, guid: da1411e0b94d3f74f849adfde326ae40, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4134349893121495515, guid: da1411e0b94d3f74f849adfde326ae40, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4134349893121495515, guid: da1411e0b94d3f74f849adfde326ae40, type: 3}
+      propertyPath: m_ProvidesContacts
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4134349893121495515, guid: da1411e0b94d3f74f849adfde326ae40, type: 3}
+      propertyPath: m_ExcludeLayers.m_Bits
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2500,14 +2520,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 384802103}
     m_Modifications:
-    - target: {fileID: 5281849128367602907, guid: 188ab9e0716a2a248b25d5836d90b2ea, type: 3}
+    - target: {fileID: 3068390190213300905, guid: 188ab9e0716a2a248b25d5836d90b2ea, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.428
+      objectReference: {fileID: 0}
+    - target: {fileID: 3138894845230499010, guid: 188ab9e0716a2a248b25d5836d90b2ea, type: 3}
       propertyPath: enemy
       value: 
       objectReference: {fileID: 1365049702}
-    - target: {fileID: 5281849128367602907, guid: 188ab9e0716a2a248b25d5836d90b2ea, type: 3}
+    - target: {fileID: 3138894845230499010, guid: 188ab9e0716a2a248b25d5836d90b2ea, type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 2028523247}
+    - target: {fileID: 3884369084837132849, guid: 188ab9e0716a2a248b25d5836d90b2ea, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3884369084837132849, guid: 188ab9e0716a2a248b25d5836d90b2ea, type: 3}
+      propertyPath: m_ProvidesContacts
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3884369084837132849, guid: 188ab9e0716a2a248b25d5836d90b2ea, type: 3}
+      propertyPath: m_IncludeLayers.m_Bits
+      value: 1024
+      objectReference: {fileID: 0}
     - target: {fileID: 5684595326473469744, guid: 188ab9e0716a2a248b25d5836d90b2ea, type: 3}
       propertyPath: m_Name
       value: Traversable

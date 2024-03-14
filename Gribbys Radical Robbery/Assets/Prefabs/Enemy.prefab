@@ -21,7 +21,7 @@ GameObject:
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &2247804978720256630
 Transform:
@@ -131,10 +131,14 @@ MonoBehaviour:
   agentEnabled: 0
   player: {fileID: 0}
   enemy: {fileID: 2358648691654089754}
+  ground: {fileID: 0}
   speed: 5
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 128
+  enemyLandArea:
+    serializedVersion: 2
+    m_Bits: 1024
   health: 6.35
   rb: {fileID: 3213309486222693098}
   groundDrag: 0.6
@@ -142,6 +146,8 @@ MonoBehaviour:
   maxJumpHeight: 5
   playerInJumpRange: 0
   playerOnGround: 0
+  playerInPosRange: 0
+  enemyInPosRange: 0
   enemyHeight: 0.8
   whatIsGround:
     serializedVersion: 2
@@ -152,8 +158,9 @@ MonoBehaviour:
   readyToJump: 0
   preparedToJump: 0
   airborne: 0
-  landingRange: 1.43
+  landingRange: 1.33
   readyToLand: 0
+  landingZone: 0
   hurt: 0
   walkPoint: {x: 4.34, y: 0, z: 6.4}
   walkPointSet: 0
@@ -163,6 +170,7 @@ MonoBehaviour:
   sightRange: 11.03
   attackRange: 1.36
   jumpRange: 6.02
+  posRange: 0
   playerInSightRange: 0
   playerInAttackRange: 0
 --- !u!195 &3560887585288343178
