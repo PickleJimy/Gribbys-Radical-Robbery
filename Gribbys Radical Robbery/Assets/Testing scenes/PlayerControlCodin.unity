@@ -275,6 +275,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01cc73eed4f2d6045ac13207d49ea1e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  grabText: {fileID: 0}
   grabKey: 0
 --- !u!65 &144369157
 BoxCollider:
@@ -579,6 +581,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &529291001 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1913304922557832483, guid: 4aa781173aef9174c84b5c45bc2cd51b, type: 3}
+  m_PrefabInstance: {fileID: 3187307088607599870}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &582164876 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7134308442326603190, guid: 4aa781173aef9174c84b5c45bc2cd51b, type: 3}
@@ -984,6 +997,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01cc73eed4f2d6045ac13207d49ea1e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  grabText: {fileID: 0}
   grabKey: 0
 --- !u!65 &826778214
 BoxCollider:
@@ -1103,6 +1118,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01cc73eed4f2d6045ac13207d49ea1e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  grabText: {fileID: 0}
   grabKey: 0
 --- !u!65 &853027949
 BoxCollider:
@@ -1775,6 +1792,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01cc73eed4f2d6045ac13207d49ea1e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  grabText: {fileID: 0}
   grabKey: 0
 --- !u!1 &1180045165
 GameObject:
@@ -2086,6 +2105,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01cc73eed4f2d6045ac13207d49ea1e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  grabText: {fileID: 0}
   grabKey: 0
 --- !u!65 &1434513184
 BoxCollider:
@@ -2353,6 +2374,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01cc73eed4f2d6045ac13207d49ea1e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  grabText: {fileID: 0}
   grabKey: 0
 --- !u!65 &1513097230
 BoxCollider:
@@ -2588,6 +2611,38 @@ PrefabInstance:
     - target: {fileID: 74764510694493342, guid: 4aa781173aef9174c84b5c45bc2cd51b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1913304922557832483, guid: 4aa781173aef9174c84b5c45bc2cd51b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1913304922557832483, guid: 4aa781173aef9174c84b5c45bc2cd51b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1913304922557832483, guid: 4aa781173aef9174c84b5c45bc2cd51b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1784908632}
+    - target: {fileID: 1913304922557832483, guid: 4aa781173aef9174c84b5c45bc2cd51b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1913304922557832483, guid: 4aa781173aef9174c84b5c45bc2cd51b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Click
+      objectReference: {fileID: 0}
+    - target: {fileID: 1913304922557832483, guid: 4aa781173aef9174c84b5c45bc2cd51b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PauseController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1913304922557832483, guid: 4aa781173aef9174c84b5c45bc2cd51b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 529291001}
+    - target: {fileID: 1913304922557832483, guid: 4aa781173aef9174c84b5c45bc2cd51b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.UI.Button, UnityEngine.UI
       objectReference: {fileID: 0}
     - target: {fileID: 2332407878036641972, guid: 4aa781173aef9174c84b5c45bc2cd51b, type: 3}
       propertyPath: m_AnchorMax.x

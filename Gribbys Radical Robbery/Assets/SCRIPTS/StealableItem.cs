@@ -4,16 +4,23 @@ using UnityEngine;
 
 public class StealableItem : MonoBehaviour
 {
-    private GameObject player;
-    private GameObject playerUI;
+    public GameObject player;
+    public GameObject grabText;
     private bool inStealingRange;
     public KeyCode grabKey;
 
     private void Start()
     {
-        player = GameObject.Find("Player");
+        if (player == null)
+        {
+            player = GameObject.Find("Player");
+        }
+
+        if (grabText == null) 
+        {
+            grabText = GameObject.Find("Grab Text");
+        }
         grabKey = player.gameObject.GetComponent<GrabAndStab>().grabKey;
-        playerUI = GameObject.Find("Grab Text");
     }
 
     private void OnTriggerEnter(Collider other)
@@ -32,12 +39,12 @@ public class StealableItem : MonoBehaviour
     {
         if (inStealingRange)
         {
-            playerUI.SetActive(true);
+            grabText.SetActive(true);
         }
 
         if (!inStealingRange)
         {
-            playerUI.SetActive(false);
+            grabText.SetActive(false);
         }
 
         if (inStealingRange && Input.GetKey(grabKey))
@@ -50,13 +57,13 @@ public class StealableItem : MonoBehaviour
     {
         yield return new WaitForSeconds(time);
 
-        playerUI.SetActive(false);
+        grabText.SetActive(false);
         Destroy(gameObject);
         player.gameObject.GetComponent<PlayerStats>().stolenGoods++;
     }
 
     private void OnMouseExit()
     {
-        playerUI.SetActive(false);
+        grabText.SetActive(false);
     }
 }

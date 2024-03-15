@@ -53,6 +53,11 @@ public class PauseController : MonoBehaviour
             options.SetActive(true);
         }
 
+        if (button.name == "Main Menu Button")
+        {
+            SceneManager.LoadScene("Main Menu");
+        }
+
         if (button.name == "Quit Button")
         {
             Application.Quit();
