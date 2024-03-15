@@ -76,10 +76,8 @@ public class EnemyAiTutorial : MonoBehaviour
     private void Awake()
     {
         player = GameObject.Find("Player").transform;
-        agent = GetComponent<NavMeshAgent>();
         enemy = GameObject.Find("Enemy");
         ground = GameObject.Find("Goal").transform;
-        agentEnabled = true;
     }
 
     public void Update()
@@ -99,6 +97,8 @@ public class EnemyAiTutorial : MonoBehaviour
         if (player.transform.position.y >= rb.transform.position.y + minJumpHeight && playerInJumpRange) preparedToJump = true;
         if (player.transform.position.y <= rb.transform.position.y + minJumpHeight && playerInJumpRange) preparedToJump = false;
 
+        agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
+
         rb = GetComponent<Rigidbody>();
 
         playerOnGround = player.GetComponent<PlayerMovement>().grounded;
@@ -107,7 +107,7 @@ public class EnemyAiTutorial : MonoBehaviour
 
         airborne = !grounded;
 
-        agentEnabled = GetComponent<NavMeshAgent>().enabled;
+        agentEnabled = GetComponent<UnityEngine.AI.NavMeshAgent>().enabled;
 
         if (grounded)
         {
@@ -137,7 +137,6 @@ public class EnemyAiTutorial : MonoBehaviour
         // when to jump
         if (readyToJump && grounded && preparedToJump && playerOnGround && playerInSightRange)
         {
-            agent.SetDestination(transform.position);
             // disable the agent
             agent.updatePosition = false;
             agent.updateRotation = false;
