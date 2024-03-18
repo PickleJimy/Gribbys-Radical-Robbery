@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using UnityEditor.SceneManagement;
 
 public class LevelSelect : MonoBehaviour
 {
@@ -32,6 +31,11 @@ public class LevelSelect : MonoBehaviour
         if (button.name == "Player Test Scene")
         {
             SceneManager.LoadScene("PlayerControlCodin");
+        }
+
+        if (button.name == "Enemy Test Scene")
+        {
+            SceneManager.LoadScene("Enemy Test");
         }
     }
 }
