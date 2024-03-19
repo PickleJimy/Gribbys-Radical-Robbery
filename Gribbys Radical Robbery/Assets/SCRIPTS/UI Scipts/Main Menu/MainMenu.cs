@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour
 {
     public GameObject startMenu;
+    public GameObject optionsMenu;
 
 
     // Start is called before the first frame update
@@ -27,6 +28,12 @@ public class MainMenu : MonoBehaviour
         {
             gameObject.SetActive(false);
             startMenu.SetActive(true);
+        }
+
+        if (button.name == "Options Button")
+        {
+            gameObject.SetActive(false);
+            optionsMenu.SetActive(true);
         }
 
         if (button.name == "Quit Button")

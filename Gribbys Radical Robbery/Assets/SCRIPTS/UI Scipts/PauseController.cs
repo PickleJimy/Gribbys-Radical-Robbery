@@ -22,6 +22,7 @@ public class PauseController : MonoBehaviour
     void Start()
     {
         stealablesParent = GameObject.Find("Stealables");
+        UnpauseGame();
         pauseMenu.SetActive(false);
     }
 
