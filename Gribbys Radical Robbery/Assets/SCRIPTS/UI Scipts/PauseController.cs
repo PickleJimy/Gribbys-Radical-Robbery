@@ -22,6 +22,7 @@ public class PauseController : MonoBehaviour
     void Start()
     {
         stealablesParent = GameObject.Find("Stealables");
+        UnpauseGame();
         pauseMenu.SetActive(false);
     }
 
@@ -101,19 +102,22 @@ public class PauseController : MonoBehaviour
 
     public void ChangeStealables()
     {
-        int i = 0;
-
-        GameObject[] allStealables = new GameObject[stealablesParent.transform.childCount];
-
-        foreach (Transform child in stealablesParent.transform)
+        if (stealablesParent != null)
         {
-            allStealables[i] = child.gameObject;
-            i += 1;
-        }
+            int i = 0;
 
-        foreach (GameObject child in allStealables)
-        {
-            child.gameObject.GetComponent<Collider>().enabled = stealability;
+            GameObject[] allStealables = new GameObject[stealablesParent.transform.childCount];
+
+            foreach (Transform child in stealablesParent.transform)
+            {
+                allStealables[i] = child.gameObject;
+                i += 1;
+            }
+
+            foreach (GameObject child in allStealables)
+            {
+                child.gameObject.GetComponent<Collider>().enabled = stealability;
+            }
         }
     }
 

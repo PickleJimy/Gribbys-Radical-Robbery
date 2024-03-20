@@ -55,9 +55,21 @@ PrefabInstance:
       value: Gribby
       objectReference: {fileID: 0}
     - target: {fileID: 5969615192056351813, guid: 47babaa94ded2e742be2f2db781f8344, type: 3}
+      propertyPath: options
+      value: 
+      objectReference: {fileID: 4789976833286780328}
+    - target: {fileID: 5969615192056351813, guid: 47babaa94ded2e742be2f2db781f8344, type: 3}
       propertyPath: pauseMenu
       value: 
       objectReference: {fileID: 6783102934233164055}
+    - target: {fileID: 5969615192056351813, guid: 47babaa94ded2e742be2f2db781f8344, type: 3}
+      propertyPath: puaseMain
+      value: 
+      objectReference: {fileID: 150563671471771697}
+    - target: {fileID: 8832506184901079398, guid: 47babaa94ded2e742be2f2db781f8344, type: 3}
+      propertyPath: sens
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 8965366270674064607, guid: 47babaa94ded2e742be2f2db781f8344, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -106,7 +118,7 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 9083334864848054203, guid: 47babaa94ded2e742be2f2db781f8344, type: 3}
       insertIndex: -1
-      addedObject: {fileID: -1588714254401286775}
+      addedObject: {fileID: 4595212840450437179}
   m_SourcePrefab: {fileID: 100100000, guid: 47babaa94ded2e742be2f2db781f8344, type: 3}
 --- !u!1 &4557186989183690077 stripped
 GameObject:
@@ -129,7 +141,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 9083334864848054203, guid: 47babaa94ded2e742be2f2db781f8344, type: 3}
   m_PrefabInstance: {fileID: 1680274196304655698}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &-1588714254401286775
+--- !u!114 &4595212840450437179
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -138,10 +150,41 @@ MonoBehaviour:
   m_GameObject: {fileID: 7593056420657763049}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attenuationObject: {fileID: 0}
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 0
+  m_Cameras: []
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_VolumeTrigger: {fileID: 0}
+  m_VolumeFrameworkUpdateModeOption: 2
+  m_RenderPostProcessing: 0
+  m_Antialiasing: 0
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_ClearDepth: 1
+  m_AllowXRRendering: 1
+  m_AllowHDROutput: 1
+  m_UseScreenCoordOverride: 0
+  m_ScreenSizeOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_ScreenCoordScaleBias: {x: 0, y: 0, z: 0, w: 0}
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_Version: 2
+  m_TaaSettings:
+    quality: 3
+    frameInfluence: 0.1
+    jitterScale: 1
+    mipBias: 0
+    varianceClampScale: 0.9
+    contrastAdaptiveSharpening: 0
 --- !u!4 &7726744734050656653 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8965366270674064607, guid: 47babaa94ded2e742be2f2db781f8344, type: 3}
@@ -284,6 +327,14 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 5010779160603605271}
+    - target: {fileID: 2311261530467485546, guid: 452a22df162dd2e40bd01ca49e244479, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 5010779160603605271}
+    - target: {fileID: 2311261530467485546, guid: 452a22df162dd2e40bd01ca49e244479, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Click
+      objectReference: {fileID: 0}
     - target: {fileID: 5076722479623079610, guid: 452a22df162dd2e40bd01ca49e244479, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -372,15 +423,33 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6209620503811241115, guid: 452a22df162dd2e40bd01ca49e244479, type: 3}
+      propertyPath: playerCam
+      value: 
+      objectReference: {fileID: 7593056420657763049}
     - target: {fileID: 7258747632132698974, guid: 452a22df162dd2e40bd01ca49e244479, type: 3}
       propertyPath: m_Name
       value: Pause Menu
       objectReference: {fileID: 0}
+    - target: {fileID: 8822973676131576209, guid: 452a22df162dd2e40bd01ca49e244479, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 5010779160603605271}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 452a22df162dd2e40bd01ca49e244479, type: 3}
+--- !u!1 &150563671471771697 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4073721856337496696, guid: 452a22df162dd2e40bd01ca49e244479, type: 3}
+  m_PrefabInstance: {fileID: 4223862623849585225}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4789976833286780328 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8712009108581134305, guid: 452a22df162dd2e40bd01ca49e244479, type: 3}
+  m_PrefabInstance: {fileID: 4223862623849585225}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &6783102934233164055 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7258747632132698974, guid: 452a22df162dd2e40bd01ca49e244479, type: 3}

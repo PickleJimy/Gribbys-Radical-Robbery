@@ -4,13 +4,12 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Options : MonoBehaviour
+public class OptionsMenu : MonoBehaviour
 {
     [Header("Sensitivity")]
     public Slider sensSlider;
     public TextMeshProUGUI sensNum;
 
-    public GameObject playerCam;
     public GameObject menuMain;
 
     // Start is called before the first frame update
@@ -33,7 +32,6 @@ public class Options : MonoBehaviour
     void ChangeSens()
     {
         sensNum.text = sensSlider.value.ToString();
-        playerCam.GetComponent<PlayerCamera>().sens = sensSlider.value;
         PlayerPrefs.SetFloat("camSensitivity", sensSlider.value);
     }
 

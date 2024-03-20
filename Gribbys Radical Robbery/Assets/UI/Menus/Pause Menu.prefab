@@ -2218,10 +2218,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1000, y: 562.5}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -3036,7 +3036,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6979233942922307599}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: PauseController, Assembly-CSharp
+        m_MethodName: Click
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 2311261530467485546}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &8712009108581134305
 GameObject:
   m_ObjectHideFlags: 0
@@ -3053,7 +3065,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8408414366847020955
 Transform:
   m_ObjectHideFlags: 0
@@ -3086,9 +3098,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sensSlider: {fileID: 7647377343277580026}
-  sensNum: {fileID: 0}
+  sensNum: {fileID: 6457048162583973887}
   playerCam: {fileID: 0}
-  pauseMain: {fileID: 4073721856337496696}
+  menuMain: {fileID: 4073721856337496696}
 --- !u!1 &9055179803757495582
 GameObject:
   m_ObjectHideFlags: 0

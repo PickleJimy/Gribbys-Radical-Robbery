@@ -16,6 +16,8 @@ public class PlayerCamera : MonoBehaviour
         // make cursor invisible
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+
+        sens = PlayerPrefs.GetFloat("camSensitivity");
     }
 
     private void FixedUpdate()
