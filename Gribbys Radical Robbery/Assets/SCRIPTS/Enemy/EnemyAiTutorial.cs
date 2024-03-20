@@ -78,6 +78,8 @@ public class EnemyAiTutorial : MonoBehaviour
         player = GameObject.Find("Player").transform;
         enemy = GameObject.Find("Enemy");
         ground = GameObject.Find("Goal").transform;
+        agent = enemy.GetComponent<UnityEngine.AI.NavMeshAgent>();
+        agentEnabled = enemy.GetComponent<UnityEngine.AI.NavMeshAgent>().enabled;
     }
 
     public void Update()
@@ -97,8 +99,6 @@ public class EnemyAiTutorial : MonoBehaviour
         if (player.transform.position.y >= rb.transform.position.y + minJumpHeight && playerInJumpRange) preparedToJump = true;
         if (player.transform.position.y <= rb.transform.position.y + minJumpHeight && playerInJumpRange) preparedToJump = false;
 
-        agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
-
         rb = GetComponent<Rigidbody>();
 
         playerOnGround = player.GetComponent<PlayerMovement>().grounded;
@@ -106,8 +106,6 @@ public class EnemyAiTutorial : MonoBehaviour
         grounded = Physics.Raycast(transform.position, Vector3.down, enemyHeight, whatIsGround);
 
         airborne = !grounded;
-
-        agentEnabled = GetComponent<UnityEngine.AI.NavMeshAgent>().enabled;
 
         if (grounded)
         {
@@ -127,7 +125,12 @@ public class EnemyAiTutorial : MonoBehaviour
 
         if (readyToLand)
         {
-            agent.transform.position = new Vector3(rb.transform.position.x, rb.transform.position.y, rb.transform.position.z);
+            if (grounded)
+            {
+                agentEnabled = true;
+                agent.transform.position = new Vector3(rb.transform.position.x, rb.transform.position.y, rb.transform.position.z);
+                Debug.Log("Move it");
+            }
         }
 
         landingZone = ground.GetComponent<Goal>();

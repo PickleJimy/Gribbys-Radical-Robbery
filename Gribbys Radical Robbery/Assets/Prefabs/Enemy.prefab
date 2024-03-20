@@ -107,14 +107,14 @@ Rigidbody:
     m_Bits: 8
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 1
+  m_Interpolate: 0
   m_Constraints: 112
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!114 &370653707888902711
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -132,7 +132,7 @@ MonoBehaviour:
   player: {fileID: 0}
   enemy: {fileID: 2358648691654089754}
   ground: {fileID: 0}
-  speed: 5
+  speed: 7
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 128
@@ -148,6 +148,7 @@ MonoBehaviour:
   playerOnGround: 0
   playerInPosRange: 0
   enemyInPosRange: 0
+  Warp: 0
   enemyHeight: 0.8
   whatIsGround:
     serializedVersion: 2
@@ -158,7 +159,7 @@ MonoBehaviour:
   readyToJump: 0
   preparedToJump: 0
   airborne: 0
-  landingRange: 1.33
+  landingRange: 1.38
   readyToLand: 0
   landingZone: 0
   hurt: 0
@@ -170,7 +171,7 @@ MonoBehaviour:
   sightRange: 11.03
   attackRange: 1.36
   jumpRange: 6.02
-  posRange: 0
+  posRange: 0.8
   playerInSightRange: 0
   playerInAttackRange: 0
 --- !u!195 &3560887585288343178
@@ -202,13 +203,13 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2358648691654089754}
-  m_Material: {fileID: 13400000, guid: 0e6aed280e500b447bb75ae1797c2ebe, type: 2}
+  m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 8
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 0
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 1
