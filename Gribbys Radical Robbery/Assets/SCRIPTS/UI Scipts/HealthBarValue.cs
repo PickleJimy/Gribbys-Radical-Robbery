@@ -13,14 +13,14 @@ public class HealthBarValue : MonoBehaviour
     void Start()
     {
         healthSlider = GetComponent<Slider>();
-        health = player.GetComponent<PlayerStats>().health;
+        health = PlayerStats.health;
         SetHealthSlider();
     }
 
     // Update is called once per frame
     void Update()
     {
-        health = player.GetComponent<PlayerStats>().health;
+        health = PlayerStats.health;
         SetHealthSlider();
     }
     

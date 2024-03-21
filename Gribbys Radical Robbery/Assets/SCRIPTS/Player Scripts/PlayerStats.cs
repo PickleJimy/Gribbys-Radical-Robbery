@@ -1,10 +1,10 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class PlayerStats : MonoBehaviour
 {
-    [Range(0, 100)]
-    public int health;
+    public static int health = Mathf.Clamp(100, 0, 100);
 
     public int damageDealt;
 
