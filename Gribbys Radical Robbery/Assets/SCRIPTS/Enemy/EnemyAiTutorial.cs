@@ -5,7 +5,6 @@ using UnityEngine.AI;
 public class EnemyAiTutorial : MonoBehaviour
 {
     public NavMeshAgent agent;
-    public bool agentEnabled;
 
     public Transform player;
 
@@ -49,6 +48,7 @@ public class EnemyAiTutorial : MonoBehaviour
     public float landingRange;
     public bool readyToLand;
     public bool landingZone;
+    public bool enemyJump;
 
     public bool hurt;
 
@@ -79,7 +79,6 @@ public class EnemyAiTutorial : MonoBehaviour
         enemy = GameObject.Find("Enemy");
         ground = GameObject.Find("Goal").transform;
         agent = enemy.GetComponent<UnityEngine.AI.NavMeshAgent>();
-        agentEnabled = enemy.GetComponent<UnityEngine.AI.NavMeshAgent>().enabled;
     }
 
     public void Update()
@@ -90,7 +89,6 @@ public class EnemyAiTutorial : MonoBehaviour
         playerInJumpRange = Physics.CheckSphere(transform.position, jumpRange, whatIsPlayer);
         readyToLand = Physics.CheckSphere(transform.position, landingRange, whatIsGround);
         playerInPosRange = ground.GetComponent<Goal>().playerInPosRange;
-
 
         if (!playerInSightRange && !playerInAttackRange) Patroling();
         if (playerInSightRange && !playerInAttackRange) ChasePlayer();
@@ -107,44 +105,27 @@ public class EnemyAiTutorial : MonoBehaviour
 
         airborne = !grounded;
 
+        landingZone = ground.GetComponent<Goal>();
+
+        hurt = player.GetComponent<GrabAndStab>().dealDamage;
+
+        if (readyToJump && grounded && preparedToJump && playerOnGround && playerInSightRange) enemyJump = true;
+
         if (grounded)
         {
-            Debug.Log("On the ground");
-
-            agentEnabled = true;
+            agent.enabled = true;
             readyToJump = true;
-            
-            agent.updatePosition = true;
-            agent.updateRotation = true;
-            agent.isStopped = false;
-                
+
             rb.isKinematic = true;
             rb.useGravity = true;
             readyToLand = false;
         }
 
-        if (readyToLand)
-        {
-            if (grounded)
-            {
-                agentEnabled = true;
-                agent.transform.position = new Vector3(rb.transform.position.x, rb.transform.position.y, rb.transform.position.z);
-                Debug.Log("Move it");
-            }
-        }
-
-        landingZone = ground.GetComponent<Goal>();
-
-        hurt = player.GetComponent<GrabAndStab>().dealDamage;
-
         // when to jump
-        if (readyToJump && grounded && preparedToJump && playerOnGround && playerInSightRange)
+        if (enemyJump)
         {
             // disable the agent
-            agent.updatePosition = false;
-            agent.updateRotation = false;
-            agent.isStopped = true;
-            agentEnabled = false;
+            agent.enabled = false;
                 
             // make the jump
             rb.isKinematic = false;
@@ -192,8 +173,6 @@ public class EnemyAiTutorial : MonoBehaviour
 
         if (airborne)
         {
-            agentEnabled = false;
-
             if (playerInPosRange)
             {
                 rb.AddForce((ground.transform.position - transform.position).normalized * speed);
