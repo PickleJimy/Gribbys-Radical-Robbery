@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class StartMenu : MonoBehaviour
 {
@@ -22,6 +23,14 @@ public class StartMenu : MonoBehaviour
 
     public void Click(Button button)
     {
+        if (button.name == "Continue Button")
+        {
+            if (PlayerPrefs.GetString("currentLevel") != null)
+            {
+                SceneManager.LoadScene(PlayerPrefs.GetString("currentLevel"));
+            }
+        }
+
         if (button.name == "Levels Button")
         {
             gameObject.SetActive(false);

@@ -56,6 +56,7 @@ public class PauseController : MonoBehaviour
 
         if (button.name == "Main Menu Button")
         {
+            PlayerPrefs.SetString("currentLevel", SceneManager.GetActiveScene().name);
             SceneManager.LoadScene("Main Menu");
         }
 
@@ -75,10 +76,10 @@ public class PauseController : MonoBehaviour
             gameObject.GetComponent<GrabAndStab>().enabled = false;
             playerCamera.GetComponent<PlayerCamera>().enabled = false;
             stealability = false;
-            ChangeStealables();
-            Time.timeScale = 0;
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
+            ChangeStealables();
+            Time.timeScale = 0;
         }
         else
         {
@@ -94,10 +95,10 @@ public class PauseController : MonoBehaviour
         gameObject.GetComponent<GrabAndStab>().enabled = true;
         playerCamera.GetComponent<PlayerCamera>().enabled = true;
         stealability = true;
-        ChangeStealables();
-        Time.timeScale = 1;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        ChangeStealables();
+        Time.timeScale = 1;
     }
 
     public void ChangeStealables()

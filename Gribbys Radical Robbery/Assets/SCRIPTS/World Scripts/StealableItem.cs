@@ -59,7 +59,7 @@ public class StealableItem : MonoBehaviour
 
         grabText.SetActive(false);
         Destroy(gameObject);
-        player.gameObject.GetComponent<PlayerStats>().stolenGoods++;
+        PlayerStats.stolenGoods++;
     }
 
     private void OnMouseExit()

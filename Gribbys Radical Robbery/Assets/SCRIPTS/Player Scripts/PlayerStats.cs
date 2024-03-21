@@ -8,7 +8,7 @@ public class PlayerStats : MonoBehaviour
 
     public int damageDealt;
 
-    public int stolenGoods;
+    public static int stolenGoods;
 
     public TextMeshProUGUI stolenGoodsCounter;
     private GameObject playerUI;
