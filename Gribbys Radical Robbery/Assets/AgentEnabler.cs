@@ -7,23 +7,28 @@ public class AgentEnabler : MonoBehaviour
     public UnityEngine.AI.NavMeshAgent agent;
     public Transform player;
     public GameObject enemy;
-    bool playerJump;
+    bool enemyJump;
 
     // Start is called before the first frame update
-    void Start()
+    public void Awake()
     {
         agent = enemy.GetComponent<UnityEngine.AI.NavMeshAgent>();
         player = GameObject.Find("Player").transform;
         enemy = GameObject.Find("Enemy");
-        playerJump = player.GetComponent<PlayerMovement>().isJumping;
+        enemyJump = enemy.GetComponent<EnemyAiTutorial>().enemyJump;
     }
 
     // Update is called once per frame
-    void Update()
+    public void Update()
     {
-        if (playerJump)
+        if (enemyJump)
         {
             agent.enabled = false;
+        }
+
+        if (!agent.enabled)
+        {
+            Debug.Log("Deactivate!");
         }
     }
 }
