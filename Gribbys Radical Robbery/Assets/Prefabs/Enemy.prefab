@@ -16,7 +16,6 @@ GameObject:
   - component: {fileID: 3560887585288343178}
   - component: {fileID: 4134349893121495515}
   - component: {fileID: 32579265675517928}
-  - component: {fileID: 5613003323127550330}
   m_Layer: 9
   m_Name: Enemy
   m_TagString: Enemy
@@ -161,6 +160,7 @@ MonoBehaviour:
   landingRange: 1.38
   readyToLand: 0
   landingZone: 0
+  enemyJump: 0
   hurt: 0
   walkPoint: {x: 4.34, y: 0, z: 6.4}
   walkPointSet: 0
@@ -231,18 +231,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 79
---- !u!114 &5613003323127550330
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2358648691654089754}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b1d419800774edd4cb22d7f0a5e21683, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  agent: {fileID: 3560887585288343178}
-  player: {fileID: 0}
-  enemy: {fileID: 2358648691654089754}

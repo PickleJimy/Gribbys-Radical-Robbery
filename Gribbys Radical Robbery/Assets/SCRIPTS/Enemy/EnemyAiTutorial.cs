@@ -48,7 +48,6 @@ public class EnemyAiTutorial : MonoBehaviour
     public float landingRange;
     public bool readyToLand;
     public bool landingZone;
-    public bool enemyJump;
 
     public bool hurt;
 
@@ -79,6 +78,7 @@ public class EnemyAiTutorial : MonoBehaviour
         enemy = GameObject.Find("Enemy");
         ground = GameObject.Find("Goal").transform;
         agent = enemy.GetComponent<UnityEngine.AI.NavMeshAgent>();
+        agent.enabled = true;
     }
 
     public void Update()
@@ -89,10 +89,6 @@ public class EnemyAiTutorial : MonoBehaviour
         playerInJumpRange = Physics.CheckSphere(transform.position, jumpRange, whatIsPlayer);
         readyToLand = Physics.CheckSphere(transform.position, landingRange, whatIsGround);
         playerInPosRange = ground.GetComponent<Goal>().playerInPosRange;
-
-        if (!playerInSightRange && !playerInAttackRange) Patroling();
-        if (playerInSightRange && !playerInAttackRange) ChasePlayer();
-        if (playerInAttackRange && playerInSightRange) AttackPlayer();
 
         if (player.transform.position.y >= rb.transform.position.y + minJumpHeight && playerInJumpRange) preparedToJump = true;
         if (player.transform.position.y <= rb.transform.position.y + minJumpHeight && playerInJumpRange) preparedToJump = false;
@@ -109,30 +105,22 @@ public class EnemyAiTutorial : MonoBehaviour
 
         hurt = player.GetComponent<GrabAndStab>().dealDamage;
 
-        if (readyToJump && grounded && preparedToJump && playerOnGround && playerInSightRange) enemyJump = true;
-
-        if (grounded)
+        if (agent.enabled)
         {
-            agent.enabled = true;
-            readyToJump = true;
-
-            rb.isKinematic = true;
-            rb.useGravity = true;
-            readyToLand = false;
+            if (!playerInSightRange && !playerInAttackRange) Patroling();
+            if (playerInSightRange && !playerInAttackRange) ChasePlayer();
+            if (playerInAttackRange && playerInSightRange) AttackPlayer();
+        }
+        else
+        {
+            if (playerInSightRange && !playerInAttackRange) RbChasePlayer();
+            if (playerInAttackRange && playerInSightRange) RbAttackPlayer();
         }
 
         // when to jump
-        if (enemyJump)
+        if (readyToJump && grounded && preparedToJump && playerOnGround && playerInSightRange)
         {
-            // disable the agent
-            agent.enabled = false;
-                
-            // make the jump
-            rb.isKinematic = false;
-            rb.useGravity = true;
-            rb.AddRelativeForce(transform.up * jumpForce, ForceMode.Impulse);
-            // reset y velocity
-            rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
+            EnemyJump();
 
             if (grounded)
                 rb.drag = groundDrag;
@@ -142,6 +130,19 @@ public class EnemyAiTutorial : MonoBehaviour
             Debug.Log(rb.velocity.magnitude);
         }
     }
+
+    public void EnemyJump()
+    {
+        agent.enabled = false;
+        // make the jump
+        rb.isKinematic = false;
+        rb.useGravity = true;
+        rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
+        // reset y velocity
+        rb.velocity = new Vector3(0f, 0f, 0f);
+        rb.velocity.Normalize();
+    }
+
     public void Patroling()
     {
         if (!walkPointSet) SearchWalkPoint();
@@ -170,7 +171,10 @@ public class EnemyAiTutorial : MonoBehaviour
     public void ChasePlayer()
     {
         agent.SetDestination(player.position);
+    }
 
+    public void RbChasePlayer()
+    {
         if (airborne)
         {
             if (playerInPosRange)
@@ -185,6 +189,23 @@ public class EnemyAiTutorial : MonoBehaviour
         //Make sure enemy doesn't move
         agent.SetDestination(transform.position);
 
+        transform.LookAt(player);
+
+        if (!alreadyAttacked)
+        {
+            ///Attack code here
+            Rigidbody rb = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
+            rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
+            rb.AddForce(transform.up * 8f, ForceMode.Impulse);
+            ///End of attack code
+
+            alreadyAttacked = true;
+            Invoke(nameof(ResetAttack), timeBetweenAttacks);
+        }
+    }
+
+    public void RbAttackPlayer()
+    {
         transform.LookAt(player);
 
         if (airborne)
