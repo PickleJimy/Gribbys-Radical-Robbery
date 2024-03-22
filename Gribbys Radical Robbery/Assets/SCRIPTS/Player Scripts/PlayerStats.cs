@@ -1,4 +1,6 @@
+using System;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering;
 
@@ -11,24 +13,29 @@ public class PlayerStats : MonoBehaviour
     public static int stolenGoods;
 
     public TextMeshProUGUI stolenGoodsCounter;
-    private GameObject playerUI;
+    public static GameObject grabText;
+    public static string stealableNameText;
+    public TextMeshProUGUI stealableName;
+    public static GameObject player;
 
 
     void Start()
     {
-        Invoke("HideGrab", 0.1f);
+        grabText = GameObject.Find("Grab Text");
+        player = gameObject;
+        Invoke(nameof(DisableGrabText), 0.01f);
     }
 
-    void HideGrab()
+    void DisableGrabText()
     {
-        playerUI = GameObject.Find("Grab Text");
-        playerUI.SetActive(false);
+        grabText.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
         UpdateSGC();
+        UpdateSNT();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -44,5 +51,13 @@ public class PlayerStats : MonoBehaviour
     public void UpdateSGC()
     {
         stolenGoodsCounter.text = "Goods Stolen: " + stolenGoods;
+    }
+
+    public void UpdateSNT()
+    {
+        if (grabText.activeSelf)
+        {
+            stealableName.text = stealableNameText;
+        }
     }
 }

@@ -4,23 +4,17 @@ using UnityEngine;
 
 public class StealableItem : MonoBehaviour
 {
-    public GameObject player;
     public GameObject grabText;
     private bool inStealingRange;
     public KeyCode grabKey;
 
     private void Start()
     {
-        if (player == null)
-        {
-            player = GameObject.Find("Player");
-        }
-
         if (grabText == null) 
         {
-            grabText = GameObject.Find("Grab Text");
+            grabText = PlayerStats.grabText;
         }
-        grabKey = player.gameObject.GetComponent<GrabAndStab>().grabKey;
+        grabKey = GrabAndStab.grabKey;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -40,6 +34,7 @@ public class StealableItem : MonoBehaviour
         if (inStealingRange)
         {
             grabText.SetActive(true);
+            PlayerStats.stealableNameText = gameObject.name;
         }
 
         if (!inStealingRange)

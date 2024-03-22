@@ -4,8 +4,8 @@ using UnityEngine;
 public class GrabAndStab : MonoBehaviour
 {
     [Header("Keybinds")]
-    public KeyCode grabKey = KeyCode.Mouse1;
-    public KeyCode stabKey = KeyCode.Mouse0;
+    public static KeyCode grabKey = KeyCode.Mouse1;
+    public static KeyCode stabKey = KeyCode.Mouse0;
 
     [Header("Arms Reference ")]
     public GameObject arms;
