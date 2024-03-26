@@ -43,6 +43,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 74764510694493342}
     m_Modifications:
     - target: {fileID: 1649804868896223447, guid: 47babaa94ded2e742be2f2db781f8344, type: 3}
+      propertyPath: grabTextRef
+      value: 
+      objectReference: {fileID: 2035799770783992920}
+    - target: {fileID: 1649804868896223447, guid: 47babaa94ded2e742be2f2db781f8344, type: 3}
       propertyPath: stealableName
       value: 
       objectReference: {fileID: 8193881290881979572}
@@ -355,6 +359,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 410b178a754e3dd4e90efd55a8455266, type: 3}
+--- !u!1 &2035799770783992920 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3527523737701302005, guid: 410b178a754e3dd4e90efd55a8455266, type: 3}
+  m_PrefabInstance: {fileID: 3221434089854169773}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &5536599673441353590 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6944868578580794843, guid: 410b178a754e3dd4e90efd55a8455266, type: 3}

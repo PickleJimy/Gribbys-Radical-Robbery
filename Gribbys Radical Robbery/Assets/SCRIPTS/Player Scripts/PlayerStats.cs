@@ -13,7 +13,7 @@ public class PlayerStats : MonoBehaviour
     public static int stolenGoods;
 
     public TextMeshProUGUI stolenGoodsCounter;
-    public static GameObject grabText;
+    public GameObject grabText;
     public static string stealableNameText;
     public TextMeshProUGUI stealableName;
     public static GameObject player;
@@ -21,7 +21,6 @@ public class PlayerStats : MonoBehaviour
 
     void Start()
     {
-        grabText = GameObject.Find("Grab Text");
         player = gameObject;
         Invoke(nameof(DisableGrabText), 0.01f);
     }

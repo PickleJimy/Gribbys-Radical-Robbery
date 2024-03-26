@@ -7,4 +7,11 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
+    public static GameObject grabText;
+
+    public void FindGrabText()
+    {
+        grabText = GameObject.Find("Grab Text");
+    }
+
 }
