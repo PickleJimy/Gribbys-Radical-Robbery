@@ -9,6 +9,9 @@ public class Goal : MonoBehaviour
 
     public Transform player;
     public Transform enemy;
+    public GameObject goal;
+
+    public bool playerOnGround;
 
     public LayerMask whatIsEnemy, whatIsPlayer;
 
@@ -17,6 +20,7 @@ public class Goal : MonoBehaviour
     {
         player = GameObject.Find("Player").transform;
         enemy = GameObject.Find("Enemy").transform;
+        goal = GameObject.Find("Goal").gameObject;
     }
 
     // Update is called once per frame
@@ -24,6 +28,7 @@ public class Goal : MonoBehaviour
     {
         enemyInPosRange = Physics.CheckSphere(transform.position, posRange, whatIsEnemy);
         playerInPosRange = Physics.CheckSphere(transform.position, posRange, whatIsPlayer);
+        playerOnGround = player.GetComponent<PlayerMovement>().grounded;
     }
 
     void OnDrawGizmosSelected()

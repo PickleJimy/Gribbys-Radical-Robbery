@@ -1,6 +1,7 @@
 ﻿
 using UnityEngine;
 using UnityEngine.AI;
+using System.Collections;
 
 public class EnemyAiTutorial : MonoBehaviour
 {
@@ -10,7 +11,11 @@ public class EnemyAiTutorial : MonoBehaviour
 
     public GameObject enemy;
 
+    public MeshCollider MeshCollider;
+
     public Transform ground;
+
+    public GameObject NearestGround;
 
     public float speed;
 
@@ -67,18 +72,17 @@ public class EnemyAiTutorial : MonoBehaviour
 
     public void Start()
     {
-        rb.freezeRotation = true;
-
         readyToJump = true;
     }
 
-    private void Awake()
+    public void Awake()
     {
         player = GameObject.Find("Player").transform;
         enemy = GameObject.Find("Enemy");
         ground = GameObject.Find("Goal").transform;
         agent = enemy.GetComponent<UnityEngine.AI.NavMeshAgent>();
         agent.enabled = true;
+        MeshCollider.enabled = false;
     }
 
     public void Update()
@@ -93,7 +97,13 @@ public class EnemyAiTutorial : MonoBehaviour
         if (player.transform.position.y >= rb.transform.position.y + minJumpHeight && playerInJumpRange) preparedToJump = true;
         if (player.transform.position.y <= rb.transform.position.y + minJumpHeight && playerInJumpRange) preparedToJump = false;
 
-        rb = GetComponent<Rigidbody>();
+        NearestGround = enemy.GetComponent<SenseGround>().NearestGround;
+
+        agent = enemy.GetComponent<UnityEngine.AI.NavMeshAgent>();
+
+        rb = enemy.GetComponent<Rigidbody>();
+
+        MeshCollider = enemy.GetComponent<MeshCollider>();
 
         playerOnGround = player.GetComponent<PlayerMovement>().grounded;
 
@@ -104,6 +114,12 @@ public class EnemyAiTutorial : MonoBehaviour
         landingZone = ground.GetComponent<Goal>();
 
         hurt = player.GetComponent<GrabAndStab>().dealDamage;
+
+        if (grounded)
+        {
+            MeshCollider.enabled = false;
+            agent.enabled = true;
+        }
 
         if (agent.enabled)
         {
@@ -131,6 +147,19 @@ public class EnemyAiTutorial : MonoBehaviour
         }
     }
 
+    public IEnumerator EnemyLand()
+    {
+        MeshCollider.enabled = true;
+        yield return new WaitForSeconds(0.01f);
+        if (grounded)
+        {
+            agent.enabled = true;
+            rb.isKinematic = true;
+            rb.useGravity = false;
+            MeshCollider.enabled = false;
+        }
+    }
+
     public void EnemyJump()
     {
         agent.enabled = false;
@@ -140,7 +169,9 @@ public class EnemyAiTutorial : MonoBehaviour
         rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
         // reset y velocity
         rb.velocity = new Vector3(0f, 0f, 0f);
-        rb.velocity.Normalize();
+        MeshCollider.enabled = true;
+
+        StartCoroutine("EnemyLand");
     }
 
     public void Patroling()
@@ -179,7 +210,7 @@ public class EnemyAiTutorial : MonoBehaviour
         {
             if (playerInPosRange)
             {
-                rb.AddForce((ground.transform.position - transform.position).normalized * speed);
+                rb.AddForce((NearestGround.transform.position - transform.position).normalized * speed);
             }
         }
     }
@@ -226,7 +257,7 @@ public class EnemyAiTutorial : MonoBehaviour
         }
     }
 
-    private void ResetAttack()
+    public void ResetAttack()
     {
         alreadyAttacked = false;
     }

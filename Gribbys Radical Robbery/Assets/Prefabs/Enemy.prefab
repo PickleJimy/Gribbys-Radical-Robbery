@@ -14,8 +14,9 @@ GameObject:
   - component: {fileID: 3213309486222693098}
   - component: {fileID: 370653707888902711}
   - component: {fileID: 3560887585288343178}
-  - component: {fileID: 4134349893121495515}
   - component: {fileID: 32579265675517928}
+  - component: {fileID: 1034472950420718651}
+  - component: {fileID: 2293019162020806892}
   m_Layer: 9
   m_Name: Enemy
   m_TagString: Enemy
@@ -104,10 +105,10 @@ Rigidbody:
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 1
@@ -130,8 +131,10 @@ MonoBehaviour:
   agent: {fileID: 3560887585288343178}
   player: {fileID: 0}
   enemy: {fileID: 2358648691654089754}
+  MeshCollider: {fileID: 1034472950420718651}
   ground: {fileID: 0}
-  speed: 7
+  NearestGround: {fileID: 0}
+  speed: 12
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 128
@@ -152,15 +155,14 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   grounded: 0
-  jumpForce: 34
-  jumpCooldown: 2.67
+  jumpForce: 32
+  jumpCooldown: 6.64
   readyToJump: 0
   preparedToJump: 0
   airborne: 0
   landingRange: 1.38
   readyToLand: 0
   landingZone: 0
-  enemyJump: 0
   hurt: 0
   walkPoint: {x: 4.34, y: 0, z: 6.4}
   walkPointSet: 0
@@ -183,7 +185,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 7.09
+  m_Speed: 12
   m_Acceleration: 8.55
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -195,29 +197,6 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!136 &4134349893121495515
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2358648691654089754}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 8
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 2.6046388
-  m_Direction: 1
-  m_Center: {x: 0, y: -0.07045978, z: 0}
 --- !u!114 &32579265675517928
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -231,3 +210,42 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 79
+--- !u!64 &1034472950420718651
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2358648691654089754}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 1
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &2293019162020806892
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2358648691654089754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9b5d7e8e36fd804ba7d2f383a07c9b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AllObjects:
+  - {fileID: 0}
+  - {fileID: 0}
+  NearestGround: {fileID: 0}
+  nearestDistance: 4.15

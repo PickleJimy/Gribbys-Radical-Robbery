@@ -9,6 +9,7 @@ TagManager:
   - Stealable
   - Enemy
   - PlayerWeapon
+  - HighGround
   layers:
   - Default
   - TransparentFX

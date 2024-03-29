@@ -45,6 +45,12 @@ public class PlayerMovement : MonoBehaviour
 
     Rigidbody rb;
 
+    [Header("Enemy Pathfinding")]
+    public LayerMask enemyLandArea;
+    public float antiLandRange;
+    public bool landRangeDeactivate;
+    public Transform goal;
+
     public Animator GribbyRun;
     public bool isJumping;
     public MovementState state;
@@ -247,5 +253,11 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 GetSlopeMoveDirection()
     {
         return Vector3.ProjectOnPlane(moveDirection, slopeHit.normal).normalized;
+    }
+
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, antiLandRange);
     }
 }
