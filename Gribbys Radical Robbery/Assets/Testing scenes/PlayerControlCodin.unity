@@ -228,6 +228,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &135473261 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2035799770783992920, guid: 4aa781173aef9174c84b5c45bc2cd51b, type: 3}
+  m_PrefabInstance: {fileID: 3187307088607599870}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &144369154
 GameObject:
   m_ObjectHideFlags: 0
@@ -1768,6 +1773,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1180045166}
+  - component: {fileID: 1180045167}
   m_Layer: 0
   m_Name: Stealables
   m_TagString: Untagged
@@ -1796,6 +1802,19 @@ Transform:
   - {fileID: 1434513182}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1180045167
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1180045165}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d624a635dcdfa224e9af65f6f4a54a94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  grabTextRef: {fileID: 135473261}
 --- !u!1 &1212914207
 GameObject:
   m_ObjectHideFlags: 0
@@ -2514,6 +2533,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 122934965493728645, guid: 4aa781173aef9174c84b5c45bc2cd51b, type: 3}
+      propertyPath: grabText
+      value: 
+      objectReference: {fileID: 135473261}
     - target: {fileID: 4323368230865721837, guid: 4aa781173aef9174c84b5c45bc2cd51b, type: 3}
       propertyPath: m_Name
       value: Player Full

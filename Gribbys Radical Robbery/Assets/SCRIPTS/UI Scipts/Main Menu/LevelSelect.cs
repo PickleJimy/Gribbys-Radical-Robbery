@@ -28,6 +28,11 @@ public class LevelSelect : MonoBehaviour
             startMenu.SetActive(true);
         }
 
+        if (button.name == "Parking Lot")
+        {
+            SceneManager.LoadScene("Parking Lot");
+        }
+        
         if (button.name == "Player Test Scene")
         {
             SceneManager.LoadScene("PlayerControlCodin");
