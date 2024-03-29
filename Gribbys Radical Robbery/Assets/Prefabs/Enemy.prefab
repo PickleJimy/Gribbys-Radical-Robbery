@@ -130,7 +130,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 3560887585288343178}
   player: {fileID: 0}
-  enemy: {fileID: 2358648691654089754}
   MeshCollider: {fileID: 1034472950420718651}
   ground: {fileID: 0}
   NearestGround: {fileID: 0}
@@ -248,4 +247,4 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   NearestGround: {fileID: 0}
-  nearestDistance: 4.15
+  nearestDistance: 7

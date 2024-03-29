@@ -9,8 +9,6 @@ public class EnemyAiTutorial : MonoBehaviour
 
     public Transform player;
 
-    public GameObject enemy;
-
     public MeshCollider MeshCollider;
 
     public Transform ground;
@@ -54,8 +52,6 @@ public class EnemyAiTutorial : MonoBehaviour
     public bool readyToLand;
     public bool landingZone;
 
-    public bool hurt;
-
     //Patroling
     public Vector3 walkPoint;
     public bool walkPointSet;
@@ -78,9 +74,8 @@ public class EnemyAiTutorial : MonoBehaviour
     public void Awake()
     {
         player = GameObject.Find("Player").transform;
-        enemy = GameObject.Find("Enemy");
         ground = GameObject.Find("Goal").transform;
-        agent = enemy.GetComponent<UnityEngine.AI.NavMeshAgent>();
+        agent = gameObject.GetComponent<UnityEngine.AI.NavMeshAgent>();
         agent.enabled = true;
         MeshCollider.enabled = false;
     }
@@ -97,13 +92,13 @@ public class EnemyAiTutorial : MonoBehaviour
         if (player.transform.position.y >= rb.transform.position.y + minJumpHeight && playerInJumpRange) preparedToJump = true;
         if (player.transform.position.y <= rb.transform.position.y + minJumpHeight && playerInJumpRange) preparedToJump = false;
 
-        NearestGround = enemy.GetComponent<SenseGround>().NearestGround;
+        NearestGround = gameObject.GetComponent<SenseGround>().NearestGround;
 
-        agent = enemy.GetComponent<UnityEngine.AI.NavMeshAgent>();
+        agent = gameObject.GetComponent<UnityEngine.AI.NavMeshAgent>();
 
-        rb = enemy.GetComponent<Rigidbody>();
+        rb = gameObject.GetComponent<Rigidbody>();
 
-        MeshCollider = enemy.GetComponent<MeshCollider>();
+        MeshCollider = gameObject.GetComponent<MeshCollider>();
 
         playerOnGround = player.GetComponent<PlayerMovement>().grounded;
 
@@ -112,8 +107,6 @@ public class EnemyAiTutorial : MonoBehaviour
         airborne = !grounded;
 
         landingZone = ground.GetComponent<Goal>();
-
-        hurt = player.GetComponent<GrabAndStab>().dealDamage;
 
         if (grounded)
         {
