@@ -10,7 +10,6 @@ public class StealableItem : MonoBehaviour
 
     private void Start()
     {
-        grabText = StealablesParent.grabText;
         grabKey = GrabAndStab.grabKey;
     }
 
