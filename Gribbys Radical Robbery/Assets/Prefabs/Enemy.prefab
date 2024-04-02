@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 32579265675517928}
   - component: {fileID: 1034472950420718651}
   - component: {fileID: 2293019162020806892}
+  - component: {fileID: 446681284671233194}
   m_Layer: 9
   m_Name: Enemy
   m_TagString: Enemy
@@ -140,7 +141,7 @@ MonoBehaviour:
   enemyLandArea:
     serializedVersion: 2
     m_Bits: 1024
-  health: 6.35
+  health: 0
   rb: {fileID: 3213309486222693098}
   groundDrag: 0.6
   minJumpHeight: 3
@@ -162,7 +163,6 @@ MonoBehaviour:
   landingRange: 1.38
   readyToLand: 0
   landingZone: 0
-  hurt: 0
   walkPoint: {x: 4.34, y: 0, z: 6.4}
   walkPointSet: 0
   walkPointRange: 12.92
@@ -208,7 +208,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a19bda6ba6bc4c54f9cdf1c4a48cb290, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 79
+  health: 100
 --- !u!64 &1034472950420718651
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -248,3 +248,26 @@ MonoBehaviour:
   - {fileID: 0}
   NearestGround: {fileID: 0}
   nearestDistance: 7
+--- !u!136 &446681284671233194
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2358648691654089754}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
