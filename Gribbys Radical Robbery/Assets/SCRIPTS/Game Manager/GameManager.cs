@@ -7,11 +7,8 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
-    public static GameObject grabText;
+    // end of level stolen goods
+    public static int stolenGoods;
 
-    public void FindGrabText()
-    {
-        grabText = GameObject.Find("Grab Text");
-    }
-
+    
 }

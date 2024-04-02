@@ -124,6 +124,8 @@ public class PauseController : MonoBehaviour
 
     void RestartScene()
     {
+        PlayerStats.stolenGoods = GameManager.stolenGoods;
+        PlayerStats.health = 100;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
