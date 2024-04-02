@@ -92,7 +92,9 @@ public class EnemyAiTutorial : MonoBehaviour
         if (player.transform.position.y >= rb.transform.position.y + minJumpHeight && playerInJumpRange) preparedToJump = true;
         if (player.transform.position.y <= rb.transform.position.y + minJumpHeight && playerInJumpRange) preparedToJump = false;
 
-        NearestGround = gameObject.GetComponent<SenseGround>().NearestGround;
+        health = GetComponent<EnemyStats>().health;
+
+        if (health <= 0) Invoke(nameof(DestroyEnemy), 0.5f);
 
         agent = gameObject.GetComponent<UnityEngine.AI.NavMeshAgent>();
 
@@ -103,6 +105,8 @@ public class EnemyAiTutorial : MonoBehaviour
         playerOnGround = player.GetComponent<PlayerMovement>().grounded;
 
         grounded = Physics.Raycast(transform.position, Vector3.down, enemyHeight, whatIsGround);
+
+        NearestGround = gameObject.GetComponent<SenseGround>().NearestGround;
 
         airborne = !grounded;
 
