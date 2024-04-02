@@ -52,6 +52,10 @@ public class EnemyAiTutorial : MonoBehaviour
     public bool readyToLand;
     public bool landingZone;
 
+    [Header("Attacks")]
+    public bool dashCapable;
+    public bool readyToDashAttack;
+
     //Patroling
     public Vector3 walkPoint;
     public bool walkPointSet;
@@ -199,6 +203,12 @@ public class EnemyAiTutorial : MonoBehaviour
     public void ChasePlayer()
     {
         agent.SetDestination(player.position);
+
+        if (!playerInAttackRange)
+        {
+            readyToDashAttack = true;
+            StartCoroutine("DashAttack");
+        }
     }
 
     public void RbChasePlayer()
@@ -229,6 +239,25 @@ public class EnemyAiTutorial : MonoBehaviour
 
             alreadyAttacked = true;
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
+        }
+    }
+
+    public IEnumerator DashAttack()
+    {
+        if (dashCapable)
+        {
+            if (readyToDashAttack)
+            {
+                yield return new WaitForSeconds(3f);
+                readyToDashAttack = true;
+                yield return new WaitForSeconds(2f);
+                agent.speed = 1.5f;
+                yield return new WaitForSeconds(2f);
+                agent.speed = speed * 2.5f;
+                yield return new WaitForSeconds(2f);
+                agent.speed = speed;
+                readyToDashAttack = false;
+            }
         }
     }
 
