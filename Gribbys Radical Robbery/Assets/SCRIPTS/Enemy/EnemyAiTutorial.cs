@@ -5,38 +5,33 @@ using System.Collections;
 
 public class EnemyAiTutorial : MonoBehaviour
 {
+    //Physics of its body
     public NavMeshAgent agent;
-
     public Transform player;
-
     public MeshCollider MeshCollider;
-
-    public Transform ground;
-
-    public GameObject NearestGround;
-
-    public float speed;
-
-    public LayerMask whatIsPlayer, enemyLandArea;
 
     public float health;
 
     public Rigidbody rb;
-
     public float groundDrag;
 
-    public float minJumpHeight;
+    //How it moves
+    public Transform ground;
+    public GameObject NearestGround;
+    public float speed;
 
+    public LayerMask whatIsPlayer, enemyLandArea;
+
+    public float minJumpHeight;
     public float maxJumpHeight;
 
+    //Awareness
     public bool playerInJumpRange;
-
     public bool playerOnGround;
-
     public bool playerInPosRange;
-
     public bool enemyInPosRange;
 
+    //Mechanics
     [Header("Ground Check")]
     public float enemyHeight;
     public LayerMask whatIsGround;
@@ -55,7 +50,10 @@ public class EnemyAiTutorial : MonoBehaviour
     [Header("Attacks")]
     public bool dashCapable;
     public bool readyToDashAttack;
-    public Cooldown cooldown;
+    public float cooldown;
+    public float nextAttackTime;
+    public bool hasDashAttacked;
+    public bool isChasingPlayer;
 
     //Patroling
     public Vector3 walkPoint;
@@ -68,8 +66,8 @@ public class EnemyAiTutorial : MonoBehaviour
     public GameObject projectile;
 
     //States
-    public float sightRange, attackRange, jumpRange, posRange;
-    public bool playerInSightRange, playerInAttackRange;
+    public float sightRange, attackRange, jumpRange, posRange, normalAttackRange;
+    public bool playerInSightRange, playerInAttackRange, playerInNormalAttackRange;
 
     public void Start()
     {
@@ -87,39 +85,43 @@ public class EnemyAiTutorial : MonoBehaviour
 
     public void Update()
     {
-        //Check for sight and attack range
+        //Check for ranges
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
         playerInJumpRange = Physics.CheckSphere(transform.position, jumpRange, whatIsPlayer);
         readyToLand = Physics.CheckSphere(transform.position, landingRange, whatIsGround);
         playerInPosRange = ground.GetComponent<Goal>().playerInPosRange;
+       
+        //Health
+        health = GetComponent<EnemyStats>().health;
+        if (health <= 0) Invoke(nameof(DestroyEnemy), 0.5f);
+
+        //Physics
+        agent = gameObject.GetComponent<UnityEngine.AI.NavMeshAgent>();
+        rb = gameObject.GetComponent<Rigidbody>();
+        MeshCollider = gameObject.GetComponent<MeshCollider>();
+
+        playerOnGround = player.GetComponent<PlayerMovement>().grounded;
+        grounded = Physics.Raycast(transform.position, Vector3.down, enemyHeight, whatIsGround);
+        NearestGround = gameObject.GetComponent<SenseGround>().NearestGround;
 
         if (player.transform.position.y >= rb.transform.position.y + minJumpHeight && playerInJumpRange) preparedToJump = true;
         if (player.transform.position.y <= rb.transform.position.y + minJumpHeight && playerInJumpRange) preparedToJump = false;
 
-        health = GetComponent<EnemyStats>().health;
-
-        if (health <= 0) Invoke(nameof(DestroyEnemy), 0.5f);
-
-        agent = gameObject.GetComponent<UnityEngine.AI.NavMeshAgent>();
-
-        rb = gameObject.GetComponent<Rigidbody>();
-
-        MeshCollider = gameObject.GetComponent<MeshCollider>();
-
-        cooldown = gameObject.GetComponent<Cooldown>();
-
-        if (cooldown.IsCoolingDown) return;
-
-        playerOnGround = player.GetComponent<PlayerMovement>().grounded;
-
-        grounded = Physics.Raycast(transform.position, Vector3.down, enemyHeight, whatIsGround);
-
-        NearestGround = gameObject.GetComponent<SenseGround>().NearestGround;
-
         airborne = !grounded;
 
         landingZone = ground.GetComponent<Goal>();
+
+        //Attacks and cooldowns
+
+        if (Time.time > nextAttackTime)
+        {
+            if (hasDashAttacked)
+            {
+                Debug.Log("Ability used, start cooldown");
+                nextAttackTime = Time.time + cooldown;
+            }
+        }        
 
         if (grounded)
         {
@@ -207,11 +209,12 @@ public class EnemyAiTutorial : MonoBehaviour
 
     public void ChasePlayer()
     {
+        isChasingPlayer = true;
+
         agent.SetDestination(player.position);
 
-        if (!playerInAttackRange)
+        if (!playerInNormalAttackRange)
         {
-            readyToDashAttack = true;
             StartCoroutine("DashAttack");
         }
     }
@@ -251,19 +254,17 @@ public class EnemyAiTutorial : MonoBehaviour
     {
         if (dashCapable)
         {
-            if (readyToDashAttack)
-            {
-                yield return new WaitForSeconds(3f);
-                readyToDashAttack = true;
-                yield return new WaitForSeconds(2f);
-                agent.speed = 1.5f;
-                yield return new WaitForSeconds(2f);
-                agent.speed = speed * 2.5f;
-                yield return new WaitForSeconds(2f);
-                agent.speed = speed;
-                readyToDashAttack = false;
-                cooldown.StartCooldown();
-            }
+            yield return new WaitForSeconds(3f);
+            readyToDashAttack = true;
+            yield return new WaitForSeconds(2f);
+            agent.speed = 1.5f;
+            yield return new WaitForSeconds(2f);
+            agent.speed = speed * 2.5f;
+            agent.acceleration = speed * 2f;
+            yield return new WaitForSeconds(2f);
+            agent.speed = speed;
+            readyToDashAttack = false;
+            hasDashAttacked = true;
         }
     }
 
@@ -315,5 +316,7 @@ public class EnemyAiTutorial : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, jumpRange);
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(transform.position, landingRange);
+        Gizmos.color = Color.white;
+        Gizmos.DrawWireSphere(transform.position, normalAttackRange);
     }
 }  

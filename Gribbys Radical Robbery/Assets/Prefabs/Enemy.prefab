@@ -9,16 +9,16 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2247804978720256630}
-  - component: {fileID: 9002036388927582317}
-  - component: {fileID: 3530381199356264597}
-  - component: {fileID: 3213309486222693098}
   - component: {fileID: 370653707888902711}
   - component: {fileID: 3560887585288343178}
   - component: {fileID: 32579265675517928}
-  - component: {fileID: 1034472950420718651}
   - component: {fileID: 2293019162020806892}
-  - component: {fileID: 446681284671233194}
   - component: {fileID: 8108428880355291623}
+  - component: {fileID: 9002036388927582317}
+  - component: {fileID: 3530381199356264597}
+  - component: {fileID: 3213309486222693098}
+  - component: {fileID: 1034472950420718651}
+  - component: {fileID: 446681284671233194}
   m_Layer: 9
   m_Name: Enemy
   m_TagString: Enemy
@@ -41,6 +41,132 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &370653707888902711
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2358648691654089754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 142f2ff61fa06de4b85a062750f41a10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agent: {fileID: 3560887585288343178}
+  player: {fileID: 0}
+  MeshCollider: {fileID: 1034472950420718651}
+  ground: {fileID: 0}
+  NearestGround: {fileID: 0}
+  speed: 12
+  whatIsPlayer:
+    serializedVersion: 2
+    m_Bits: 128
+  enemyLandArea:
+    serializedVersion: 2
+    m_Bits: 1024
+  health: 0
+  rb: {fileID: 3213309486222693098}
+  groundDrag: 0.6
+  minJumpHeight: 3
+  maxJumpHeight: 5
+  playerInJumpRange: 0
+  playerOnGround: 0
+  playerInPosRange: 0
+  enemyInPosRange: 0
+  enemyHeight: 0.8
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 8
+  grounded: 0
+  jumpForce: 32
+  jumpCooldown: 6.64
+  readyToJump: 0
+  preparedToJump: 0
+  airborne: 0
+  landingRange: 1.38
+  readyToLand: 0
+  landingZone: 0
+  dashCapable: 1
+  readyToDashAttack: 0
+  cooldown: {fileID: 0}
+  walkPoint: {x: 4.34, y: 0, z: 6.4}
+  walkPointSet: 0
+  walkPointRange: 12.92
+  timeBetweenAttacks: 2.57
+  projectile: {fileID: 4753117414461319581, guid: 41b9afbd1d43cb448bc6995375ed76c5, type: 3}
+  sightRange: 11.03
+  attackRange: 1.36
+  jumpRange: 6.02
+  posRange: 0.8
+  playerInSightRange: 0
+  playerInAttackRange: 0
+--- !u!195 &3560887585288343178
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2358648691654089754}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 12
+  m_Acceleration: 10
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 1
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 1
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
+--- !u!114 &32579265675517928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2358648691654089754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a19bda6ba6bc4c54f9cdf1c4a48cb290, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+--- !u!114 &2293019162020806892
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2358648691654089754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9b5d7e8e36fd804ba7d2f383a07c9b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AllObjects:
+  - {fileID: 0}
+  - {fileID: 0}
+  NearestGround: {fileID: 0}
+  nearestDistance: 7
+--- !u!114 &8108428880355291623
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2358648691654089754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 737299129e4f3b94a9b01adec7fcb5e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cooldownTime: 7
+  _nextDashAttackTime: 1
 --- !u!33 &9002036388927582317
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -118,101 +244,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 2
---- !u!114 &370653707888902711
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2358648691654089754}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 142f2ff61fa06de4b85a062750f41a10, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  agent: {fileID: 3560887585288343178}
-  player: {fileID: 0}
-  MeshCollider: {fileID: 1034472950420718651}
-  ground: {fileID: 0}
-  NearestGround: {fileID: 0}
-  speed: 12
-  whatIsPlayer:
-    serializedVersion: 2
-    m_Bits: 128
-  enemyLandArea:
-    serializedVersion: 2
-    m_Bits: 1024
-  health: 0
-  rb: {fileID: 3213309486222693098}
-  groundDrag: 0.6
-  minJumpHeight: 3
-  maxJumpHeight: 5
-  playerInJumpRange: 0
-  playerOnGround: 0
-  playerInPosRange: 0
-  enemyInPosRange: 0
-  enemyHeight: 0.8
-  whatIsGround:
-    serializedVersion: 2
-    m_Bits: 8
-  grounded: 0
-  jumpForce: 32
-  jumpCooldown: 6.64
-  readyToJump: 0
-  preparedToJump: 0
-  airborne: 0
-  landingRange: 1.38
-  readyToLand: 0
-  landingZone: 0
-  dashCapable: 1
-  readyToDashAttack: 0
-  cooldown: {fileID: 0}
-  walkPoint: {x: 4.34, y: 0, z: 6.4}
-  walkPointSet: 0
-  walkPointRange: 12.92
-  timeBetweenAttacks: 2.57
-  projectile: {fileID: 4753117414461319581, guid: 41b9afbd1d43cb448bc6995375ed76c5, type: 3}
-  sightRange: 11.03
-  attackRange: 1.36
-  jumpRange: 6.02
-  posRange: 0.8
-  playerInSightRange: 0
-  playerInAttackRange: 0
---- !u!195 &3560887585288343178
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2358648691654089754}
-  m_Enabled: 1
-  m_AgentTypeID: 0
-  m_Radius: 0.5
-  m_Speed: 12
-  m_Acceleration: 8.55
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 3.25
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 2
-  m_BaseOffset: 1
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
---- !u!114 &32579265675517928
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2358648691654089754}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a19bda6ba6bc4c54f9cdf1c4a48cb290, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 100
 --- !u!64 &1034472950420718651
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -235,23 +266,6 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &2293019162020806892
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2358648691654089754}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a9b5d7e8e36fd804ba7d2f383a07c9b8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AllObjects:
-  - {fileID: 0}
-  - {fileID: 0}
-  NearestGround: {fileID: 0}
-  nearestDistance: 7
 --- !u!136 &446681284671233194
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -275,17 +289,3 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &8108428880355291623
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2358648691654089754}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 737299129e4f3b94a9b01adec7fcb5e6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cooldownTime: 7
-  _nextDashAttackTime: 0

@@ -2831,6 +2831,22 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 515640977}
+    - target: {fileID: 370653707888902711, guid: da1411e0b94d3f74f849adfde326ae40, type: 3}
+      propertyPath: cooldown
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 370653707888902711, guid: da1411e0b94d3f74f849adfde326ae40, type: 3}
+      propertyPath: sightRange
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 370653707888902711, guid: da1411e0b94d3f74f849adfde326ae40, type: 3}
+      propertyPath: nextAttackTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 370653707888902711, guid: da1411e0b94d3f74f849adfde326ae40, type: 3}
+      propertyPath: normalAttackRange
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 2247804978720256630, guid: da1411e0b94d3f74f849adfde326ae40, type: 3}
       propertyPath: m_LocalPosition.x
       value: 5.81
@@ -2874,10 +2890,6 @@ PrefabInstance:
     - target: {fileID: 2358648691654089754, guid: da1411e0b94d3f74f849adfde326ae40, type: 3}
       propertyPath: m_Name
       value: Enemy
-      objectReference: {fileID: 0}
-    - target: {fileID: 8108428880355291623, guid: da1411e0b94d3f74f849adfde326ae40, type: 3}
-      propertyPath: _nextDashAttackTime
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
