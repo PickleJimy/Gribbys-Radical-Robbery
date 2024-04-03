@@ -55,6 +55,7 @@ public class EnemyAiTutorial : MonoBehaviour
     [Header("Attacks")]
     public bool dashCapable;
     public bool readyToDashAttack;
+    public Cooldown cooldown;
 
     //Patroling
     public Vector3 walkPoint;
@@ -105,6 +106,10 @@ public class EnemyAiTutorial : MonoBehaviour
         rb = gameObject.GetComponent<Rigidbody>();
 
         MeshCollider = gameObject.GetComponent<MeshCollider>();
+
+        cooldown = gameObject.GetComponent<Cooldown>();
+
+        if (cooldown.IsCoolingDown) return;
 
         playerOnGround = player.GetComponent<PlayerMovement>().grounded;
 
@@ -257,6 +262,7 @@ public class EnemyAiTutorial : MonoBehaviour
                 yield return new WaitForSeconds(2f);
                 agent.speed = speed;
                 readyToDashAttack = false;
+                cooldown.StartCooldown();
             }
         }
     }

@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 1034472950420718651}
   - component: {fileID: 2293019162020806892}
   - component: {fileID: 446681284671233194}
+  - component: {fileID: 8108428880355291623}
   m_Layer: 9
   m_Name: Enemy
   m_TagString: Enemy
@@ -163,6 +164,9 @@ MonoBehaviour:
   landingRange: 1.38
   readyToLand: 0
   landingZone: 0
+  dashCapable: 1
+  readyToDashAttack: 0
+  cooldown: {fileID: 0}
   walkPoint: {x: 4.34, y: 0, z: 6.4}
   walkPointSet: 0
   walkPointRange: 12.92
@@ -271,3 +275,17 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8108428880355291623
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2358648691654089754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 737299129e4f3b94a9b01adec7fcb5e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cooldownTime: 7
+  _nextDashAttackTime: 0

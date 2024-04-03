@@ -5,11 +5,11 @@ public class Cooldown : MonoBehaviour
 {
     #region Variables
 
-    [SerializeField] private float cooldownTime;
-    private float _nextFireTime;
+    [SerializeField] public float cooldownTime;
+    public float _nextDashAttackTime;
 
     #endregion
 
-    public bool IsCoolingDown => Time.time < _nextFireTime;
-    public void StartCooldown() => _nextFireTime = Time.time + cooldownTime;
+    public bool IsCoolingDown => Time.time < _nextDashAttackTime;
+    public void StartCooldown() => _nextDashAttackTime = Time.time + cooldownTime;
 }
