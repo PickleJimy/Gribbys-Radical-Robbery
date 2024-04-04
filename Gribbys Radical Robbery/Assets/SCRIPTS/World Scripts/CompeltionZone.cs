@@ -8,13 +8,23 @@ public class CompeltionZone : MonoBehaviour
 {
     public string nextScene;
 
+    private GameObject sceneManager;
+
+    private void Start()
+    {
+        sceneManager = GameObject.Find("Scene Manager");
+    }
+
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (sceneManager.GetComponent<SceneManagment>().isLevelComplete)
         {
-            GameManager.stolenGoods = PlayerStats.stolenGoods;
-            PlayerStats.health = 100;
-            SceneManager.LoadScene(nextScene);
+            if (other.CompareTag("Player"))
+            {
+                GameManager.stolenGoods = PlayerStats.stolenGoods;
+                PlayerStats.health = 100;
+                SceneManager.LoadScene(nextScene);
+            }
         }
     }
 }

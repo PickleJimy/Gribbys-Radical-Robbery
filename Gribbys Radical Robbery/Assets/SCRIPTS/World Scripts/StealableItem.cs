@@ -7,10 +7,12 @@ public class StealableItem : MonoBehaviour
     public GameObject grabText;
     private bool inStealingRange;
     public KeyCode grabKey;
+    private bool canGrab;
 
     private void Start()
     {
         grabKey = GrabAndStab.grabKey;
+        canGrab = true;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -38,7 +40,7 @@ public class StealableItem : MonoBehaviour
             grabText.SetActive(false);
         }
 
-        if (inStealingRange && Input.GetKey(grabKey))
+        if (inStealingRange && Input.GetKey(grabKey) && canGrab)
         {
             StartCoroutine(DelaySteal(0.4f));
         }
@@ -46,11 +48,13 @@ public class StealableItem : MonoBehaviour
 
     public IEnumerator DelaySteal(float time)
     {
+        canGrab = false;
+
         yield return new WaitForSeconds(time);
 
+        PlayerStats.IncreaseStolenGoods();
         grabText.SetActive(false);
         Destroy(gameObject);
-        PlayerStats.stolenGoods++;
     }
 
     private void OnMouseExit()

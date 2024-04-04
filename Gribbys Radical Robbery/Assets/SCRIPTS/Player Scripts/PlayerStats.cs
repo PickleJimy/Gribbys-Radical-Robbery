@@ -3,10 +3,11 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.SceneManagement;
 
 public class PlayerStats : MonoBehaviour
 {
-    public static int health = Mathf.Clamp(100, 0, 100);
+    public static int health = 80;
 
     public int damageDealt;
 
@@ -17,11 +18,19 @@ public class PlayerStats : MonoBehaviour
     public static string stealableNameText;
     public TextMeshProUGUI stealableName;
     public static GameObject player;
+    
+    public TextMeshProUGUI thieveryGoal;
+    
+    private GameObject sceneManager;
+    private int stolenGoodsNeeded;
 
 
     void Start()
     {
         player = gameObject;
+        sceneManager = GameObject.Find("Scene Manager");
+        stolenGoodsNeeded = sceneManager.GetComponent<SceneManagment>().stolenGoodsNeeded;
+        ThieveryGoal();
         Invoke(nameof(DisableGrabText), 0.01f);
     }
 
@@ -47,6 +56,11 @@ public class PlayerStats : MonoBehaviour
         }
     }
 
+    public static void IncreaseStolenGoods()
+    {
+        stolenGoods++;
+    }
+
     public void UpdateSGC()
     {
         stolenGoodsCounter.text = "Goods Stolen: " + stolenGoods;
@@ -58,5 +72,10 @@ public class PlayerStats : MonoBehaviour
         {
             stealableName.text = stealableNameText;
         }
+    }
+
+    public void ThieveryGoal()
+    {
+        thieveryGoal.text = " " + (stolenGoodsNeeded + GameManager.stolenGoods) + " ";
     }
 }

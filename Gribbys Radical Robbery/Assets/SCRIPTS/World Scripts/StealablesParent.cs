@@ -29,7 +29,14 @@ public class StealablesParent : MonoBehaviour
 
             foreach (GameObject child in allStealables)
             {
-                child.gameObject.GetComponent<StealableItem>().grabText = grabText;
+                if (child.gameObject.GetComponent<StealableItem>() != null)
+                {
+                    child.gameObject.GetComponent<StealableItem>().grabText = grabText;
+                }
+                if (child.gameObject.GetComponent<StealableHealthItem>() != null)
+                {
+                    child.gameObject.GetComponent<StealableHealthItem>().grabText = grabText;
+                }
             }
         }
     }

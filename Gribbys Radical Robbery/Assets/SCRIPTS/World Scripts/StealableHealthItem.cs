@@ -51,7 +51,10 @@ public class StealableHealthItem : MonoBehaviour
 
         grabText.SetActive(false);
         Destroy(gameObject);
-        PlayerStats.health =+ healthRecover;
+        if (PlayerStats.health != 100)
+        {
+            PlayerStats.health += healthRecover;
+        }
     }
 
     private void OnMouseExit()
