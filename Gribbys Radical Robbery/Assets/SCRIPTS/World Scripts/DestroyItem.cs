@@ -5,6 +5,10 @@ using UnityEngine;
 public class DestroyItem : MonoBehaviour
 {
     private bool mouseOver;
+    public bool grounded;
+    public bool groundDestructable;
+    public float itemHeight;
+    public LayerMask whatIsGround;
 
     // Start is called before the first frame update
     void Start()
@@ -15,7 +19,11 @@ public class DestroyItem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        grounded = Physics.Raycast(transform.position, Vector3.down, itemHeight, whatIsGround);
+        if (grounded && groundDestructable)
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void OnTriggerEnter(Collider other)

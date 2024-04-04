@@ -114,14 +114,6 @@ public class EnemyAiTutorial : MonoBehaviour
         landingZone = ground.GetComponent<Goal>();
 
         //Attacks and cooldowns
-        if (Time.time > nextAttackTime)
-        {
-            if (hasDashAttacked)
-            {
-                Debug.Log("Ability used, start cooldown");
-                nextAttackTime = Time.time + cooldown;
-            }
-        }        
 
         if (grounded)
         {
@@ -212,11 +204,6 @@ public class EnemyAiTutorial : MonoBehaviour
         isChasingPlayer = true;
 
         agent.SetDestination(player.position);
-
-        if (!playerInNormalAttackRange && dashCapable)
-        {
-            StartCoroutine("DashAttack");
-        }
     }
 
     public void RbChasePlayer()
@@ -248,22 +235,6 @@ public class EnemyAiTutorial : MonoBehaviour
             alreadyAttacked = true;
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
         }
-    }
-
-    public IEnumerator DashAttack()
-    {
-        readyToDashAttack = true;
-        yield return new WaitForSeconds(1.5f);
-        attackRange = 0;
-        agent.speed = 1.5f;
-        yield return new WaitForSeconds(2f);
-        agent.enabled = false;
-        speed = 30f;
-        rb.AddForce((player.transform.position - transform.position).normalized * speed);
-        yield return new WaitForSeconds(2f);
-        agent.enabled = true;
-        attackRange = attackRange;
-        hasDashAttacked = true;
     }
 
     public void RbAttackPlayer()
