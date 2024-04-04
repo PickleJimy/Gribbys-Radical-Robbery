@@ -91,7 +91,8 @@ public class EnemyAiTutorial : MonoBehaviour
         playerInJumpRange = Physics.CheckSphere(transform.position, jumpRange, whatIsPlayer);
         readyToLand = Physics.CheckSphere(transform.position, landingRange, whatIsGround);
         playerInPosRange = ground.GetComponent<Goal>().playerInPosRange;
-       
+        playerInNormalAttackRange = Physics.CheckSphere(transform.position, normalAttackRange, whatIsPlayer);
+
         //Health
         health = GetComponent<EnemyStats>().health;
         if (health <= 0) Invoke(nameof(DestroyEnemy), 0.5f);
@@ -113,7 +114,6 @@ public class EnemyAiTutorial : MonoBehaviour
         landingZone = ground.GetComponent<Goal>();
 
         //Attacks and cooldowns
-
         if (Time.time > nextAttackTime)
         {
             if (hasDashAttacked)
@@ -213,7 +213,7 @@ public class EnemyAiTutorial : MonoBehaviour
 
         agent.SetDestination(player.position);
 
-        if (!playerInNormalAttackRange)
+        if (!playerInNormalAttackRange && dashCapable)
         {
             StartCoroutine("DashAttack");
         }
@@ -252,20 +252,18 @@ public class EnemyAiTutorial : MonoBehaviour
 
     public IEnumerator DashAttack()
     {
-        if (dashCapable)
-        {
-            yield return new WaitForSeconds(3f);
-            readyToDashAttack = true;
-            yield return new WaitForSeconds(2f);
-            agent.speed = 1.5f;
-            yield return new WaitForSeconds(2f);
-            agent.speed = speed * 2.5f;
-            agent.acceleration = speed * 2f;
-            yield return new WaitForSeconds(2f);
-            agent.speed = speed;
-            readyToDashAttack = false;
-            hasDashAttacked = true;
-        }
+        readyToDashAttack = true;
+        yield return new WaitForSeconds(1.5f);
+        attackRange = 0;
+        agent.speed = 1.5f;
+        yield return new WaitForSeconds(2f);
+        agent.enabled = false;
+        speed = 30f;
+        rb.AddForce((player.transform.position - transform.position).normalized * speed);
+        yield return new WaitForSeconds(2f);
+        agent.enabled = true;
+        attackRange = attackRange;
+        hasDashAttacked = true;
     }
 
     public void RbAttackPlayer()

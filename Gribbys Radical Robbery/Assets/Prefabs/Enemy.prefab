@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 3560887585288343178}
   - component: {fileID: 32579265675517928}
   - component: {fileID: 2293019162020806892}
-  - component: {fileID: 8108428880355291623}
   - component: {fileID: 9002036388927582317}
   - component: {fileID: 3530381199356264597}
   - component: {fileID: 3213309486222693098}
@@ -56,6 +55,9 @@ MonoBehaviour:
   agent: {fileID: 3560887585288343178}
   player: {fileID: 0}
   MeshCollider: {fileID: 1034472950420718651}
+  health: 0
+  rb: {fileID: 3213309486222693098}
+  groundDrag: 0.6
   ground: {fileID: 0}
   NearestGround: {fileID: 0}
   speed: 12
@@ -65,9 +67,6 @@ MonoBehaviour:
   enemyLandArea:
     serializedVersion: 2
     m_Bits: 1024
-  health: 0
-  rb: {fileID: 3213309486222693098}
-  groundDrag: 0.6
   minJumpHeight: 3
   maxJumpHeight: 5
   playerInJumpRange: 0
@@ -89,18 +88,23 @@ MonoBehaviour:
   landingZone: 0
   dashCapable: 1
   readyToDashAttack: 0
-  cooldown: {fileID: 0}
+  cooldown: 7
+  nextAttackTime: 0
+  hasDashAttacked: 0
+  isChasingPlayer: 0
   walkPoint: {x: 4.34, y: 0, z: 6.4}
   walkPointSet: 0
   walkPointRange: 12.92
   timeBetweenAttacks: 2.57
   projectile: {fileID: 4753117414461319581, guid: 41b9afbd1d43cb448bc6995375ed76c5, type: 3}
-  sightRange: 11.03
+  sightRange: 15
   attackRange: 1.36
   jumpRange: 6.02
   posRange: 0.8
+  normalAttackRange: 8
   playerInSightRange: 0
   playerInAttackRange: 0
+  playerInNormalAttackRange: 0
 --- !u!195 &3560887585288343178
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -112,7 +116,7 @@ NavMeshAgent:
   m_AgentTypeID: 0
   m_Radius: 0.5
   m_Speed: 12
-  m_Acceleration: 10
+  m_Acceleration: 12
   avoidancePriority: 50
   m_AngularSpeed: 120
   m_StoppingDistance: 1
@@ -153,20 +157,6 @@ MonoBehaviour:
   - {fileID: 0}
   NearestGround: {fileID: 0}
   nearestDistance: 7
---- !u!114 &8108428880355291623
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2358648691654089754}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 737299129e4f3b94a9b01adec7fcb5e6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cooldownTime: 7
-  _nextDashAttackTime: 1
 --- !u!33 &9002036388927582317
 MeshFilter:
   m_ObjectHideFlags: 0
