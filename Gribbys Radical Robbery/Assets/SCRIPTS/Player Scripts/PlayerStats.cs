@@ -24,6 +24,8 @@ public class PlayerStats : MonoBehaviour
     private GameObject sceneManager;
     private int stolenGoodsNeeded;
 
+    public Animator GribbyTakesDamage;
+
 
     void Start()
     {
@@ -51,6 +53,7 @@ public class PlayerStats : MonoBehaviour
         if (other.CompareTag("EnemyDamager") && other.GetComponent<EnemyDealDamage>().dealDamage)
         {
             Debug.Log("YEEOWCH");
+            GribbyTakesDamage.SetTrigger("isDamaged");
             damageDealt = other.GetComponent<EnemyDealDamage>().damage;
             health -= damageDealt;
         }
