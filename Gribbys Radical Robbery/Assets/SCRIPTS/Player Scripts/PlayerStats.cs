@@ -18,6 +18,8 @@ public class PlayerStats : MonoBehaviour
     public TextMeshProUGUI stealableName;
     public static GameObject player;
 
+    public Animator GribbyTakesDamage;
+
 
     void Start()
     {
@@ -42,6 +44,7 @@ public class PlayerStats : MonoBehaviour
         if (other.CompareTag("EnemyDamager") && other.GetComponent<EnemyDealDamage>().dealDamage)
         {
             Debug.Log("YEEOWCH");
+            GribbyTakesDamage.SetTrigger("isDamaged");
             damageDealt = other.GetComponent<EnemyDealDamage>().damage;
             health -= damageDealt;
         }
