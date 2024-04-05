@@ -132,7 +132,8 @@ public class EnemyAiTutorial : MonoBehaviour
             if (!playerInSightRange && !playerInAttackRange) Patroling();
             if (playerInSightRange && !playerInAttackRange) ChasePlayer();
             if (playerInAttackRange && playerInSightRange && !isMelee) RangeAttackPlayer();
-            if (playerInAttackRange && playerInSightRange && isMelee) MeleeAttackPlayer();
+            if (playerInAttackRange && playerInSightRange && isMelee) TopMeleeAttackPlayer();
+            if (playerInAttackRange && playerInSightRange && isMelee) BottomMeleeAttackPlayer();
         }
         else
         {
@@ -266,12 +267,12 @@ public class EnemyAiTutorial : MonoBehaviour
         }
     }
 
-    public void MeleeAttackPlayer()
+    public void TopMeleeAttackPlayer()
     {
         TopBlade.enabled = true;
     }
 
-    public void RbMeleeAttackPlayer()
+    public void BottomMeleeAttackPlayer()
     {
 
     }
