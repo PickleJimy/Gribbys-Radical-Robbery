@@ -54,7 +54,6 @@ public class EnemyAiTutorial : MonoBehaviour
     public float nextAttackTime;
     public bool hasDashAttacked;
     public bool isChasingPlayer;
-    public bool isMelee;
 
     //Patroling
     public Vector3 walkPoint;
@@ -65,11 +64,6 @@ public class EnemyAiTutorial : MonoBehaviour
     public float timeBetweenAttacks;
     bool alreadyAttacked;
     public GameObject projectile;
-
-    //Animation
-    public Animator MeleeEnemy;
-    public Animator TopBlade;
-    public Animator BottomBlade;
 
     //States
     public float sightRange, attackRange, jumpRange, posRange, normalAttackRange;
@@ -131,14 +125,12 @@ public class EnemyAiTutorial : MonoBehaviour
         {
             if (!playerInSightRange && !playerInAttackRange) Patroling();
             if (playerInSightRange && !playerInAttackRange) ChasePlayer();
-            if (playerInAttackRange && playerInSightRange && !isMelee) RangeAttackPlayer();
-            if (playerInAttackRange && playerInSightRange && isMelee) TopMeleeAttackPlayer();
-            if (playerInAttackRange && playerInSightRange && isMelee) BottomMeleeAttackPlayer();
+            if (playerInAttackRange && playerInSightRange) AttackPlayer();
         }
         else
         {
             if (playerInSightRange && !playerInAttackRange) RbChasePlayer();
-            if (playerInAttackRange && playerInSightRange && !isMelee) RbRangeAttackPlayer();
+            if (playerInAttackRange && playerInSightRange) RbAttackPlayer();
         }
 
         // when to jump
@@ -225,7 +217,7 @@ public class EnemyAiTutorial : MonoBehaviour
         }
     }
 
-    public void RangeAttackPlayer()
+    public void AttackPlayer()
     {
         //Make sure enemy doesn't move
         agent.SetDestination(transform.position);
@@ -245,7 +237,7 @@ public class EnemyAiTutorial : MonoBehaviour
         }
     }
 
-    public void RbRangeAttackPlayer()
+    public void RbAttackPlayer()
     {
         transform.LookAt(player);
 
@@ -265,16 +257,6 @@ public class EnemyAiTutorial : MonoBehaviour
             alreadyAttacked = true;
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
         }
-    }
-
-    public void TopMeleeAttackPlayer()
-    {
-        TopBlade.enabled = true;
-    }
-
-    public void BottomMeleeAttackPlayer()
-    {
-
     }
 
     public void ResetAttack()
