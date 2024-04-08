@@ -3695,7 +3695,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6486354619410565566, guid: 4aa781173aef9174c84b5c45bc2cd51b, type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 7009793373068421181, guid: 4aa781173aef9174c84b5c45bc2cd51b, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -3703,7 +3703,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7726744734050656653, guid: 4aa781173aef9174c84b5c45bc2cd51b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 10.54
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 7726744734050656653, guid: 4aa781173aef9174c84b5c45bc2cd51b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -10
       objectReference: {fileID: 0}
     - target: {fileID: 7790031109450959070, guid: 4aa781173aef9174c84b5c45bc2cd51b, type: 3}
       propertyPath: m_AnchorMax.x
