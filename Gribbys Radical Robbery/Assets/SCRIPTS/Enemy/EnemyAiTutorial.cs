@@ -65,11 +65,14 @@ public class EnemyAiTutorial : MonoBehaviour
     public float timeBetweenAttacks;
     bool alreadyAttacked;
     public GameObject projectile;
+    public bool topBladePull;
+    public bool bottomBladePull;
+    public bool holdWeapons;
 
     //Animation
     public Animator MeleeEnemy;
-    public Animator TopBlade;
-    public Animator BottomBlade;
+    public Animator TopBladePull;
+    public Animator BottomBladePull;
 
     //States
     public float sightRange, attackRange, jumpRange, posRange, normalAttackRange;
@@ -78,6 +81,7 @@ public class EnemyAiTutorial : MonoBehaviour
     public void Start()
     {
         readyToJump = true;
+        holdWeapons = true;
     }
 
     public void Awake()
@@ -120,6 +124,20 @@ public class EnemyAiTutorial : MonoBehaviour
         landingZone = ground.GetComponent<Goal>();
 
         //Attacks and cooldowns
+        if (holdWeapons)
+        {
+            topBladePull = false;
+            bottomBladePull = false;
+        }
+
+        if (topBladePull)
+        {
+            bottomBladePull = false;
+        }
+        if (bottomBladePull)
+        {
+            topBladePull = false;
+        }
 
         if (grounded)
         {
@@ -269,7 +287,10 @@ public class EnemyAiTutorial : MonoBehaviour
 
     public void TopMeleeAttackPlayer()
     {
-        TopBlade.enabled = true;
+        holdWeapons = false;
+        TopBladePull.SetBool("TopBladePull", topBladePull);
+        MeleeEnemy.SetBool("TopBladePull", topBladePull);
+        topBladePull = true;
     }
 
     public void BottomMeleeAttackPlayer()
