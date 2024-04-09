@@ -68,9 +68,14 @@ public class EnemyAiTutorial : MonoBehaviour
     public bool topBladePull;
     public bool bottomBladePull;
     public bool holdWeapons;
+    public bool bladeAttack;
 
     //Animation
-    public Animator MeleeEnemy;
+    Animator _animator;
+    string _currentState;
+    const string PREPARE_ATTACK = "Prepare_Attack";
+    const string ENEMY_SPIN = "Enemy_Spin";
+    const string RETRACT = "Retract_Blade";
     public Animator TopBladePull;
     public Animator BottomBladePull;
 
@@ -82,6 +87,9 @@ public class EnemyAiTutorial : MonoBehaviour
     {
         readyToJump = true;
         holdWeapons = true;
+
+        //Animation
+        _animator = gameObject.GetComponent<Animator>();
     }
 
     public void Awake()
@@ -124,26 +132,6 @@ public class EnemyAiTutorial : MonoBehaviour
         landingZone = ground.GetComponent<Goal>();
 
         //Attacks and cooldowns
-        if (holdWeapons)
-        {
-            topBladePull = false;
-            bottomBladePull = false;
-        }
-
-        if (topBladePull)
-        {
-            bottomBladePull = false;
-        }
-        if (bottomBladePull)
-        {
-            topBladePull = false;
-        }
-
-        if (grounded)
-        {
-            MeshCollider.enabled = false;
-            agent.enabled = true;
-        }
 
         if (agent.enabled)
         {
@@ -170,6 +158,29 @@ public class EnemyAiTutorial : MonoBehaviour
                 rb.drag = 0;
 
             Debug.Log(rb.velocity.magnitude);
+        }
+    }
+
+    public void ChangeAnimationState(string newState)
+    {
+        if (newState == _currentState)
+        {
+            return;
+        }
+
+        _animator.Play(newState);
+        _currentState = newState;
+    }
+
+    bool IsAnimationPlaying(Animator animator, string stateName)
+    {
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName(stateName) && animator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1.0f)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
         }
     }
 
@@ -289,8 +300,8 @@ public class EnemyAiTutorial : MonoBehaviour
     {
         holdWeapons = false;
         TopBladePull.SetBool("TopBladePull", topBladePull);
-        MeleeEnemy.SetBool("TopBladePull", topBladePull);
         topBladePull = true;
+        ChangeAnimationState(ENEMY_SPIN);
     }
 
     public void BottomMeleeAttackPlayer()
