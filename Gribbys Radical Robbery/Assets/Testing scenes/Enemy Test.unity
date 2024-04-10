@@ -3009,6 +3009,14 @@ PrefabInstance:
       propertyPath: m_Constraints
       value: 112
       objectReference: {fileID: 0}
+    - target: {fileID: 3463369659447150259, guid: 3b5c5fb5eae380f49969a8ec5eecf7b2, type: 3}
+      propertyPath: m_AutoBraking
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4342084688895786405, guid: 3b5c5fb5eae380f49969a8ec5eecf7b2, type: 3}
+      propertyPath: m_CullingMode
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4342084688895786405, guid: 3b5c5fb5eae380f49969a8ec5eecf7b2, type: 3}
       propertyPath: m_ApplyRootMotion
       value: 1
