@@ -65,9 +65,8 @@ public class EnemyAiTutorial : MonoBehaviour
     public float timeBetweenAttacks;
     bool alreadyAttacked;
     public GameObject projectile;
-    public bool topBladePull;
-    public bool bottomBladePull;
-    public bool holdWeapons;
+    public bool BladePull;
+    public bool holdWeapon;
     public bool bladeAttack;
 
     //Animation
@@ -75,9 +74,8 @@ public class EnemyAiTutorial : MonoBehaviour
     string _currentState;
     const string PREPARE_ATTACK = "Prepare_Attack";
     const string ENEMY_SPIN = "Enemy_Spin";
-    const string RETRACT = "Retract_Blade";
-    public Animator TopBladePull;
-    public Animator BottomBladePull;
+    const string BLADE_RETRACT = "Blade_Retract";
+    public Animator Blade;
 
     //States
     public float sightRange, attackRange, jumpRange, posRange, normalAttackRange;
@@ -86,7 +84,11 @@ public class EnemyAiTutorial : MonoBehaviour
     public void Start()
     {
         readyToJump = true;
-        holdWeapons = true;
+
+        if (isMelee)
+        {
+            _currentState = BLADE_RETRACT;
+        }
 
         //Animation
         _animator = gameObject.GetComponent<Animator>();
@@ -298,10 +300,8 @@ public class EnemyAiTutorial : MonoBehaviour
 
     public void TopMeleeAttackPlayer()
     {
-        holdWeapons = false;
-        TopBladePull.SetBool("TopBladePull", topBladePull);
-        topBladePull = true;
-        ChangeAnimationState(ENEMY_SPIN);
+        //Make sure enemy doesn't move
+        agent.SetDestination(transform.position);
     }
 
     public void BottomMeleeAttackPlayer()
