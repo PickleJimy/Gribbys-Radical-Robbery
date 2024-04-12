@@ -75,6 +75,7 @@ public class EnemyAiTutorial : MonoBehaviour
     const string PREPARE_ATTACK = "Prepare_Attack";
     const string ENEMY_SPIN = "Enemy_Spin";
     const string BLADE_RETRACT = "Blade_Retract";
+    const string BLADE_SWING = "Blade_Swing";
     public Animator Blade;
 
     //States
@@ -84,11 +85,6 @@ public class EnemyAiTutorial : MonoBehaviour
     public void Start()
     {
         readyToJump = true;
-
-        if (isMelee)
-        {
-            _currentState = BLADE_RETRACT;
-        }
 
         //Animation
         _animator = gameObject.GetComponent<Animator>();
@@ -134,14 +130,14 @@ public class EnemyAiTutorial : MonoBehaviour
         landingZone = ground.GetComponent<Goal>();
 
         //Attacks and cooldowns
-
+        
         if (agent.enabled)
         {
             if (!playerInSightRange && !playerInAttackRange) Patroling();
             if (playerInSightRange && !playerInAttackRange) ChasePlayer();
             if (playerInAttackRange && playerInSightRange && !isMelee) RangeAttackPlayer();
-            if (playerInAttackRange && playerInSightRange && isMelee) TopMeleeAttackPlayer();
-            if (playerInAttackRange && playerInSightRange && isMelee) BottomMeleeAttackPlayer();
+            if (playerInAttackRange && playerInSightRange && isMelee) MeleeAttackPlayer();
+            if (playerInAttackRange && playerInSightRange && isMelee) BladePull = true;
         }
         else
         {
@@ -298,15 +294,12 @@ public class EnemyAiTutorial : MonoBehaviour
         }
     }
 
-    public void TopMeleeAttackPlayer()
+    public void MeleeAttackPlayer()
     {
         //Make sure enemy doesn't move
         agent.SetDestination(transform.position);
-    }
 
-    public void BottomMeleeAttackPlayer()
-    {
-
+        ChangeAnimationState(PREPARE_ATTACK);
     }
 
     public void ResetAttack()

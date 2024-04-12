@@ -1235,11 +1235,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &1248744760 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 5093265291056830269, guid: 3b5c5fb5eae380f49969a8ec5eecf7b2, type: 3}
-  m_PrefabInstance: {fileID: 3157122247906532678}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1283798453
 GameObject:
   m_ObjectHideFlags: 0
@@ -2943,10 +2938,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 314794208020204046, guid: 3b5c5fb5eae380f49969a8ec5eecf7b2, type: 3}
-      propertyPath: Blade
-      value: 
-      objectReference: {fileID: 1248744760}
-    - target: {fileID: 314794208020204046, guid: 3b5c5fb5eae380f49969a8ec5eecf7b2, type: 3}
       propertyPath: ground
       value: 
       objectReference: {fileID: 1590966817}
@@ -2997,14 +2988,6 @@ PrefabInstance:
     - target: {fileID: 2432249748442846243, guid: 3b5c5fb5eae380f49969a8ec5eecf7b2, type: 3}
       propertyPath: m_Name
       value: Melee Enemy
-      objectReference: {fileID: 0}
-    - target: {fileID: 3343980082759294506, guid: 3b5c5fb5eae380f49969a8ec5eecf7b2, type: 3}
-      propertyPath: m_Constraints
-      value: 126
-      objectReference: {fileID: 0}
-    - target: {fileID: 5093265291056830269, guid: 3b5c5fb5eae380f49969a8ec5eecf7b2, type: 3}
-      propertyPath: m_CullingMode
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3236,6 +3219,6 @@ SceneRoots:
   - {fileID: 1416611838}
   - {fileID: 552671908}
   - {fileID: 1955573666}
-  - {fileID: 7523072696014065202}
   - {fileID: 700023394}
+  - {fileID: 7523072696014065202}
   - {fileID: 3157122247906532678}
