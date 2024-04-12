@@ -194,7 +194,7 @@ PrefabInstance:
     - target: {fileID: 1649804868896223447, guid: 47babaa94ded2e742be2f2db781f8344, type: 3}
       propertyPath: thieveryGoal
       value: 
-      objectReference: {fileID: 3824612743423298985}
+      objectReference: {fileID: 2504852499421279446}
     - target: {fileID: 1649804868896223447, guid: 47babaa94ded2e742be2f2db781f8344, type: 3}
       propertyPath: stealableName
       value: 
@@ -207,9 +207,13 @@ PrefabInstance:
       propertyPath: stolenGoodsCounter
       value: 
       objectReference: {fileID: 8447779435264721118}
+    - target: {fileID: 1768874430243840848, guid: 47babaa94ded2e742be2f2db781f8344, type: 3}
+      propertyPath: crouchSpeed
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 2739280981225050635, guid: 47babaa94ded2e742be2f2db781f8344, type: 3}
       propertyPath: m_ExcludeLayers.m_Bits
-      value: 64
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2913803744542789647, guid: 47babaa94ded2e742be2f2db781f8344, type: 3}
       propertyPath: m_Layer
@@ -218,6 +222,14 @@ PrefabInstance:
     - target: {fileID: 5557487080505797831, guid: 47babaa94ded2e742be2f2db781f8344, type: 3}
       propertyPath: m_Name
       value: Gribby
+      objectReference: {fileID: 0}
+    - target: {fileID: 5572537494526770412, guid: 47babaa94ded2e742be2f2db781f8344, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 5572537494526770412, guid: 47babaa94ded2e742be2f2db781f8344, type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 5969615192056351813, guid: 47babaa94ded2e742be2f2db781f8344, type: 3}
       propertyPath: options
@@ -233,11 +245,15 @@ PrefabInstance:
       objectReference: {fileID: 150563671471771697}
     - target: {fileID: 7630294254068297482, guid: 47babaa94ded2e742be2f2db781f8344, type: 3}
       propertyPath: m_CullingMask.m_Bits
-      value: 767
+      value: 3839
       objectReference: {fileID: 0}
     - target: {fileID: 8832506184901079398, guid: 47babaa94ded2e742be2f2db781f8344, type: 3}
       propertyPath: sens
       value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8852149569213199894, guid: 47babaa94ded2e742be2f2db781f8344, type: 3}
+      propertyPath: dealDamage
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8965366270674064607, guid: 47babaa94ded2e742be2f2db781f8344, type: 3}
       propertyPath: m_LocalPosition.x
@@ -245,11 +261,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8965366270674064607, guid: 47babaa94ded2e742be2f2db781f8344, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8965366270674064607, guid: 47babaa94ded2e742be2f2db781f8344, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -4.89
+      value: -10
       objectReference: {fileID: 0}
     - target: {fileID: 8965366270674064607, guid: 47babaa94ded2e742be2f2db781f8344, type: 3}
       propertyPath: m_LocalRotation.w
@@ -440,6 +456,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5616864849867184784, guid: 410b178a754e3dd4e90efd55a8455266, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -15.780029
+      objectReference: {fileID: 0}
     - target: {fileID: 6944868578580794843, guid: 410b178a754e3dd4e90efd55a8455266, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -530,9 +550,9 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3527523737701302005, guid: 410b178a754e3dd4e90efd55a8455266, type: 3}
   m_PrefabInstance: {fileID: 3221434089854169773}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &3824612743423298985 stripped
+--- !u!114 &2504852499421279446 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1848468413114679044, guid: 410b178a754e3dd4e90efd55a8455266, type: 3}
+  m_CorrespondingSourceObject: {fileID: 1042534037909292667, guid: 410b178a754e3dd4e90efd55a8455266, type: 3}
   m_PrefabInstance: {fileID: 3221434089854169773}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}

@@ -249,10 +249,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb07c3c2dbb72cc4997d5a87a9ef1199, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
   damageDealt: 0
-  stolenGoods: 0
   stolenGoodsCounter: {fileID: 0}
+  grabText: {fileID: 0}
+  stealableName: {fileID: 0}
+  thieveryGoal: {fileID: 0}
+  GribbyTakesDamage: {fileID: 0}
 --- !u!114 &6940758657888084498
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -265,8 +267,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eefabee33bc67aa489284bede8981114, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSpeed: 6
-  sprintSpeed: 12
+  walkSpeed: 5
+  sprintSpeed: 10
   groundDrag: 2
   jumpForce: 18
   jumpCooldown: 0.1
@@ -285,6 +287,12 @@ MonoBehaviour:
   grounded: 0
   maxSlopeAngle: 45
   orientation: {fileID: 7420794439835180127}
+  enemyLandArea:
+    serializedVersion: 2
+    m_Bits: 0
+  antiLandRange: 0
+  landRangeDeactivate: 0
+  goal: {fileID: 0}
   GribbyRun: {fileID: 0}
   isJumping: 0
   state: 0
@@ -300,8 +308,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4e44beb98f16e94b9380483237d3278, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  grabKey: 324
-  stabKey: 323
   arms: {fileID: 0}
   GribbyAnim: {fileID: 0}
   damage: 20
