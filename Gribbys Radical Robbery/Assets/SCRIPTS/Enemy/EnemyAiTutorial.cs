@@ -65,14 +65,18 @@ public class EnemyAiTutorial : MonoBehaviour
     public float timeBetweenAttacks;
     bool alreadyAttacked;
     public GameObject projectile;
-    public bool topBladePull;
-    public bool bottomBladePull;
-    public bool holdWeapons;
+    public bool BladePull;
+    public bool holdWeapon;
+    public bool bladeAttack;
 
     //Animation
-    public Animator MeleeEnemy;
-    public Animator TopBladePull;
-    public Animator BottomBladePull;
+    Animator _animator;
+    string _currentState;
+    const string PREPARE_ATTACK = "Prepare_Attack";
+    const string ENEMY_SPIN = "Enemy_Spin";
+    const string BLADE_RETRACT = "Blade_Retract";
+    const string BLADE_SWING = "Blade_Swing";
+    public Animator Blade;
 
     //States
     public float sightRange, attackRange, jumpRange, posRange, normalAttackRange;
@@ -81,7 +85,9 @@ public class EnemyAiTutorial : MonoBehaviour
     public void Start()
     {
         readyToJump = true;
-        holdWeapons = true;
+
+        //Animation
+        _animator = gameObject.GetComponent<Animator>();
     }
 
     public void Awake()
@@ -124,34 +130,14 @@ public class EnemyAiTutorial : MonoBehaviour
         landingZone = ground.GetComponent<Goal>();
 
         //Attacks and cooldowns
-        if (holdWeapons)
-        {
-            topBladePull = false;
-            bottomBladePull = false;
-        }
-
-        if (topBladePull)
-        {
-            bottomBladePull = false;
-        }
-        if (bottomBladePull)
-        {
-            topBladePull = false;
-        }
-
-        if (grounded)
-        {
-            MeshCollider.enabled = false;
-            agent.enabled = true;
-        }
-
+        
         if (agent.enabled)
         {
             if (!playerInSightRange && !playerInAttackRange) Patroling();
             if (playerInSightRange && !playerInAttackRange) ChasePlayer();
             if (playerInAttackRange && playerInSightRange && !isMelee) RangeAttackPlayer();
-            if (playerInAttackRange && playerInSightRange && isMelee) TopMeleeAttackPlayer();
-            if (playerInAttackRange && playerInSightRange && isMelee) BottomMeleeAttackPlayer();
+            if (playerInAttackRange && playerInSightRange && isMelee) MeleeAttackPlayer();
+            if (playerInAttackRange && playerInSightRange && isMelee) BladePull = true;
         }
         else
         {
@@ -170,6 +156,29 @@ public class EnemyAiTutorial : MonoBehaviour
                 rb.drag = 0;
 
             Debug.Log(rb.velocity.magnitude);
+        }
+    }
+
+    public void ChangeAnimationState(string newState)
+    {
+        if (newState == _currentState)
+        {
+            return;
+        }
+
+        _animator.Play(newState);
+        _currentState = newState;
+    }
+
+    bool IsAnimationPlaying(Animator animator, string stateName)
+    {
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName(stateName) && animator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1.0f)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
         }
     }
 
@@ -285,17 +294,12 @@ public class EnemyAiTutorial : MonoBehaviour
         }
     }
 
-    public void TopMeleeAttackPlayer()
+    public void MeleeAttackPlayer()
     {
-        holdWeapons = false;
-        TopBladePull.SetBool("TopBladePull", topBladePull);
-        MeleeEnemy.SetBool("TopBladePull", topBladePull);
-        topBladePull = true;
-    }
+        //Make sure enemy doesn't move
+        agent.SetDestination(transform.position);
 
-    public void BottomMeleeAttackPlayer()
-    {
-
+        ChangeAnimationState(PREPARE_ATTACK);
     }
 
     public void ResetAttack()
