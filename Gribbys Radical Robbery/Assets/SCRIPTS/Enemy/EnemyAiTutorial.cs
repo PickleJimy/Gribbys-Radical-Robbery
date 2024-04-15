@@ -75,7 +75,7 @@ public class EnemyAiTutorial : MonoBehaviour
     const string PREPARE_ATTACK = "Prepare_Attack";
     const string ENEMY_SPIN = "Enemy_Spin";
     const string BLADE_RETRACT = "Blade_Retract";
-    const string BLADE_SWING = "Blade_Swing";
+    const string BLADE_SPIN = "Blade_Spin";
     public Animator Blade;
 
     //States
@@ -299,7 +299,25 @@ public class EnemyAiTutorial : MonoBehaviour
         //Make sure enemy doesn't move
         agent.SetDestination(transform.position);
 
-        ChangeAnimationState(PREPARE_ATTACK);
+        if (playerInAttackRange)
+        {
+            if (!alreadyAttacked)
+            {
+                Blade.SetBool("BladePull", true);
+
+                alreadyAttacked = true;
+                Invoke(nameof(ResetAttack), timeBetweenAttacks);
+            }      
+            if (alreadyAttacked)
+            {
+                Blade.SetBool("BladePull", false);
+            }
+        }
+
+        if (!playerInAttackRange)
+        {
+
+        }
     }
 
     public void ResetAttack()
