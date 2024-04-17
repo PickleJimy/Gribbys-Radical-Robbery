@@ -55,6 +55,7 @@ public class EnemyAiTutorial : MonoBehaviour
     public bool hasDashAttacked;
     public bool isChasingPlayer;
     public bool isMelee;
+    public bool isRanged;
 
     //Patroling
     public Vector3 walkPoint;
@@ -63,19 +64,14 @@ public class EnemyAiTutorial : MonoBehaviour
 
     //Attacking
     public float timeBetweenAttacks;
-    bool alreadyAttacked;
+    public bool alreadyAttacked;
     public GameObject projectile;
-    public bool BladePull;
-    public bool holdWeapon;
-    public bool bladeAttack;
 
     //Animation
     Animator _animator;
     string _currentState;
-    const string PREPARE_ATTACK = "Prepare_Attack";
-    const string ENEMY_SPIN = "Enemy_Spin";
-    const string BLADE_RETRACT = "Blade_Retract";
-    const string BLADE_SPIN = "Blade_Spin";
+    const string MELEE_ENEMY_ATTACK = "Blade_Attack";
+    public Animator MeleeEnemy;
     public Animator Blade;
 
     //States
@@ -88,6 +84,7 @@ public class EnemyAiTutorial : MonoBehaviour
 
         //Animation
         _animator = gameObject.GetComponent<Animator>();
+        Blade.enabled = false;
     }
 
     public void Awake()
@@ -135,14 +132,14 @@ public class EnemyAiTutorial : MonoBehaviour
         {
             if (!playerInSightRange && !playerInAttackRange) Patroling();
             if (playerInSightRange && !playerInAttackRange) ChasePlayer();
-            if (playerInAttackRange && playerInSightRange && !isMelee) RangeAttackPlayer();
+            if (playerInAttackRange && playerInSightRange && !isMelee && isRanged) RangeAttackPlayer();
             if (playerInAttackRange && playerInSightRange && isMelee) MeleeAttackPlayer();
-            if (playerInAttackRange && playerInSightRange && isMelee) BladePull = true;
         }
         else
         {
             if (playerInSightRange && !playerInAttackRange) RbChasePlayer();
             if (playerInAttackRange && playerInSightRange && !isMelee) RbRangeAttackPlayer();
+            Destroy(Blade);
         }
 
         // when to jump
@@ -299,30 +296,20 @@ public class EnemyAiTutorial : MonoBehaviour
         //Make sure enemy doesn't move
         agent.SetDestination(transform.position);
 
-        if (playerInAttackRange)
-        {
-            if (!alreadyAttacked)
-            {
-                Blade.SetBool("BladePull", true);
+        transform.LookAt(player);
 
-                alreadyAttacked = true;
-                Invoke(nameof(ResetAttack), timeBetweenAttacks);
-            }      
-            if (alreadyAttacked)
-            {
-                Blade.SetBool("BladePull", false);
-            }
-        }
+        Blade.enabled = true;
+        Blade.SetBool(MELEE_ENEMY_ATTACK, true);
 
-        if (!playerInAttackRange)
-        {
-
-        }
+        alreadyAttacked = true;
+        Invoke(nameof(ResetAttack), timeBetweenAttacks);
     }
 
     public void ResetAttack()
     {
         alreadyAttacked = false;
+
+        Blade.enabled = false;
     }
 
     public void TakeDamage(int damage)
