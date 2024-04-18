@@ -1046,7 +1046,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7726744734050656653, guid: 4aa781173aef9174c84b5c45bc2cd51b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -66.4
+      value: -45
       objectReference: {fileID: 0}
     - target: {fileID: 7790031109450959070, guid: 4aa781173aef9174c84b5c45bc2cd51b, type: 3}
       propertyPath: m_AnchorMax.x
@@ -1061,6 +1061,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4aa781173aef9174c84b5c45bc2cd51b, type: 3}
+--- !u!95 &889542460 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 4580915262651255085, guid: 3b5c5fb5eae380f49969a8ec5eecf7b2, type: 3}
+  m_PrefabInstance: {fileID: 3157122247906532678}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1142965612
 GameObject:
   m_ObjectHideFlags: 0
@@ -3067,33 +3072,13 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 515640977}
-    - target: {fileID: 1614123683537770804, guid: 3b5c5fb5eae380f49969a8ec5eecf7b2, type: 3}
-      propertyPath: m_Height
-      value: 3
+    - target: {fileID: 314794208020204046, guid: 3b5c5fb5eae380f49969a8ec5eecf7b2, type: 3}
+      propertyPath: MeleeEnemy
+      value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 1614123683537770804, guid: 3b5c5fb5eae380f49969a8ec5eecf7b2, type: 3}
-      propertyPath: m_Radius
+    - target: {fileID: 314794208020204046, guid: 3b5c5fb5eae380f49969a8ec5eecf7b2, type: 3}
+      propertyPath: dashCapable
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1614123683537770804, guid: 3b5c5fb5eae380f49969a8ec5eecf7b2, type: 3}
-      propertyPath: m_Center.x
-      value: -0.22269876
-      objectReference: {fileID: 0}
-    - target: {fileID: 1614123683537770804, guid: 3b5c5fb5eae380f49969a8ec5eecf7b2, type: 3}
-      propertyPath: m_Center.y
-      value: -0.0000000032367395
-      objectReference: {fileID: 0}
-    - target: {fileID: 1614123683537770804, guid: 3b5c5fb5eae380f49969a8ec5eecf7b2, type: 3}
-      propertyPath: m_Center.z
-      value: -0.00000006454788
-      objectReference: {fileID: 0}
-    - target: {fileID: 1614123683537770804, guid: 3b5c5fb5eae380f49969a8ec5eecf7b2, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1614123683537770804, guid: 3b5c5fb5eae380f49969a8ec5eecf7b2, type: 3}
-      propertyPath: m_IncludeLayers.m_Bits
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2182911593924983375, guid: 3b5c5fb5eae380f49969a8ec5eecf7b2, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3139,28 +3124,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Melee Enemy
       objectReference: {fileID: 0}
-    - target: {fileID: 3527908921580046579, guid: 3b5c5fb5eae380f49969a8ec5eecf7b2, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3527908921580046579, guid: 3b5c5fb5eae380f49969a8ec5eecf7b2, type: 3}
-      propertyPath: m_TagString
-      value: Untagged
-      objectReference: {fileID: 0}
     - target: {fileID: 3568226125729122476, guid: 3b5c5fb5eae380f49969a8ec5eecf7b2, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 4580915262651255085, guid: 3b5c5fb5eae380f49969a8ec5eecf7b2, type: 3}
-      propertyPath: m_ApplyRootMotion
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8387232151346931727, guid: 3b5c5fb5eae380f49969a8ec5eecf7b2, type: 3}
-      propertyPath: m_Layer
-      value: 6
+      objectReference: {fileID: -6478536213147159724, guid: 2e4d2a78fa1601243bbb7b41991e49d3, type: 3}
+    - target: {fileID: 7774988005249456102, guid: 3b5c5fb5eae380f49969a8ec5eecf7b2, type: 3}
+      propertyPath: m_UseGravity
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 4630512923515256468, guid: 3b5c5fb5eae380f49969a8ec5eecf7b2, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3b5c5fb5eae380f49969a8ec5eecf7b2, type: 3}
@@ -3172,6 +3146,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 370653707888902711, guid: da1411e0b94d3f74f849adfde326ae40, type: 3}
+      propertyPath: Blade
+      value: 
+      objectReference: {fileID: 889542460}
     - target: {fileID: 370653707888902711, guid: da1411e0b94d3f74f849adfde326ae40, type: 3}
       propertyPath: ground
       value: 
@@ -3285,6 +3263,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8873228260077740924, guid: a1bfd8d6ba5f7d143a4fcae729baa061, type: 3}
+      propertyPath: Blade
+      value: 
+      objectReference: {fileID: 889542460}
     - target: {fileID: 8873228260077740924, guid: a1bfd8d6ba5f7d143a4fcae729baa061, type: 3}
       propertyPath: ground
       value: 

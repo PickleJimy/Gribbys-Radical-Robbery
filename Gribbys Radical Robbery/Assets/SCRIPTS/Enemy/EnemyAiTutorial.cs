@@ -139,7 +139,6 @@ public class EnemyAiTutorial : MonoBehaviour
         {
             if (playerInSightRange && !playerInAttackRange) RbChasePlayer();
             if (playerInAttackRange && playerInSightRange && !isMelee) RbRangeAttackPlayer();
-            Destroy(Blade);
         }
 
         // when to jump
