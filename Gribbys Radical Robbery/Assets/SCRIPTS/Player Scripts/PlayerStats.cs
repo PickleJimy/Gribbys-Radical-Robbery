@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 public class PlayerStats : MonoBehaviour
 {
     public static int health = 80;
+    public bool godMode;
 
     public int damageDealt;
 
@@ -31,9 +32,10 @@ public class PlayerStats : MonoBehaviour
     {
         player = gameObject;
         sceneManager = GameObject.Find("Scene Manager");
+        Invoke(nameof(DisableGrabText), 0.01f);
+        godMode = false;
         stolenGoodsNeeded = sceneManager.GetComponent<SceneManagment>().stolenGoodsNeeded;
         ThieveryGoal();
-        Invoke(nameof(DisableGrabText), 0.01f);
     }
 
     void DisableGrabText()
@@ -44,13 +46,23 @@ public class PlayerStats : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (health <= 0 && !godMode)
+        {
+            Die();
+        }
+
         UpdateSGC();
         UpdateSNT();
     }
 
+    void Die()
+    {
+        gameObject.GetComponent<DeathScreen>().PlayerDead();
+    }
+
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("EnemyDamager") && other.GetComponent<EnemyDealDamage>().dealDamage)
+        if (other.CompareTag("EnemyDamager") && other.GetComponent<EnemyDealDamage>().dealDamage && !godMode)
         {
             Debug.Log("YEEOWCH");
             GribbyTakesDamage.SetTrigger("isDamaged");

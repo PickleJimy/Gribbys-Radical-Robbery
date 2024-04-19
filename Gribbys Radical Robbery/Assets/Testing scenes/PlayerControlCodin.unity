@@ -460,11 +460,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &470492797 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 4869225174932858003, guid: 4aa781173aef9174c84b5c45bc2cd51b, type: 3}
-  m_PrefabInstance: {fileID: 3187307088607599870}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &582854497
 GameObject:
   m_ObjectHideFlags: 0
@@ -1410,6 +1405,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61a366f7341d3384098136c3cab23c67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  grounded: 0
+  groundDestructable: 0
+  itemHeight: 0
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &1256760026
 GameObject:
   m_ObjectHideFlags: 0
@@ -1663,6 +1664,11 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!1 &1460213312 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7593056420657763049, guid: 4aa781173aef9174c84b5c45bc2cd51b, type: 3}
+  m_PrefabInstance: {fileID: 3187307088607599870}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1529884787
 GameObject:
   m_ObjectHideFlags: 0
@@ -1767,10 +1773,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 122934965493728645, guid: 4aa781173aef9174c84b5c45bc2cd51b, type: 3}
-      propertyPath: GribbyTakesDamage
-      value: 
-      objectReference: {fileID: 470492797}
     - target: {fileID: 4323368230865721837, guid: 4aa781173aef9174c84b5c45bc2cd51b, type: 3}
       propertyPath: m_Name
       value: Player Full
@@ -1783,6 +1785,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7830788396884366639, guid: 4aa781173aef9174c84b5c45bc2cd51b, type: 3}
+      propertyPath: playerCamera
+      value: 
+      objectReference: {fileID: 1460213312}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
