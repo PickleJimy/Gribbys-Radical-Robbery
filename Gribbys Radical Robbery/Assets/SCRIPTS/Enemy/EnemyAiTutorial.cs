@@ -126,6 +126,12 @@ public class EnemyAiTutorial : MonoBehaviour
 
         landingZone = ground.GetComponent<Goal>();
 
+        if (grounded)
+        {
+            agent.enabled = true;
+            MeshCollider.enabled = false;
+        }
+
         //Attacks and cooldowns
         
         if (agent.enabled)
@@ -300,8 +306,11 @@ public class EnemyAiTutorial : MonoBehaviour
         Blade.enabled = true;
         Blade.SetBool(MELEE_ENEMY_ATTACK, true);
 
-        alreadyAttacked = true;
-        Invoke(nameof(ResetAttack), timeBetweenAttacks);
+        if (!alreadyAttacked)
+        {
+            alreadyAttacked = true;
+            Invoke(nameof(ResetAttack), timeBetweenAttacks);
+        }
     }
 
     public void ResetAttack()
