@@ -6,6 +6,7 @@ public class PlayerMovement : MonoBehaviour
     private float moveSpeed;
     public float walkSpeed;
     public float sprintSpeed;
+    public bool isMoving;
 
     public float groundDrag;
 
@@ -59,6 +60,7 @@ public class PlayerMovement : MonoBehaviour
         walking,
         sprinting,
         crouching,
+        stationary,
         air
     }
 
@@ -74,7 +76,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, whatIsGround);
+        CheckGrounded();
 
         MyInput();
         SpeedControl();
@@ -85,7 +87,21 @@ public class PlayerMovement : MonoBehaviour
         else
             rb.drag = 0;
 
-        // Debug.Log(rb.velocity.magnitude);
+        //Get speed
+        //Debug.Log(rb.velocity.magnitude);
+    }
+
+    void CheckGrounded()
+    {
+        if (Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, whatIsGround) || OnSlope())
+        {
+            grounded = true;
+        }
+
+        if (!Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, whatIsGround) && !OnSlope())
+        {
+            grounded = false;
+        }
     }
 
     private void FixedUpdate()
@@ -136,6 +152,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void StateHandler()
     {
+        
         // Mode - Crouching
         if (Input.GetKey(crouchKey))
         {
@@ -144,7 +161,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         // Mode - Sprinting
-        else if (grounded && Input.GetKey(sprintKey))
+        else if (grounded && Input.GetKey(sprintKey) && isMoving)
         {
             state = MovementState.sprinting;
             moveSpeed = sprintSpeed;
@@ -155,13 +172,19 @@ public class PlayerMovement : MonoBehaviour
         }
 
         // Mode - Walking
-        else if (grounded)
+        else if (grounded && isMoving)
         {
             state = MovementState.walking;
             moveSpeed = walkSpeed;
             GribbyRun.SetFloat("Speed", 0);
             isJumping = false;
             JumpingAnimation();
+        }
+
+        //Mode - Stationary
+        else if (grounded)
+        {
+            state = MovementState.stationary;
         }
 
         // Mode - Air
@@ -178,6 +201,15 @@ public class PlayerMovement : MonoBehaviour
         // Calculate movement direction
         moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
 
+        Debug.Log(moveDirection);
+        
+        if (moveDirection.x == 0 && moveDirection.z == 0)
+            isMoving = false;
+        
+        if (moveDirection.x != 0 || moveDirection.z != 0)
+            isMoving = true;
+
+
         // on slope
         if (OnSlope() && !exitingSlope)
         {
@@ -189,14 +221,24 @@ public class PlayerMovement : MonoBehaviour
 
         // on ground
         if (grounded)
+        {
             rb.AddForce(moveDirection.normalized * moveSpeed * 20f, ForceMode.Force);
+        }
 
         // in air
         else if (!grounded)
             rb.AddForce(moveDirection.normalized * moveSpeed * 20f * airMultiplier, ForceMode.Force);
 
         // turn gravity off while on slope
-        rb.useGravity = !OnSlope();
+        if (!isMoving && OnSlope() && grounded)
+        {
+            rb.useGravity = false;
+            rb.angularVelocity = Vector3.zero;
+        }
+        else if (isMoving && OnSlope())
+            rb.useGravity = true;
+        else
+            rb.useGravity = true;
     }
 
     private void SpeedControl()
