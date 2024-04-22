@@ -158,6 +158,7 @@ public class PlayerMovement : MonoBehaviour
         {
             state = MovementState.crouching;
             moveSpeed = crouchSpeed;
+            isJumping = false;
         }
 
         // Mode - Sprinting
@@ -185,6 +186,9 @@ public class PlayerMovement : MonoBehaviour
         else if (grounded)
         {
             state = MovementState.stationary;
+            GribbyRun.SetFloat("Speed", 0);
+            isJumping = false;
+            JumpingAnimation();
         }
 
         // Mode - Air
@@ -233,12 +237,27 @@ public class PlayerMovement : MonoBehaviour
         if (!isMoving && OnSlope() && grounded)
         {
             rb.useGravity = false;
-            rb.angularVelocity = Vector3.zero;
+
+            rb.velocity = new Vector3(EaseToZero(rb.velocity.x, 0.1f), rb.velocity.y, EaseToZero(rb.velocity.z, 0.1f));
+            
         }
-        else if (isMoving && OnSlope())
-            rb.useGravity = true;
         else
             rb.useGravity = true;
+    }
+
+    public float EaseToZero(float value, float amount)
+    {
+        while (value != 0)
+        {
+            if (value < 0)
+                value += amount;
+            if (value > 0)
+                value -= amount;
+
+            return value;
+        }
+
+        return value;
     }
 
     private void SpeedControl()
