@@ -8,6 +8,9 @@ public class StartMenu : MonoBehaviour
 {
     public GameObject mainMenu;
     public GameObject levelSelect;
+    public Animator startgame;
+    public Animator startgamelight;
+    public GameObject fireOut;
 
     // Start is called before the first frame update
     void Start()
@@ -25,6 +28,9 @@ public class StartMenu : MonoBehaviour
     {
         if (button.name == "Continue Button")
         {
+            startgame.SetTrigger("Game Started");
+            startgamelight.SetTrigger("Game Started");
+            Destroy(fireOut, 1);
             if (PlayerPrefs.GetString("currentLevel") != null)
             {
                 SceneManager.LoadScene(PlayerPrefs.GetString("currentLevel"));
