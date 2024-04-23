@@ -208,6 +208,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8447779435264721118}
     - target: {fileID: 1768874430243840848, guid: 47babaa94ded2e742be2f2db781f8344, type: 3}
+      propertyPath: jumpForce
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1768874430243840848, guid: 47babaa94ded2e742be2f2db781f8344, type: 3}
       propertyPath: crouchSpeed
       value: 3
       objectReference: {fileID: 0}
@@ -261,11 +265,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8965366270674064607, guid: 47babaa94ded2e742be2f2db781f8344, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: 4.92
       objectReference: {fileID: 0}
     - target: {fileID: 8965366270674064607, guid: 47babaa94ded2e742be2f2db781f8344, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -6
       objectReference: {fileID: 0}
     - target: {fileID: 8965366270674064607, guid: 47babaa94ded2e742be2f2db781f8344, type: 3}
       propertyPath: m_LocalRotation.w
@@ -377,6 +381,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db41c2479d4412d4ca70a73126cc2f89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerCamera: {fileID: 7593056420657763049}
   deathMenu: {fileID: 2657221804284198065, guid: 89128690872a1b64fb1cf516ac10e3b2, type: 3}
 --- !u!95 &4869225174932858003 stripped
 Animator:
