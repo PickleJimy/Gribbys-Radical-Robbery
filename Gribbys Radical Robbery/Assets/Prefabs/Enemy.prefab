@@ -95,7 +95,6 @@ MonoBehaviour:
   isChasingPlayer: 0
   isMelee: 0
   isRanged: 1
-  projectileSpeed: 32
   walkPoint: {x: 4.34, y: 0, z: 6.4}
   walkPointSet: 0
   walkPointRange: 8
@@ -122,8 +121,8 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 8
-  m_Acceleration: 6
+  m_Speed: 12
+  m_Acceleration: 7
   avoidancePriority: 50
   m_AngularSpeed: 120
   m_StoppingDistance: 1
@@ -146,7 +145,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a19bda6ba6bc4c54f9cdf1c4a48cb290, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 50
+  health: 100
 --- !u!114 &2293019162020806892
 MonoBehaviour:
   m_ObjectHideFlags: 0

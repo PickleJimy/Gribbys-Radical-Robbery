@@ -180,10 +180,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 32579265675517928, guid: da1411e0b94d3f74f849adfde326ae40, type: 3}
-      propertyPath: health
-      value: 70
-      objectReference: {fileID: 0}
     - target: {fileID: 370653707888902711, guid: da1411e0b94d3f74f849adfde326ae40, type: 3}
       propertyPath: Blade
       value: 
@@ -213,10 +209,6 @@ PrefabInstance:
       value: 4.34
       objectReference: {fileID: 0}
     - target: {fileID: 370653707888902711, guid: da1411e0b94d3f74f849adfde326ae40, type: 3}
-      propertyPath: minJumpHeight
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 370653707888902711, guid: da1411e0b94d3f74f849adfde326ae40, type: 3}
       propertyPath: walkPointRange
       value: 8.1
       objectReference: {fileID: 0}
@@ -230,15 +222,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2247804978720256630, guid: da1411e0b94d3f74f849adfde326ae40, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -9.096609
+      value: 11.69
       objectReference: {fileID: 0}
     - target: {fileID: 2247804978720256630, guid: da1411e0b94d3f74f849adfde326ae40, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 13.116109
+      value: 0.895
       objectReference: {fileID: 0}
     - target: {fileID: 2247804978720256630, guid: da1411e0b94d3f74f849adfde326ae40, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 12.859348
+      value: 65.37
       objectReference: {fileID: 0}
     - target: {fileID: 2247804978720256630, guid: da1411e0b94d3f74f849adfde326ae40, type: 3}
       propertyPath: m_LocalRotation.w
@@ -268,10 +260,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2293019162020806892, guid: da1411e0b94d3f74f849adfde326ae40, type: 3}
-      propertyPath: AllObjects.Array.size
-      value: 7
-      objectReference: {fileID: 0}
     - target: {fileID: 2358648691654089754, guid: da1411e0b94d3f74f849adfde326ae40, type: 3}
       propertyPath: m_Name
       value: Melee Enemy
@@ -291,10 +279,6 @@ PrefabInstance:
     - target: {fileID: 3560887585288343178, guid: da1411e0b94d3f74f849adfde326ae40, type: 3}
       propertyPath: m_AutoBraking
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3560887585288343178, guid: da1411e0b94d3f74f849adfde326ae40, type: 3}
-      propertyPath: m_Acceleration
-      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
