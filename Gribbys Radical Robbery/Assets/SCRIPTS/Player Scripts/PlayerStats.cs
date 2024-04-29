@@ -53,6 +53,7 @@ public class PlayerStats : MonoBehaviour
 
         UpdateSGC();
         UpdateSNT();
+        ThieveryGoal();
     }
 
     void Die()
@@ -91,6 +92,14 @@ public class PlayerStats : MonoBehaviour
 
     public void ThieveryGoal()
     {
-        thieveryGoal.text = " " + (stolenGoodsNeeded + GameManager.stolenGoods) + " ";
+        if (stolenGoods < (stolenGoodsNeeded + GameManager.stolenGoods))
+        {
+            thieveryGoal.text = "" + (stolenGoodsNeeded + GameManager.stolenGoods) + "";
+        }
+        
+        else
+        {
+            thieveryGoal.text = "completed";
+        }
     }
 }
