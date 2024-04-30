@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerStats : MonoBehaviour
 {
-    public static int health = 80;
+    public static int health = 100;
     public bool godMode;
 
     public int damageDealt;

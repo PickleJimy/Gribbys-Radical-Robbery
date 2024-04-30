@@ -249,7 +249,7 @@ PrefabInstance:
       objectReference: {fileID: 150563671471771697}
     - target: {fileID: 7630294254068297482, guid: 47babaa94ded2e742be2f2db781f8344, type: 3}
       propertyPath: m_CullingMask.m_Bits
-      value: 3839
+      value: 12031
       objectReference: {fileID: 0}
     - target: {fileID: 8832506184901079398, guid: 47babaa94ded2e742be2f2db781f8344, type: 3}
       propertyPath: sens
@@ -476,10 +476,6 @@ PrefabInstance:
     - target: {fileID: 4660967477885696627, guid: 410b178a754e3dd4e90efd55a8455266, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5616864849867184784, guid: 410b178a754e3dd4e90efd55a8455266, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -15.780029
       objectReference: {fileID: 0}
     - target: {fileID: 6944868578580794843, guid: 410b178a754e3dd4e90efd55a8455266, type: 3}
       propertyPath: m_Pivot.x
