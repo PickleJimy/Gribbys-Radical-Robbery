@@ -445,6 +445,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 6784061905298052481, guid: da1411e0b94d3f74f849adfde326ae40, type: 3}
+    - {fileID: 1585515370870254611, guid: da1411e0b94d3f74f849adfde326ae40, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 2247804978720256630, guid: da1411e0b94d3f74f849adfde326ae40, type: 3}
       insertIndex: -1
@@ -536,6 +537,14 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -5403210510469871490, guid: 5efba9855760d6f43a9fbf10d5058343, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 26d0e8d89b3f53844898dddc01959ca2, type: 2}
+    - target: {fileID: -5403210510469871490, guid: 5efba9855760d6f43a9fbf10d5058343, type: 3}
+      propertyPath: m_Materials.Array.data[2]
+      value: 
+      objectReference: {fileID: -3522955778539423533, guid: 3305da6d44785c345b68df9ea29f095b, type: 3}
     - target: {fileID: -1735130755188720511, guid: 5efba9855760d6f43a9fbf10d5058343, type: 3}
       propertyPath: m_Layer
       value: 0
@@ -550,7 +559,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 5efba9855760d6f43a9fbf10d5058343, type: 3}
       propertyPath: m_Name
-      value: sarge
+      value: Melee Sarge
       objectReference: {fileID: 0}
     - target: {fileID: 1936142568600831273, guid: 5efba9855760d6f43a9fbf10d5058343, type: 3}
       propertyPath: m_LocalPosition.y
