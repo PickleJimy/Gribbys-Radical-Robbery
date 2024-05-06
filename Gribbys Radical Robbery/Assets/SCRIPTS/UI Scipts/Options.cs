@@ -16,11 +16,6 @@ public class Options : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (PlayerPrefs.GetFloat("camSensitivity") == 0)
-        {
-            PlayerPrefs.SetFloat("camSensitivity", 15);
-        }
-
         sensSlider.value = PlayerPrefs.GetFloat("camSensitivity");
     }
 
