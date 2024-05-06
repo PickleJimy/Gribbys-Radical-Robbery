@@ -51,7 +51,7 @@ public class DeathScreen : MonoBehaviour
         }
     }
 
-    void UnpauseGame()
+    public void UnpauseGame()
     {
         Destroy(deathMenu);
         PauseController.gameIsPaused = false;
@@ -85,12 +85,5 @@ public class DeathScreen : MonoBehaviour
                 child.gameObject.GetComponent<Collider>().enabled = PauseController.stealability;
             }
         }
-    }
-
-    void RestartScene()
-    {
-        PlayerStats.stolenGoods = GameManager.stolenGoods;
-        PlayerStats.health = 100;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

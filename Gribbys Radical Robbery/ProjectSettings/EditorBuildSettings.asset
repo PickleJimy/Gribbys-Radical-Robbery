@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Main Menu.unity
     guid: 04d5b8dbbfeda1d43b5181115d71501b
   - enabled: 1
+    path: Assets/Scenes/Parking Lot.unity
+    guid: 17102aafe37c3134a9c387c4853427fa
+  - enabled: 1
     path: Assets/Testing scenes/PlayerControlCodin.unity
     guid: 10fe8b868fc4c8c47a9d23fb0b6d055f
   - enabled: 1

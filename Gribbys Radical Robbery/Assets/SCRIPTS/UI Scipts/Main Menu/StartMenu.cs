@@ -33,8 +33,16 @@ public class StartMenu : MonoBehaviour
             Destroy(fireOut, 1);
             if (PlayerPrefs.GetString("currentLevel") != null)
             {
-                SceneManager.LoadScene(PlayerPrefs.GetString("currentLevel"));
+                StartCoroutine(LoadLevel(2.3f, PlayerPrefs.GetString("currentLevel")));
             }
+        }
+
+        if (button.name == "New Game Button")
+        {
+            startgame.SetTrigger("Game Started");
+            startgamelight.SetTrigger("Game Started");
+            Destroy(fireOut, 1);
+            StartCoroutine(LoadLevel(2.3f, "Parking Lot"));
         }
 
         if (button.name == "Levels Button")
@@ -48,5 +56,14 @@ public class StartMenu : MonoBehaviour
             gameObject.SetActive(false);
             mainMenu.SetActive(true);
         }
+    }
+
+
+    public IEnumerator LoadLevel(float time, string level)
+    {
+        yield return new WaitForSeconds(time);
+
+        SceneManager.LoadScene(level);
+
     }
 }
