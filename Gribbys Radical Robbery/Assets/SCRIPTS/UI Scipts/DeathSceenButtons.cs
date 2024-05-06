@@ -8,8 +8,6 @@ public class DeathSceenButtons : MonoBehaviour
 {
     public void Click(Button button)
     {
-        Debug.Log("GOG");
-
         if (button.name == "Retry Button")
         {
             RestartScene();
@@ -18,6 +16,9 @@ public class DeathSceenButtons : MonoBehaviour
         if (button.name == "Main Menu Button")
         {
             PlayerPrefs.SetString("currentLevel", SceneManager.GetActiveScene().name);
+            GameObject.Find("Player").GetComponent<DeathScreen>().UnpauseGame();
+            PlayerStats.stolenGoods = GameManager.stolenGoods;
+            PlayerStats.health = 100;
             SceneManager.LoadScene("Main Menu");
         }
     }
