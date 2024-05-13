@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class StealableHealthItem : MonoBehaviour
 {
-    public int healthRecover;
     public GameObject grabText;
     private bool inStealingRange;
     public KeyCode grabKey;
@@ -53,7 +52,7 @@ public class StealableHealthItem : MonoBehaviour
         Destroy(gameObject);
         if (PlayerStats.health != 100)
         {
-            PlayerStats.health += healthRecover;
+            PlayerStats.health = 100;
         }
     }
 

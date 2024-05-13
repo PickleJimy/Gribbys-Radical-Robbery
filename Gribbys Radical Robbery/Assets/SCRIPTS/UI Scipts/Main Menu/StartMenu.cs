@@ -42,6 +42,8 @@ public class StartMenu : MonoBehaviour
             startgame.SetTrigger("Game Started");
             startgamelight.SetTrigger("Game Started");
             Destroy(fireOut, 1);
+            GameManager.stolenGoods = 0;
+            PlayerStats.stolenGoods = 0;
             StartCoroutine(LoadLevel(2.3f, "Parking Lot"));
         }
 
