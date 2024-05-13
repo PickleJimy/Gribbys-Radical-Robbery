@@ -34,6 +34,7 @@ public class DeathScreen : MonoBehaviour
         if (!PauseController.gameIsPaused)
         {
             Instantiate(deathMenu, new Vector3(0, 0, 0), Quaternion.identity);
+            stealablesParent = GameObject.Find("Stealables");
             PauseController.gameIsPaused = true;
             gameObject.GetComponent<PlayerMovement>().enabled = false;
             gameObject.GetComponent<GrabAndStab>().enabled = false;

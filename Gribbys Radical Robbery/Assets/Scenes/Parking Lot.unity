@@ -994,7 +994,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b62d30c4b125934d983280b4826a873, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthRecover: 20
   grabText: {fileID: 0}
   grabKey: 0
 --- !u!64 &118534823
@@ -5070,7 +5069,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b62d30c4b125934d983280b4826a873, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthRecover: 20
   grabText: {fileID: 0}
   grabKey: 0
 --- !u!64 &1159283541
