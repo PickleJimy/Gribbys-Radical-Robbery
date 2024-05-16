@@ -8765,14 +8765,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 216532950}
     m_Modifications:
-    - target: {fileID: 370653707888902711, guid: da1411e0b94d3f74f849adfde326ae40, type: 3}
-      propertyPath: maxJumpHeight
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 370653707888902711, guid: da1411e0b94d3f74f849adfde326ae40, type: 3}
-      propertyPath: minJumpHeight
-      value: 500
-      objectReference: {fileID: 0}
     - target: {fileID: 2247804978720256630, guid: da1411e0b94d3f74f849adfde326ae40, type: 3}
       propertyPath: m_LocalPosition.x
       value: -11.096609
