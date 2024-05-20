@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e7bb6f6cc87a804e86cad2317fb46ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 8
+  damage: 20
   dealDamage: 1
 --- !u!135 &1056024832786201780
 SphereCollider:
@@ -82,7 +82,6 @@ GameObject:
   - component: {fileID: 3200612829071867895}
   - component: {fileID: 2139557082024668971}
   - component: {fileID: 8120944016548017960}
-  - component: {fileID: 7446223708888682484}
   m_Layer: 0
   m_Name: Enemy Projectile (Strong)
   m_TagString: Untagged
@@ -99,9 +98,9 @@ Transform:
   m_GameObject: {fileID: 3429537915294254526}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.66, z: 0}
-  m_LocalScale: {x: 0.38128, y: 0.38128, z: 0.38128}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: 0, y: 1.391, z: 0}
+  m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 5639472053515059879}
   m_Father: {fileID: 0}
@@ -218,21 +217,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   grounded: 0
   groundDestructable: 1
-  itemHeight: 0.1
+  itemHeight: 0.6
   whatIsGround:
     serializedVersion: 2
     m_Bits: 8
---- !u!114 &7446223708888682484
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3429537915294254526}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e7bb6f6cc87a804e86cad2317fb46ed, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 20
-  dealDamage: 1
