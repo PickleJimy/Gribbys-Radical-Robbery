@@ -18,6 +18,7 @@ public class EnemyAiTutorial : MonoBehaviour
     //How it moves
     public Transform ground;
     public GameObject NearestGround;
+    public GameObject NextNearestGround;
     public float speed;
 
     public LayerMask whatIsPlayer, enemyLandArea;
@@ -120,6 +121,7 @@ public class EnemyAiTutorial : MonoBehaviour
         playerOnGround = player.GetComponent<PlayerMovement>().grounded;
         grounded = Physics.Raycast(transform.position, Vector3.down, enemyHeight, whatIsGround);
         NearestGround = gameObject.GetComponent<SenseGround>().NearestGround;
+        NextNearestGround = gameObject.GetComponent<SenseGround>().NearestGround;
 
         if (player.transform.position.y >= rb.transform.position.y + minJumpHeight && playerInJumpRange) preparedToJump = true;
         if (player.transform.position.y <= rb.transform.position.y + minJumpHeight && playerInJumpRange) preparedToJump = false;
@@ -150,7 +152,7 @@ public class EnemyAiTutorial : MonoBehaviour
         }
 
         // when to jump
-        if (readyToJump && grounded && preparedToJump && playerOnGround && playerInSightRange)
+        if (readyToJump && grounded && preparedToJump && playerOnGround && playerInSightRange && enemyInPosRange)
         {
             EnemyJump();
 
