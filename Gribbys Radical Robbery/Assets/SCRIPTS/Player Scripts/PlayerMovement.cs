@@ -31,6 +31,7 @@ public class PlayerMovement : MonoBehaviour
     public float playerHeight;
     public LayerMask whatIsGround, climbZone;
     public bool grounded;
+    public Transform ground;
 
     [Header("Slope Handling")]
     public float maxSlopeAngle;
@@ -51,6 +52,9 @@ public class PlayerMovement : MonoBehaviour
     public float antiLandRange;
     public bool landRangeDeactivate;
     public Transform goal;
+    public GameObject NearestGroundToPlayer;
+    public bool landingZone;
+    public float landingRange;
 
     public Animator GribbyRun;
     public bool isJumping;
@@ -86,6 +90,10 @@ public class PlayerMovement : MonoBehaviour
             rb.drag = groundDrag;
         else
             rb.drag = 0;
+
+        NearestGroundToPlayer = gameObject.GetComponent<SenseGround>().NearestGround;
+        ground = GameObject.Find("Goal").transform;
+        landingZone = ground.GetComponent<Goal>();
 
         //Get speed
         //Debug.Log(rb.velocity.magnitude);
@@ -318,7 +326,7 @@ public class PlayerMovement : MonoBehaviour
 
     void OnDrawGizmosSelected()
     {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, antiLandRange);
+        Gizmos.DrawWireSphere(transform.position, landingRange);
+        Gizmos.color = Color.white;
     }
 }
