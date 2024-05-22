@@ -2844,7 +2844,11 @@ PrefabInstance:
       objectReference: {fileID: 4353852958806591119, guid: 0af33fb4d5a1fce4e92eb5e5789f2cf4, type: 3}
     - target: {fileID: 1143287130622711298, guid: 4aa781173aef9174c84b5c45bc2cd51b, type: 3}
       propertyPath: landingRange
-      value: 5
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1143287130622711298, guid: 4aa781173aef9174c84b5c45bc2cd51b, type: 3}
+      propertyPath: enemyLandArea.m_Bits
+      value: 1024
       objectReference: {fileID: 0}
     - target: {fileID: 4323368230865721837, guid: 4aa781173aef9174c84b5c45bc2cd51b, type: 3}
       propertyPath: m_Name
