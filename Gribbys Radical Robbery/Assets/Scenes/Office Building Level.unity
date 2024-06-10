@@ -4666,6 +4666,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 3560887585288343178, guid: da1411e0b94d3f74f849adfde326ae40, type: 3}
+      propertyPath: m_Radius
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4689638465719528955, guid: da1411e0b94d3f74f849adfde326ae40, type: 3}
       propertyPath: player
       value: 

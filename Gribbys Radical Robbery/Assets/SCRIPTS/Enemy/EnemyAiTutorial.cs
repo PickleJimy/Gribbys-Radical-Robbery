@@ -31,6 +31,8 @@ public class EnemyAiTutorial : MonoBehaviour
     public bool playerOnGround;
     public bool playerInPosRange;
     public bool enemyInPosRange;
+    public Transform enemy;
+    public Transform meleeEnemy;
 
     //Mechanics
     [Header("Ground Check")]
@@ -79,7 +81,7 @@ public class EnemyAiTutorial : MonoBehaviour
 
     //States
     public float angle, attackRange, jumpRange, posRange, normalAttackRange;
-    public bool canSeePlayer, playerInAttackRange, playerInNormalAttackRange;
+    public bool canSeePlayer, playerInAttackRange, playerInNormalAttackRange, isAttackingPlayer;
 
     public void Start()
     {
@@ -94,6 +96,8 @@ public class EnemyAiTutorial : MonoBehaviour
     {
         player = GameObject.Find("Player").transform;
         ground = GameObject.Find("Goal").transform;
+        enemy = GameObject.Find("Enemy").transform;
+        meleeEnemy = GameObject.Find("Melee Enemy").transform;
         agent = gameObject.GetComponent<UnityEngine.AI.NavMeshAgent>();
         agent.enabled = true;
         MeshCollider.enabled = false;
@@ -116,6 +120,11 @@ public class EnemyAiTutorial : MonoBehaviour
         if (canSeePlayer)
         {
             angle = 360;
+        }
+
+        if (!canSeePlayer)
+        {
+            angle = 140;
         }
 
         //Health
