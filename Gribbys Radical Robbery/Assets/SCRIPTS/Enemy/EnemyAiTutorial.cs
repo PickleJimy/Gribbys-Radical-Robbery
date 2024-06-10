@@ -78,7 +78,7 @@ public class EnemyAiTutorial : MonoBehaviour
     public Animator Blade;
 
     //States
-    public float attackRange, jumpRange, posRange, normalAttackRange;
+    public float angle, attackRange, jumpRange, posRange, normalAttackRange;
     public bool canSeePlayer, playerInAttackRange, playerInNormalAttackRange;
 
     public void Start()
@@ -109,7 +109,14 @@ public class EnemyAiTutorial : MonoBehaviour
         playerInNormalAttackRange = Physics.CheckSphere(transform.position, normalAttackRange, whatIsPlayer);
 
         //Sight
-        canSeePlayer = GetComponent<FieldOfView>();
+        canSeePlayer = gameObject.GetComponent<FieldOfView>().canSeePlayer;
+
+        angle = gameObject.GetComponent<FieldOfView>().angle;
+
+        if (canSeePlayer)
+        {
+            angle = 360;
+        }
 
         //Health
         health = GetComponent<EnemyStats>().health;

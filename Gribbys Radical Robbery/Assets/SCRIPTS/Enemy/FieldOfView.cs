@@ -22,6 +22,18 @@ public class FieldOfView : MonoBehaviour
         StartCoroutine(FOVRoutine());
     }
 
+    public void Update()
+    {
+        if (canSeePlayer)
+        {
+            angle = 360;
+        }
+
+        if (!canSeePlayer)
+        {
+            angle = 140;
+        }
+    }
     private IEnumerator FOVRoutine()
     {
         WaitForSeconds wait = new WaitForSeconds(0.2f);

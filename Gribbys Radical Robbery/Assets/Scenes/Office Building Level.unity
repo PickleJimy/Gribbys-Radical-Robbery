@@ -1643,6 +1643,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1871593530}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &298702735 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4557186989183690077, guid: 4aa781173aef9174c84b5c45bc2cd51b, type: 3}
+  m_PrefabInstance: {fileID: 1783783981}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &334510864
 GameObject:
   m_ObjectHideFlags: 0
@@ -4617,14 +4622,6 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1418845519}
-    - target: {fileID: 370653707888902711, guid: da1411e0b94d3f74f849adfde326ae40, type: 3}
-      propertyPath: sightArea
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 370653707888902711, guid: da1411e0b94d3f74f849adfde326ae40, type: 3}
-      propertyPath: sightRange
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2247804978720256630, guid: da1411e0b94d3f74f849adfde326ae40, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.14
@@ -4669,14 +4666,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy
       objectReference: {fileID: 0}
-    - target: {fileID: 3810566690378592852, guid: da1411e0b94d3f74f849adfde326ae40, type: 3}
-      propertyPath: m_ExcludeLayers.m_Bits
-      value: 128
-      objectReference: {fileID: 0}
     - target: {fileID: 4689638465719528955, guid: da1411e0b94d3f74f849adfde326ae40, type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 1418845519}
+    - target: {fileID: 5474420064144988267, guid: da1411e0b94d3f74f849adfde326ae40, type: 3}
+      propertyPath: playerRef
+      value: 
+      objectReference: {fileID: 298702735}
+    - target: {fileID: 8080824322273775043, guid: da1411e0b94d3f74f849adfde326ae40, type: 3}
+      propertyPath: playerRef
+      value: 
+      objectReference: {fileID: 298702735}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

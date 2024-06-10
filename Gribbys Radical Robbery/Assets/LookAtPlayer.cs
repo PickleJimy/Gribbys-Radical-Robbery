@@ -19,7 +19,7 @@ public class LookAtPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        canSeePlayer = Enemy.GetComponent<FieldOfView>();
+        canSeePlayer = Enemy.GetComponent<FieldOfView>().canSeePlayer;
 
         if (canSeePlayer)
         {
