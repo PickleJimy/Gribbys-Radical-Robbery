@@ -11,6 +11,7 @@ TagManager:
   - PlayerWeapon
   - HighGround
   - CompletionZone
+  - SightArea
   layers:
   - Default
   - TransparentFX

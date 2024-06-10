@@ -78,8 +78,8 @@ public class EnemyAiTutorial : MonoBehaviour
     public Animator Blade;
 
     //States
-    public float sightRange, attackRange, jumpRange, posRange, normalAttackRange;
-    public bool playerInSightRange, playerInAttackRange, playerInNormalAttackRange;
+    public float attackRange, jumpRange, posRange, normalAttackRange;
+    public bool canSeePlayer, playerInAttackRange, playerInNormalAttackRange;
 
     public void Start()
     {
@@ -102,12 +102,14 @@ public class EnemyAiTutorial : MonoBehaviour
     public void Update()
     {
         //Check for ranges
-        playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
         playerInJumpRange = Physics.CheckSphere(transform.position, jumpRange, whatIsPlayer);
         readyToLand = Physics.CheckSphere(transform.position, landingRange, whatIsGround);
         playerInPosRange = ground.GetComponent<Goal>().playerInPosRange;
         playerInNormalAttackRange = Physics.CheckSphere(transform.position, normalAttackRange, whatIsPlayer);
+
+        //Sight
+        canSeePlayer = GetComponent<FieldOfView>();
 
         //Health
         health = GetComponent<EnemyStats>().health;
@@ -140,19 +142,19 @@ public class EnemyAiTutorial : MonoBehaviour
         
         if (agent.enabled)
         {
-            if (!playerInSightRange && !playerInAttackRange) Patroling();
-            if (playerInSightRange && !playerInAttackRange) ChasePlayer();
-            if (playerInAttackRange && playerInSightRange && !isMelee && isRanged) RangeAttackPlayer();
-            if (playerInAttackRange && playerInSightRange && isMelee) MeleeAttackPlayer();
+            if (!canSeePlayer && !playerInAttackRange) Patroling();
+            if (canSeePlayer && !playerInAttackRange) ChasePlayer();
+            if (playerInAttackRange && canSeePlayer && !isMelee && isRanged) RangeAttackPlayer();
+            if (playerInAttackRange && canSeePlayer && isMelee) MeleeAttackPlayer();
         }
         else
         {
-            if (playerInSightRange && !playerInAttackRange) RbChasePlayer();
-            if (playerInAttackRange && playerInSightRange && !isMelee) RbRangeAttackPlayer();
+            if (canSeePlayer && !playerInAttackRange) RbChasePlayer();
+            if (playerInAttackRange && canSeePlayer && !isMelee) RbRangeAttackPlayer();
         }
 
         // when to jump
-        if (readyToJump && grounded && preparedToJump && playerOnGround && playerInSightRange && enemyInPosRange)
+        if (readyToJump && grounded && preparedToJump && playerOnGround && canSeePlayer && enemyInPosRange)
         {
             EnemyJump();
 
@@ -339,8 +341,6 @@ public class EnemyAiTutorial : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, attackRange);
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, sightRange);
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(transform.position, jumpRange);
         Gizmos.color = Color.blue;

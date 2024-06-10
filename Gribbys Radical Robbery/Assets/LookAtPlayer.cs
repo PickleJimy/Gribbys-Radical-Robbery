@@ -6,7 +6,7 @@ public class LookAtPlayer : MonoBehaviour
 {
     public Transform player;
 
-    public bool playerInSightRange;
+    public bool canSeePlayer;
 
     public GameObject Enemy;
 
@@ -19,9 +19,9 @@ public class LookAtPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        playerInSightRange = Enemy.GetComponent<EnemyAiTutorial>().playerInSightRange;
+        canSeePlayer = Enemy.GetComponent<FieldOfView>();
 
-        if (playerInSightRange)
+        if (canSeePlayer)
         {
             transform.LookAt(player);
         }
