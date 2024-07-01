@@ -6,6 +6,9 @@ public class PlayerMovement : MonoBehaviour
     private float moveSpeed;
     public float walkSpeed;
     public float sprintSpeed;
+    public float dashForce;
+    public float dashCooldown;
+    public bool readyToDash;
     public bool isMoving;
 
     public float groundDrag;
@@ -25,6 +28,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("Keybinds")]
     public KeyCode jumpKey = KeyCode.Space;
     public KeyCode sprintKey = KeyCode.LeftShift;
+    public KeyCode dashKey = KeyCode.LeftShift;
     public KeyCode crouchKey = KeyCode.LeftControl;
 
     [Header("Ground Check")]
@@ -73,6 +77,7 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
 
+        readyToDash = true;
         readyToJump = true;
 
         startYScale = transform.localScale.y;
@@ -157,6 +162,80 @@ public class PlayerMovement : MonoBehaviour
             GribbyRun.SetBool("isOnGround", true);
         }
     }
+    private void MovePlayer()
+    {
+        // Calculate movement direction
+        moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
+
+        Debug.Log(moveDirection);
+        
+        if (moveDirection.x == 0 && moveDirection.z == 0)
+            isMoving = false;
+        
+        if (moveDirection.x != 0 || moveDirection.z != 0)
+            isMoving = true;
+
+
+        // dash
+        if(Input.GetKeyDown(dashKey) && readyToDash && isMoving)
+        {
+            readyToDash = false;
+            rb.AddForce(moveDirection * dashForce, ForceMode.Impulse);
+            
+
+            Invoke(nameof(DashCooldown), dashCooldown);
+        }
+
+        // on slope
+        if (OnSlope() && !exitingSlope)
+        {
+            rb.AddForce(GetSlopeMoveDirection() * moveSpeed * 20f, ForceMode.Force);
+
+            if (rb.velocity.y > 0)
+                rb.AddForce(Vector3.up * Physics.gravity.y, ForceMode.Force);
+        }
+
+        // on ground
+        if (grounded)
+        {
+            rb.AddForce(moveDirection.normalized * moveSpeed * 20f, ForceMode.Force);
+        }
+
+        // in air
+        else if (!grounded)
+            rb.AddForce(moveDirection.normalized * moveSpeed * 20f * airMultiplier, ForceMode.Force);
+
+        // turn gravity off while on slope
+        if (!isMoving && OnSlope() && grounded)
+        {
+            rb.useGravity = false;
+
+            rb.velocity = new Vector3(EaseToZero(rb.velocity.x, 0.1f), rb.velocity.y, EaseToZero(rb.velocity.z, 0.1f));
+            
+        }
+        else
+            rb.useGravity = true;
+    }
+
+    public float EaseToZero(float value, float amount)
+    {
+        while (value != 0)
+        {
+            if (value < 0)
+                value += amount;
+            if (value > 0)
+                value -= amount;
+
+            return value;
+        }
+
+        return value;
+    }
+
+    void DashCooldown()
+    {
+        readyToDash = true;
+    }
 
     private void StateHandler()
     {
@@ -208,66 +287,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private void MovePlayer()
-    {
-        // Calculate movement direction
-        moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
-
-        Debug.Log(moveDirection);
-        
-        if (moveDirection.x == 0 && moveDirection.z == 0)
-            isMoving = false;
-        
-        if (moveDirection.x != 0 || moveDirection.z != 0)
-            isMoving = true;
-
-
-        // on slope
-        if (OnSlope() && !exitingSlope)
-        {
-            rb.AddForce(GetSlopeMoveDirection() * moveSpeed * 20f, ForceMode.Force);
-
-            if (rb.velocity.y > 0)
-                rb.AddForce(Vector3.up * Physics.gravity.y, ForceMode.Force);
-        }
-
-        // on ground
-        if (grounded)
-        {
-            rb.AddForce(moveDirection.normalized * moveSpeed * 20f, ForceMode.Force);
-        }
-
-        // in air
-        else if (!grounded)
-            rb.AddForce(moveDirection.normalized * moveSpeed * 20f * airMultiplier, ForceMode.Force);
-
-        // turn gravity off while on slope
-        if (!isMoving && OnSlope() && grounded)
-        {
-            rb.useGravity = false;
-
-            rb.velocity = new Vector3(EaseToZero(rb.velocity.x, 0.1f), rb.velocity.y, EaseToZero(rb.velocity.z, 0.1f));
-            
-        }
-        else
-            rb.useGravity = true;
-    }
-
-    public float EaseToZero(float value, float amount)
-    {
-        while (value != 0)
-        {
-            if (value < 0)
-                value += amount;
-            if (value > 0)
-                value -= amount;
-
-            return value;
-        }
-
-        return value;
-    }
-
+    
     private void SpeedControl()
     {
         // limit speed on slope
