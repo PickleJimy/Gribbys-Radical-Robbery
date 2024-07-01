@@ -8,6 +8,7 @@ public class EnemyAiTutorial : MonoBehaviour
     //Physics of its body
     public NavMeshAgent agent;
     public Transform player;
+    public Transform playerPoint;
     public MeshCollider MeshCollider;
 
     public float health;
@@ -81,7 +82,7 @@ public class EnemyAiTutorial : MonoBehaviour
 
     //States
     public float angle, attackRange, jumpRange, posRange, discomfortRange;
-    public bool canSeePlayer, playerInAttackRange, playerInDiscomfortRange, isAttackingPlayer;
+    public bool canSeePlayer, playerInAttackRange, playerInDiscomfortRange, isAttackingPlayer, attackingEnemy;
 
     public void Start()
     {
@@ -98,6 +99,7 @@ public class EnemyAiTutorial : MonoBehaviour
         ground = GameObject.Find("Goal").transform;
         enemy = GameObject.Find("Enemy").transform;
         meleeEnemy = GameObject.Find("Melee Enemy").transform;
+        playerPoint = GameObject.Find("MovementPoint").transform;
         agent = gameObject.GetComponent<UnityEngine.AI.NavMeshAgent>();
         agent.enabled = true;
         MeshCollider.enabled = false;
@@ -167,6 +169,11 @@ public class EnemyAiTutorial : MonoBehaviour
         {
             if (canSeePlayer && !playerInAttackRange) RbChasePlayer();
             if (playerInAttackRange && canSeePlayer && !isMelee) RbRangeAttackPlayer();
+        }
+
+        if (isAttackingPlayer)
+        {
+            attackingEnemy = true;
         }
 
         // when to jump

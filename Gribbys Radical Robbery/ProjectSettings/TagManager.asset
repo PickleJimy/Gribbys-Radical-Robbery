@@ -12,6 +12,8 @@ TagManager:
   - HighGround
   - CompletionZone
   - SightArea
+  - marker
+  - MovementPoint
   layers:
   - Default
   - TransparentFX

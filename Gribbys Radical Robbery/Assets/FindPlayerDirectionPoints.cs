@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SenseEnemies : MonoBehaviour
+public class FindPlayerDirectionPoints : MonoBehaviour
 {
-    [Header("Finding the closest attacking enemy")]
+    [Header("Finding the closest thing")]
     public GameObject[] AllObjects;
-    public GameObject NearestEnemy;
+    public GameObject NearestPoint;
     float distance;
     public float nearestDistance;
 
@@ -19,13 +19,15 @@ public class SenseEnemies : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        AllObjects = GameObject.FindGameObjectsWithTag("MovementPoint");
+
         for (int i = 0; i < AllObjects.Length; i++)
         {
             distance = Vector3.Distance(this.transform.position, AllObjects[i].transform.position);
 
             if (distance < nearestDistance)
             {
-                NearestEnemy = AllObjects[i];
+                NearestPoint = AllObjects[i];
                 nearestDistance = distance;
             }
         }
