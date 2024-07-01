@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -30,6 +31,12 @@ public class PlayerMovement : MonoBehaviour
     public KeyCode sprintKey = KeyCode.LeftShift;
     public KeyCode dashKey = KeyCode.LeftShift;
     public KeyCode crouchKey = KeyCode.LeftControl;
+    public PlayerInputActions playerControls;
+    private InputAction move;
+    private InputAction jump;
+    private InputAction crouch;
+    private InputAction sprint;
+    private InputAction dash;
 
     [Header("Ground Check")]
     public float playerHeight;
@@ -72,6 +79,34 @@ public class PlayerMovement : MonoBehaviour
         air
     }
 
+    private void Awake()
+    {
+        playerControls = new PlayerInputActions();
+    }
+
+    private void OnEnable()
+    {
+        move = playerControls.Player.Move;
+        move.Enable();
+        jump = playerControls.Player.Jump;
+        jump.Enable();
+        crouch = playerControls.Player.Crouch;
+        crouch.Enable();
+        sprint = playerControls.Player.Sprint;
+        sprint.Enable();
+        dash = playerControls.Player.Dash;
+        dash.Enable();
+    }
+
+    private void OnDisable()
+    {
+        move.Disable();
+        jump.Disable();
+        crouch.Disable();
+        sprint.Disable();
+        dash.Disable();
+    }
+
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -91,7 +126,7 @@ public class PlayerMovement : MonoBehaviour
         SpeedControl();
         StateHandler();
 
-        if (grounded)
+        if (grounded && !isMoving)
             rb.drag = groundDrag;
         else
             rb.drag = 0;
@@ -166,6 +201,7 @@ public class PlayerMovement : MonoBehaviour
     {
         // Calculate movement direction
         moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
+        //moveDirection = orientation.forward * move.ReadValue<Vector3>().z + orientation.right * move.ReadValue<Vector3>().x;
 
         Debug.Log(moveDirection);
         
@@ -177,11 +213,16 @@ public class PlayerMovement : MonoBehaviour
 
 
         // dash
-        if(Input.GetKeyDown(dashKey) && readyToDash && isMoving)
+        if(Input.GetKey(dashKey) && readyToDash && isMoving)
         {
             readyToDash = false;
-            rb.AddForce(moveDirection * dashForce, ForceMode.Impulse);
-            
+
+            int i = 5000;
+            while (i != 0)
+            {
+                rb.AddForce(moveDirection * dashForce, ForceMode.Force);
+                i--;
+            }
 
             Invoke(nameof(DashCooldown), dashCooldown);
         }

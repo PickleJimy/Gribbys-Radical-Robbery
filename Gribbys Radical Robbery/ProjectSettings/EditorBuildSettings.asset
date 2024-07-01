@@ -17,4 +17,5 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Testing scenes/Enemy Test.unity
     guid: 72744001226558041be0b1f51600a1cd
-  m_configObjects: {}
+  m_configObjects:
+    com.unity.input.settings: {fileID: 11400000, guid: 341dcc4a45d2b984eb9a5c7b457eff45, type: 2}
