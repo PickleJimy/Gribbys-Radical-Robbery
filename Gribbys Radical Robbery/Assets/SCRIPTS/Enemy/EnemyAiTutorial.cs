@@ -80,8 +80,8 @@ public class EnemyAiTutorial : MonoBehaviour
     public Animator Blade;
 
     //States
-    public float angle, attackRange, jumpRange, posRange, normalAttackRange;
-    public bool canSeePlayer, playerInAttackRange, playerInNormalAttackRange, isAttackingPlayer;
+    public float angle, attackRange, jumpRange, posRange, discomfortRange;
+    public bool canSeePlayer, playerInAttackRange, playerInDiscomfortRange, isAttackingPlayer;
 
     public void Start()
     {
@@ -110,7 +110,7 @@ public class EnemyAiTutorial : MonoBehaviour
         playerInJumpRange = Physics.CheckSphere(transform.position, jumpRange, whatIsPlayer);
         readyToLand = Physics.CheckSphere(transform.position, landingRange, whatIsGround);
         playerInPosRange = ground.GetComponent<Goal>().playerInPosRange;
-        playerInNormalAttackRange = Physics.CheckSphere(transform.position, normalAttackRange, whatIsPlayer);
+        playerInDiscomfortRange = Physics.CheckSphere(transform.position, discomfortRange, whatIsPlayer);
 
         //Sight
         canSeePlayer = gameObject.GetComponent<FieldOfView>().canSeePlayer;
@@ -265,6 +265,7 @@ public class EnemyAiTutorial : MonoBehaviour
         agent.SetDestination(player.position);
     }
 
+
     public void RbChasePlayer()
     {
         if (airborne)
@@ -283,6 +284,8 @@ public class EnemyAiTutorial : MonoBehaviour
 
         transform.LookAt(player);
 
+        isAttackingPlayer = true;
+
         if (!alreadyAttacked)
         {
             ///Attack code here
@@ -294,6 +297,12 @@ public class EnemyAiTutorial : MonoBehaviour
             alreadyAttacked = true;
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
         }
+
+        //Backing up from player
+        if (playerInDiscomfortRange && canSeePlayer)
+        {
+
+        }
     }
 
     public void RbRangeAttackPlayer()
@@ -304,6 +313,8 @@ public class EnemyAiTutorial : MonoBehaviour
         {
             rb.AddForce(transform.position);
         }
+
+        isAttackingPlayer = true;
 
         if (!alreadyAttacked)
         {
@@ -327,6 +338,8 @@ public class EnemyAiTutorial : MonoBehaviour
 
         Blade.enabled = true;
         Blade.SetBool(MELEE_ENEMY_ATTACK, true);
+
+        isAttackingPlayer = true;
 
         if (!alreadyAttacked)
         {
@@ -362,6 +375,6 @@ public class EnemyAiTutorial : MonoBehaviour
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(transform.position, landingRange);
         Gizmos.color = Color.white;
-        Gizmos.DrawWireSphere(transform.position, normalAttackRange);
+        Gizmos.DrawWireSphere(transform.position, discomfortRange);
     }
 }  
