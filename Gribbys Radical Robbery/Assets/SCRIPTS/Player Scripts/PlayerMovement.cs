@@ -99,6 +99,7 @@ public class PlayerMovement : MonoBehaviour
         sprint.Enable();
         dash = playerControls.Player.Dash;
         dash.Enable();
+        dash.performed += Dash;
     }
 
     private void OnDisable()
@@ -217,18 +218,7 @@ public class PlayerMovement : MonoBehaviour
             isMoving = true;
 
 
-        // dash
-        if(dash.inProgress && readyToDash)
-        {
-            readyToDash = false;
-            dashing = true;
-
-            Vector3 direction = moveDirection;
-
-            StartCoroutine(executeDash(direction));
-
-            Invoke(nameof(DashCooldown), dashCooldown);
-        }
+        
 
         // on slope
         if (OnSlope() && !exitingSlope)
@@ -276,20 +266,37 @@ public class PlayerMovement : MonoBehaviour
         return value;
     }
 
-    IEnumerator executeDash(Vector3 direction)
+    // dash
+    private void Dash(InputAction.CallbackContext context)
+    {
+        if (readyToDash)
+        {
+            readyToDash = false;
+            dashing = true;
+
+            Vector3 direction = moveDirection;
+            bool moving = isMoving;
+
+            StartCoroutine(executeDash(direction, moving));
+
+            Invoke(nameof(DashCooldown), dashCooldown);
+        }
+    }
+
+    IEnumerator executeDash(Vector3 direction, bool moving)
     {
         Invoke(nameof(Dashing), dashTime);
 
         while (dashing)
         {
-            if (isMoving)
+            if (moving)
             {
                 rb.AddForce(direction * dashForce, ForceMode.Force);
             }
-            //else
-            //{
-                //rb.AddForce(orientation.forward * dashForce, ForceMode.Force);
-            //}
+            else
+            {
+                rb.AddForce(orientation.forward * dashForce, ForceMode.Force);
+            }
 
             yield return null;
         }

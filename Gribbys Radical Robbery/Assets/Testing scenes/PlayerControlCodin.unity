@@ -1831,9 +1831,33 @@ PrefabInstance:
       propertyPath: playerControls.m_SingletonActionBindings.Array.data[0].m_Action
       value: Player Controls
       objectReference: {fileID: 0}
+    - target: {fileID: 1823490237079909413, guid: 4aa781173aef9174c84b5c45bc2cd51b, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3952153903477419860, guid: 4aa781173aef9174c84b5c45bc2cd51b, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4323368230865721837, guid: 4aa781173aef9174c84b5c45bc2cd51b, type: 3}
       propertyPath: m_Name
       value: Player Full
+      objectReference: {fileID: 0}
+    - target: {fileID: 4896729511795791315, guid: 4aa781173aef9174c84b5c45bc2cd51b, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5947213575357986006, guid: 4aa781173aef9174c84b5c45bc2cd51b, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6303477273128584029, guid: 4aa781173aef9174c84b5c45bc2cd51b, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7625164601911541466, guid: 4aa781173aef9174c84b5c45bc2cd51b, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7790031109450959070, guid: 4aa781173aef9174c84b5c45bc2cd51b, type: 3}
       propertyPath: m_AnchorMax.x
@@ -1844,7 +1868,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 5947213575357986006, guid: 4aa781173aef9174c84b5c45bc2cd51b, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 4557186989183690077, guid: 4aa781173aef9174c84b5c45bc2cd51b, type: 3}
