@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Collections;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -8,8 +9,10 @@ public class PlayerMovement : MonoBehaviour
     public float walkSpeed;
     public float sprintSpeed;
     public float dashForce;
+    public float dashTime;
     public float dashCooldown;
     public bool readyToDash;
+    private bool dashing;
     public bool isMoving;
 
     public float groundDrag;
@@ -112,6 +115,7 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
 
+        dashing = false;
         readyToDash = true;
         readyToJump = true;
 
@@ -159,8 +163,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void MyInput()
     {
-        horizontalInput = Input.GetAxisRaw("Horizontal");
-        verticalInput = Input.GetAxisRaw("Vertical");
+        //horizontalInput = Input.GetAxisRaw("Horizontal");
+        //verticalInput = Input.GetAxisRaw("Vertical");
 
         // when to jump
         if (Input.GetKey(jumpKey) && readyToJump && grounded)
@@ -197,11 +201,12 @@ public class PlayerMovement : MonoBehaviour
             GribbyRun.SetBool("isOnGround", true);
         }
     }
+    
     private void MovePlayer()
     {
         // Calculate movement direction
-        moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
-        //moveDirection = orientation.forward * move.ReadValue<Vector3>().z + orientation.right * move.ReadValue<Vector3>().x;
+        // moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
+        moveDirection = orientation.forward * move.ReadValue<Vector3>().z + orientation.right * move.ReadValue<Vector3>().x;
 
         Debug.Log(moveDirection);
         
@@ -213,16 +218,14 @@ public class PlayerMovement : MonoBehaviour
 
 
         // dash
-        if(Input.GetKey(dashKey) && readyToDash && isMoving)
+        if(dash.inProgress && readyToDash)
         {
             readyToDash = false;
+            dashing = true;
 
-            int i = 5000;
-            while (i != 0)
-            {
-                rb.AddForce(moveDirection * dashForce, ForceMode.Force);
-                i--;
-            }
+            Vector3 direction = moveDirection;
+
+            StartCoroutine(executeDash(direction));
 
             Invoke(nameof(DashCooldown), dashCooldown);
         }
@@ -271,6 +274,30 @@ public class PlayerMovement : MonoBehaviour
         }
 
         return value;
+    }
+
+    IEnumerator executeDash(Vector3 direction)
+    {
+        Invoke(nameof(Dashing), dashTime);
+
+        while (dashing)
+        {
+            if (isMoving)
+            {
+                rb.AddForce(direction * dashForce, ForceMode.Force);
+            }
+            //else
+            //{
+                //rb.AddForce(orientation.forward * dashForce, ForceMode.Force);
+            //}
+
+            yield return null;
+        }
+    }
+
+    void Dashing()
+    {
+        dashing = false;
     }
 
     void DashCooldown()
