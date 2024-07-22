@@ -8,7 +8,7 @@ public class EnemyAiTutorial : MonoBehaviour
     //Physics of its body
     public NavMeshAgent agent;
     public Transform player;
-    public Transform playerPoint;
+    public GameObject nearestPoint;
     public MeshCollider MeshCollider;
 
     public float health;
@@ -32,8 +32,6 @@ public class EnemyAiTutorial : MonoBehaviour
     public bool playerOnGround;
     public bool playerInPosRange;
     public bool enemyInPosRange;
-    public Transform enemy;
-    public Transform meleeEnemy;
 
     //Mechanics
     [Header("Ground Check")]
@@ -97,9 +95,6 @@ public class EnemyAiTutorial : MonoBehaviour
     {
         player = GameObject.Find("Player").transform;
         ground = GameObject.Find("Goal").transform;
-        enemy = GameObject.Find("Enemy").transform;
-        meleeEnemy = GameObject.Find("Melee Enemy").transform;
-        playerPoint = GameObject.Find("MovementPoint").transform;
         agent = gameObject.GetComponent<UnityEngine.AI.NavMeshAgent>();
         agent.enabled = true;
         MeshCollider.enabled = false;
@@ -107,6 +102,8 @@ public class EnemyAiTutorial : MonoBehaviour
 
     public void Update()
     {
+        nearestPoint = gameObject.GetComponent<FindPlayerDirectionPoints>().NearestPoint;
+
         //Check for ranges
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
         playerInJumpRange = Physics.CheckSphere(transform.position, jumpRange, whatIsPlayer);

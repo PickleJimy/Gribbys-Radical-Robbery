@@ -17,7 +17,7 @@ public class FindPlayerDirectionPoints : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    public void Update()
     {
         AllObjects = GameObject.FindGameObjectsWithTag("MovementPoint");
 

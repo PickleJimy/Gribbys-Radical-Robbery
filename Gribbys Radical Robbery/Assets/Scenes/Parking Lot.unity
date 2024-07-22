@@ -1047,29 +1047,20 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 375985838}
-    - target: {fileID: 1771460009701807404, guid: d7c845a99b23a6249b8f8d7329a74790, type: 3}
-      propertyPath: coneVision
+    - target: {fileID: 3745172024522241763, guid: d7c845a99b23a6249b8f8d7329a74790, type: 3}
+      propertyPath: m_Enabled
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1771460009701807404, guid: d7c845a99b23a6249b8f8d7329a74790, type: 3}
-      propertyPath: maxJumpHeight
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1771460009701807404, guid: d7c845a99b23a6249b8f8d7329a74790, type: 3}
-      propertyPath: minJumpHeight
-      value: 500
-      objectReference: {fileID: 0}
-    - target: {fileID: 3232316311610956177, guid: d7c845a99b23a6249b8f8d7329a74790, type: 3}
-      propertyPath: m_AutoBraking
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4398385805509987073, guid: d7c845a99b23a6249b8f8d7329a74790, type: 3}
       propertyPath: m_Name
       value: Melee Enemy (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4398385805509987073, guid: d7c845a99b23a6249b8f8d7329a74790, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects:
-    - {fileID: 9112540990448356362, guid: d7c845a99b23a6249b8f8d7329a74790, type: 3}
+    m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d7c845a99b23a6249b8f8d7329a74790, type: 3}
@@ -1743,11 +1734,6 @@ Transform:
 Transform:
   m_CorrespondingSourceObject: {fileID: 8683151621796792677, guid: e7832abc2282e284eaa10334a4fbfb57, type: 3}
   m_PrefabInstance: {fileID: 811797273}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &279212967 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2358648691654089754, guid: da1411e0b94d3f74f849adfde326ae40, type: 3}
-  m_PrefabInstance: {fileID: 1899717794}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &284711959
 PrefabInstance:
@@ -6122,9 +6108,17 @@ PrefabInstance:
       propertyPath: playerRef
       value: 
       objectReference: {fileID: 596593719}
+    - target: {fileID: 3745172024522241763, guid: d7c845a99b23a6249b8f8d7329a74790, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4398385805509987073, guid: d7c845a99b23a6249b8f8d7329a74790, type: 3}
       propertyPath: m_Name
       value: Melee Enemy (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4398385805509987073, guid: d7c845a99b23a6249b8f8d7329a74790, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6553,34 +6547,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 216532950}
     m_Modifications:
-    - target: {fileID: 32579265675517928, guid: da1411e0b94d3f74f849adfde326ae40, type: 3}
-      propertyPath: health
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 370653707888902711, guid: da1411e0b94d3f74f849adfde326ae40, type: 3}
-      propertyPath: coneVision
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 370653707888902711, guid: da1411e0b94d3f74f849adfde326ae40, type: 3}
-      propertyPath: sightRange
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 370653707888902711, guid: da1411e0b94d3f74f849adfde326ae40, type: 3}
-      propertyPath: attackRange
-      value: 6.36
-      objectReference: {fileID: 0}
-    - target: {fileID: 370653707888902711, guid: da1411e0b94d3f74f849adfde326ae40, type: 3}
-      propertyPath: maxJumpHeight
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 370653707888902711, guid: da1411e0b94d3f74f849adfde326ae40, type: 3}
-      propertyPath: minJumpHeight
-      value: 500
-      objectReference: {fileID: 0}
-    - target: {fileID: 370653707888902711, guid: da1411e0b94d3f74f849adfde326ae40, type: 3}
-      propertyPath: projectileSpeed
-      value: 44
-      objectReference: {fileID: 0}
     - target: {fileID: 2247804978720256630, guid: da1411e0b94d3f74f849adfde326ae40, type: 3}
       propertyPath: m_LocalPosition.x
       value: -18.47
@@ -6621,26 +6587,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2293019162020806892, guid: da1411e0b94d3f74f849adfde326ae40, type: 3}
-      propertyPath: AllObjects.Array.size
-      value: 7
-      objectReference: {fileID: 0}
     - target: {fileID: 2358648691654089754, guid: da1411e0b94d3f74f849adfde326ae40, type: 3}
       propertyPath: m_Name
       value: Enemy (2)
       objectReference: {fileID: 0}
-    - target: {fileID: 3530381199356264597, guid: da1411e0b94d3f74f849adfde326ae40, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 3560887585288343178, guid: da1411e0b94d3f74f849adfde326ae40, type: 3}
-      propertyPath: m_AutoBraking
+    - target: {fileID: 2358648691654089754, guid: da1411e0b94d3f74f849adfde326ae40, type: 3}
+      propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 4689638465719528955, guid: da1411e0b94d3f74f849adfde326ae40, type: 3}
-      propertyPath: Enemy
-      value: 
-      objectReference: {fileID: 1062425014}
+    - target: {fileID: 3334960561985200632, guid: da1411e0b94d3f74f849adfde326ae40, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4689638465719528955, guid: da1411e0b94d3f74f849adfde326ae40, type: 3}
       propertyPath: player
       value: 
@@ -6650,8 +6608,7 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 596593719}
     m_RemovedComponents: []
-    m_RemovedGameObjects:
-    - {fileID: 7189874944085072657, guid: da1411e0b94d3f74f849adfde326ae40, type: 3}
+    m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: da1411e0b94d3f74f849adfde326ae40, type: 3}
@@ -9000,36 +8957,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2247804978720256630, guid: da1411e0b94d3f74f849adfde326ae40, type: 3}
   m_PrefabInstance: {fileID: 1899717794}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1747612444
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 279212967}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01c28458044d1e24b9a4d144e77f8cd1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AllObjects:
-  - {fileID: 1697333116}
-  - {fileID: 1062425014}
-  - {fileID: 1718445753}
-  NearestEnemy: {fileID: 0}
-  nearestDistance: 10
---- !u!114 &1747612445
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 279212967}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ddef76999798264f84d4474afcff909, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1755514366 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 3ed02854bef608a4b811c02ae339925d, type: 3}
@@ -9321,53 +9248,12 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 375985838}
-    - target: {fileID: 1771460009701807404, guid: d7c845a99b23a6249b8f8d7329a74790, type: 3}
-      propertyPath: coneVision
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1771460009701807404, guid: d7c845a99b23a6249b8f8d7329a74790, type: 3}
-      propertyPath: maxJumpHeight
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1771460009701807404, guid: d7c845a99b23a6249b8f8d7329a74790, type: 3}
-      propertyPath: minJumpHeight
-      value: 500
-      objectReference: {fileID: 0}
-    - target: {fileID: 3232316311610956177, guid: d7c845a99b23a6249b8f8d7329a74790, type: 3}
-      propertyPath: m_AutoBraking
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3541616119989274097, guid: d7c845a99b23a6249b8f8d7329a74790, type: 3}
-      propertyPath: m_ImplicitCom
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3541616119989274097, guid: d7c845a99b23a6249b8f8d7329a74790, type: 3}
-      propertyPath: m_ImplicitTensor
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3541616119989274097, guid: d7c845a99b23a6249b8f8d7329a74790, type: 3}
-      propertyPath: m_InertiaRotation.w
-      value: 0.9999238
-      objectReference: {fileID: 0}
-    - target: {fileID: 3541616119989274097, guid: d7c845a99b23a6249b8f8d7329a74790, type: 3}
-      propertyPath: m_InertiaRotation.x
-      value: 0.008726203
-      objectReference: {fileID: 0}
-    - target: {fileID: 3541616119989274097, guid: d7c845a99b23a6249b8f8d7329a74790, type: 3}
-      propertyPath: m_InertiaRotation.y
-      value: -0.00007615242
-      objectReference: {fileID: 0}
-    - target: {fileID: 3541616119989274097, guid: d7c845a99b23a6249b8f8d7329a74790, type: 3}
-      propertyPath: m_InertiaRotation.z
-      value: 0.008726203
-      objectReference: {fileID: 0}
     - target: {fileID: 4398385805509987073, guid: d7c845a99b23a6249b8f8d7329a74790, type: 3}
       propertyPath: m_Name
       value: Melee Enemy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects:
-    - {fileID: 9112540990448356362, guid: d7c845a99b23a6249b8f8d7329a74790, type: 3}
+    m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d7c845a99b23a6249b8f8d7329a74790, type: 3}
@@ -9758,18 +9644,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 216532950}
     m_Modifications:
-    - target: {fileID: 370653707888902711, guid: da1411e0b94d3f74f849adfde326ae40, type: 3}
-      propertyPath: coneVision
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 370653707888902711, guid: da1411e0b94d3f74f849adfde326ae40, type: 3}
-      propertyPath: maxJumpHeight
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 370653707888902711, guid: da1411e0b94d3f74f849adfde326ae40, type: 3}
-      propertyPath: minJumpHeight
-      value: 500
-      objectReference: {fileID: 0}
     - target: {fileID: 2247804978720256630, guid: da1411e0b94d3f74f849adfde326ae40, type: 3}
       propertyPath: m_LocalPosition.x
       value: 19.37339
@@ -9814,8 +9688,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 3560887585288343178, guid: da1411e0b94d3f74f849adfde326ae40, type: 3}
-      propertyPath: m_AutoBraking
+    - target: {fileID: 2358648691654089754, guid: da1411e0b94d3f74f849adfde326ae40, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3334960561985200632, guid: da1411e0b94d3f74f849adfde326ae40, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4300368095990331904, guid: da1411e0b94d3f74f849adfde326ae40, type: 3}
+      propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4689638465719528955, guid: da1411e0b94d3f74f849adfde326ae40, type: 3}
@@ -9827,8 +9709,7 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 596593719}
     m_RemovedComponents: []
-    m_RemovedGameObjects:
-    - {fileID: 7189874944085072657, guid: da1411e0b94d3f74f849adfde326ae40, type: 3}
+    m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: da1411e0b94d3f74f849adfde326ae40, type: 3}
@@ -9840,14 +9721,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 216532950}
     m_Modifications:
-    - target: {fileID: 370653707888902711, guid: da1411e0b94d3f74f849adfde326ae40, type: 3}
-      propertyPath: attackRange
-      value: 3.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 370653707888902711, guid: da1411e0b94d3f74f849adfde326ae40, type: 3}
-      propertyPath: discomfortRange
-      value: 3.25
-      objectReference: {fileID: 0}
     - target: {fileID: 2247804978720256630, guid: da1411e0b94d3f74f849adfde326ae40, type: 3}
       propertyPath: m_LocalPosition.x
       value: -11.096609
@@ -9892,18 +9765,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy
       objectReference: {fileID: 0}
-    - target: {fileID: 3213309486222693098, guid: da1411e0b94d3f74f849adfde326ae40, type: 3}
-      propertyPath: m_Interpolate
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3213309486222693098, guid: da1411e0b94d3f74f849adfde326ae40, type: 3}
-      propertyPath: m_CollisionDetection
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3560887585288343178, guid: da1411e0b94d3f74f849adfde326ae40, type: 3}
-      propertyPath: m_Radius
-      value: 1
-      objectReference: {fileID: 0}
+    - target: {fileID: 3334960561985200632, guid: da1411e0b94d3f74f849adfde326ae40, type: 3}
+      propertyPath: AllObjects.Array.data[0]
+      value: 
+      objectReference: {fileID: 1697333116}
+    - target: {fileID: 3334960561985200632, guid: da1411e0b94d3f74f849adfde326ae40, type: 3}
+      propertyPath: AllObjects.Array.data[1]
+      value: 
+      objectReference: {fileID: 1062425014}
+    - target: {fileID: 3334960561985200632, guid: da1411e0b94d3f74f849adfde326ae40, type: 3}
+      propertyPath: AllObjects.Array.data[2]
+      value: 
+      objectReference: {fileID: 1718445753}
     - target: {fileID: 4689638465719528955, guid: da1411e0b94d3f74f849adfde326ae40, type: 3}
       propertyPath: player
       value: 
@@ -9912,20 +9785,10 @@ PrefabInstance:
       propertyPath: playerRef
       value: 
       objectReference: {fileID: 596593719}
-    - target: {fileID: 8080824322273775043, guid: da1411e0b94d3f74f849adfde326ae40, type: 3}
-      propertyPath: obstructionMask.m_Bits
-      value: 32776
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 2358648691654089754, guid: da1411e0b94d3f74f849adfde326ae40, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1747612444}
-    - targetCorrespondingSourceObject: {fileID: 2358648691654089754, guid: da1411e0b94d3f74f849adfde326ae40, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1747612445}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: da1411e0b94d3f74f849adfde326ae40, type: 3}
 --- !u!1 &1901366707
 GameObject:
