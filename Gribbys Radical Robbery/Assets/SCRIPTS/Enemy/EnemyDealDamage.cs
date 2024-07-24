@@ -14,6 +14,7 @@ public class EnemyDealDamage : MonoBehaviour
     private void Start()
     {
         damageZone = GetComponent<Collider>();
+
     }
 
     private void Update()

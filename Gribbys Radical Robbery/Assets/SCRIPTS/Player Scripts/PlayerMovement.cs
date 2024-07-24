@@ -273,6 +273,7 @@ public class PlayerMovement : MonoBehaviour
         {
             readyToDash = false;
             dashing = true;
+            PlayerStats.godMode = true;
 
             Vector3 direction = moveDirection;
             bool moving = isMoving;
@@ -305,6 +306,7 @@ public class PlayerMovement : MonoBehaviour
     void Dashing()
     {
         dashing = false;
+        PlayerStats.godMode = false;
     }
 
     void DashCooldown()
