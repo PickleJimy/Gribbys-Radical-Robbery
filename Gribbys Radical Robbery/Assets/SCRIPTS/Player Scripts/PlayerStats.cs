@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 public class PlayerStats : MonoBehaviour
 {
     public static int health = 100;
-    public bool godMode;
+    public static bool godMode;
 
     public int damageDealt;
 
@@ -19,6 +19,7 @@ public class PlayerStats : MonoBehaviour
     public static string stealableNameText;
     public TextMeshProUGUI stealableName;
     public static GameObject player;
+    public LayerMask playerBody;
     
     public TextMeshProUGUI thieveryGoal;
     

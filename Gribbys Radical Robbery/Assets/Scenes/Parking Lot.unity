@@ -9553,15 +9553,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 74764510694493342, guid: 4aa781173aef9174c84b5c45bc2cd51b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -8.89
+      value: 1.18
       objectReference: {fileID: 0}
     - target: {fileID: 74764510694493342, guid: 4aa781173aef9174c84b5c45bc2cd51b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 7.5
+      value: 5.03
       objectReference: {fileID: 0}
     - target: {fileID: 74764510694493342, guid: 4aa781173aef9174c84b5c45bc2cd51b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -14.36
+      value: -3.85
       objectReference: {fileID: 0}
     - target: {fileID: 74764510694493342, guid: 4aa781173aef9174c84b5c45bc2cd51b, type: 3}
       propertyPath: m_LocalRotation.w
@@ -9594,26 +9594,6 @@ PrefabInstance:
     - target: {fileID: 4323368230865721837, guid: 4aa781173aef9174c84b5c45bc2cd51b, type: 3}
       propertyPath: m_Name
       value: Player Full
-      objectReference: {fileID: 0}
-    - target: {fileID: 4492731802724326103, guid: 4aa781173aef9174c84b5c45bc2cd51b, type: 3}
-      propertyPath: m_RenderPostProcessing
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4595212840450437179, guid: 4aa781173aef9174c84b5c45bc2cd51b, type: 3}
-      propertyPath: m_Dithering
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7726744734050656653, guid: 4aa781173aef9174c84b5c45bc2cd51b, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 9.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 7726744734050656653, guid: 4aa781173aef9174c84b5c45bc2cd51b, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -2.384
-      objectReference: {fileID: 0}
-    - target: {fileID: 7726744734050656653, guid: 4aa781173aef9174c84b5c45bc2cd51b, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 8.64
       objectReference: {fileID: 0}
     - target: {fileID: 7790031109450959070, guid: 4aa781173aef9174c84b5c45bc2cd51b, type: 3}
       propertyPath: m_AnchorMax.x
@@ -10706,10 +10686,10 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 4294967295
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 260095
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0

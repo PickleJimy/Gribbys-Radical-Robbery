@@ -263,12 +263,20 @@ PrefabInstance:
       value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 1768874430243840848, guid: 47babaa94ded2e742be2f2db781f8344, type: 3}
+      propertyPath: walkSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1768874430243840848, guid: 47babaa94ded2e742be2f2db781f8344, type: 3}
       propertyPath: groundDrag
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1768874430243840848, guid: 47babaa94ded2e742be2f2db781f8344, type: 3}
       propertyPath: crouchSpeed
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1768874430243840848, guid: 47babaa94ded2e742be2f2db781f8344, type: 3}
+      propertyPath: sprintSpeed
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1768874430243840848, guid: 47babaa94ded2e742be2f2db781f8344, type: 3}
       propertyPath: dashCooldown
@@ -278,6 +286,10 @@ PrefabInstance:
       propertyPath: maxSlopeAngle
       value: 75
       objectReference: {fileID: 0}
+    - target: {fileID: 1768874430243840848, guid: 47babaa94ded2e742be2f2db781f8344, type: 3}
+      propertyPath: NearestGroundToPlayer
+      value: 
+      objectReference: {fileID: 923668139456395950, guid: 0af33fb4d5a1fce4e92eb5e5789f2cf4, type: 3}
     - target: {fileID: 2739280981225050635, guid: 47babaa94ded2e742be2f2db781f8344, type: 3}
       propertyPath: m_Radius
       value: 2
@@ -340,7 +352,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8965366270674064607, guid: 47babaa94ded2e742be2f2db781f8344, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -57
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8965366270674064607, guid: 47babaa94ded2e742be2f2db781f8344, type: 3}
       propertyPath: m_LocalRotation.w
@@ -491,7 +503,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AllObjects: []
-  NearestGround: {fileID: 0}
+  NearestGround: {fileID: 923668139456395950, guid: 0af33fb4d5a1fce4e92eb5e5789f2cf4, type: 3}
   nearestDistance: 3.01
 --- !u!114 &948481796811557823
 MonoBehaviour:
