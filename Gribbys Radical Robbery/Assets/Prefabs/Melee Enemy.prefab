@@ -96,10 +96,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 2048
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 260095
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0
@@ -368,15 +368,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2247804978720256630, guid: da1411e0b94d3f74f849adfde326ae40, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.79
+      value: -9.096609
       objectReference: {fileID: 0}
     - target: {fileID: 2247804978720256630, guid: da1411e0b94d3f74f849adfde326ae40, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.23
+      value: 13.116109
       objectReference: {fileID: 0}
     - target: {fileID: 2247804978720256630, guid: da1411e0b94d3f74f849adfde326ae40, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.43
+      value: 12.859348
       objectReference: {fileID: 0}
     - target: {fileID: 2247804978720256630, guid: da1411e0b94d3f74f849adfde326ae40, type: 3}
       propertyPath: m_LocalRotation.w

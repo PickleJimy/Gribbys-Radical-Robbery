@@ -6108,17 +6108,9 @@ PrefabInstance:
       propertyPath: playerRef
       value: 
       objectReference: {fileID: 596593719}
-    - target: {fileID: 3745172024522241763, guid: d7c845a99b23a6249b8f8d7329a74790, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4398385805509987073, guid: d7c845a99b23a6249b8f8d7329a74790, type: 3}
       propertyPath: m_Name
       value: Melee Enemy (2)
-      objectReference: {fileID: 0}
-    - target: {fileID: 4398385805509987073, guid: d7c845a99b23a6249b8f8d7329a74790, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
