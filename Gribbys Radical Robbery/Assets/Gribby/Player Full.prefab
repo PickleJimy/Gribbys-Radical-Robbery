@@ -242,6 +242,10 @@ PrefabInstance:
       propertyPath: stolenGoodsCounter
       value: 
       objectReference: {fileID: 8447779435264721118}
+    - target: {fileID: 1751583688616425083, guid: 47babaa94ded2e742be2f2db781f8344, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1768874430243840848, guid: 47babaa94ded2e742be2f2db781f8344, type: 3}
       propertyPath: goal
       value: 
@@ -256,7 +260,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1768874430243840848, guid: 47babaa94ded2e742be2f2db781f8344, type: 3}
       propertyPath: dashForce
-      value: 1000
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 1768874430243840848, guid: 47babaa94ded2e742be2f2db781f8344, type: 3}
       propertyPath: jumpForce

@@ -5539,7 +5539,7 @@ MeshCollider:
   m_Enabled: 1
   serializedVersion: 5
   m_Convex: 0
-  m_CookingOptions: 30
+  m_CookingOptions: -1
   m_Mesh: {fileID: -48417406752341864, guid: 24c1fc8c339cefe478715e925323432e, type: 3}
 --- !u!64 &1405131219
 MeshCollider:
@@ -5561,7 +5561,7 @@ MeshCollider:
   m_Enabled: 1
   serializedVersion: 5
   m_Convex: 0
-  m_CookingOptions: 30
+  m_CookingOptions: -1
   m_Mesh: {fileID: 780429614505431930, guid: 24c1fc8c339cefe478715e925323432e, type: 3}
 --- !u!64 &1405131220
 MeshCollider:
@@ -5583,7 +5583,7 @@ MeshCollider:
   m_Enabled: 1
   serializedVersion: 5
   m_Convex: 0
-  m_CookingOptions: 30
+  m_CookingOptions: -1
   m_Mesh: {fileID: 3748326825380376580, guid: 24c1fc8c339cefe478715e925323432e, type: 3}
 --- !u!64 &1405131221
 MeshCollider:
@@ -5605,7 +5605,7 @@ MeshCollider:
   m_Enabled: 1
   serializedVersion: 5
   m_Convex: 0
-  m_CookingOptions: 30
+  m_CookingOptions: -1
   m_Mesh: {fileID: -629719859055844128, guid: 24c1fc8c339cefe478715e925323432e, type: 3}
 --- !u!64 &1405131223
 MeshCollider:
@@ -5627,7 +5627,7 @@ MeshCollider:
   m_Enabled: 1
   serializedVersion: 5
   m_Convex: 0
-  m_CookingOptions: 30
+  m_CookingOptions: -1
   m_Mesh: {fileID: 4073513850774443443, guid: 24c1fc8c339cefe478715e925323432e, type: 3}
 --- !u!1 &1413134108
 GameObject:
@@ -6765,18 +6765,6 @@ PrefabInstance:
     - target: {fileID: 74764510694493342, guid: 4aa781173aef9174c84b5c45bc2cd51b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1143287130622711298, guid: 4aa781173aef9174c84b5c45bc2cd51b, type: 3}
-      propertyPath: dashTime
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1143287130622711298, guid: 4aa781173aef9174c84b5c45bc2cd51b, type: 3}
-      propertyPath: dashForce
-      value: 500
-      objectReference: {fileID: 0}
-    - target: {fileID: 1143287130622711298, guid: 4aa781173aef9174c84b5c45bc2cd51b, type: 3}
-      propertyPath: dashCooldown
-      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 4323368230865721837, guid: 4aa781173aef9174c84b5c45bc2cd51b, type: 3}
       propertyPath: m_Name
