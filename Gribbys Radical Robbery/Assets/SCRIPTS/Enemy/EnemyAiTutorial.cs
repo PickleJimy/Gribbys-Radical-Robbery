@@ -50,8 +50,6 @@ public class EnemyAiTutorial : MonoBehaviour
     public bool landingZone;
 
     [Header("Attacks")]
-    public bool dashCapable;
-    public bool readyToDashAttack;
     public float cooldown;
     public float nextAttackTime;
     public bool hasDashAttacked;

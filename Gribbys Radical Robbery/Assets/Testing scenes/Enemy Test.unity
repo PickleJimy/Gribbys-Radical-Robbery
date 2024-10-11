@@ -1184,33 +1184,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8aa840ea83fc9f40a3507059964c711, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &933639464 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4398385805509987073, guid: d7c845a99b23a6249b8f8d7329a74790, type: 3}
-  m_PrefabInstance: {fileID: 8728926196071046699}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &933639465
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 933639464}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8df6a5ab745748f419ff2ef10cf31bde, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  radius: 6.47
-  angle: 116
-  playerRef: {fileID: 793784679}
-  targetMask:
-    serializedVersion: 2
-    m_Bits: 128
-  obstructionMask:
-    serializedVersion: 2
-    m_Bits: 8
-  canSeePlayer: 0
 --- !u!1 &1142965612
 GameObject:
   m_ObjectHideFlags: 0
@@ -3514,46 +3487,26 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 515640977}
-    - target: {fileID: 3232316311610956177, guid: d7c845a99b23a6249b8f8d7329a74790, type: 3}
-      propertyPath: m_Speed
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 3232316311610956177, guid: d7c845a99b23a6249b8f8d7329a74790, type: 3}
-      propertyPath: m_Radius
-      value: 0.24
+    - target: {fileID: 1771460009701807404, guid: d7c845a99b23a6249b8f8d7329a74790, type: 3}
+      propertyPath: groundDrag
+      value: 13.7
       objectReference: {fileID: 0}
     - target: {fileID: 3232316311610956177, guid: d7c845a99b23a6249b8f8d7329a74790, type: 3}
       propertyPath: m_AutoBraking
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3232316311610956177, guid: d7c845a99b23a6249b8f8d7329a74790, type: 3}
-      propertyPath: m_Acceleration
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 3232316311610956177, guid: d7c845a99b23a6249b8f8d7329a74790, type: 3}
-      propertyPath: m_AngularSpeed
-      value: 200
-      objectReference: {fileID: 0}
-    - target: {fileID: 3232316311610956177, guid: d7c845a99b23a6249b8f8d7329a74790, type: 3}
-      propertyPath: m_StoppingDistance
-      value: 0.49
-      objectReference: {fileID: 0}
-    - target: {fileID: 3232316311610956177, guid: d7c845a99b23a6249b8f8d7329a74790, type: 3}
-      propertyPath: m_ObstacleAvoidanceType
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4398385805509987073, guid: d7c845a99b23a6249b8f8d7329a74790, type: 3}
       propertyPath: m_Name
       value: Melee Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 9178722626614473755, guid: d7c845a99b23a6249b8f8d7329a74790, type: 3}
+      propertyPath: playerRef
+      value: 
+      objectReference: {fileID: 793784679}
     m_RemovedComponents: []
-    m_RemovedGameObjects:
-    - {fileID: 9112540990448356362, guid: d7c845a99b23a6249b8f8d7329a74790, type: 3}
+    m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 4398385805509987073, guid: d7c845a99b23a6249b8f8d7329a74790, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 933639465}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d7c845a99b23a6249b8f8d7329a74790, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
