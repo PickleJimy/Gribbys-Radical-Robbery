@@ -77,7 +77,7 @@ public class EnemyAiTutorial : MonoBehaviour
     public Animator Blade;
 
     //States
-    public float angle, attackRange, jumpRange, posRange, discomfortRange;
+    public float angle, sightRange, attackRange, jumpRange, posRange, discomfortRange;
     public bool canSeePlayer, playerInAttackRange, playerInDiscomfortRange, isAttackingPlayer, attackingEnemy;
 
     public void Start()
@@ -117,11 +117,13 @@ public class EnemyAiTutorial : MonoBehaviour
         if (canSeePlayer)
         {
             angle = 360;
+            sightRange = 10;
         }
 
         if (!canSeePlayer)
         {
             angle = 140;
+            sightRange = 0;
         }
 
         //Health
@@ -159,11 +161,6 @@ public class EnemyAiTutorial : MonoBehaviour
             if (canSeePlayer && !playerInAttackRange) ChasePlayer();
             if (playerInAttackRange && canSeePlayer && !isMelee && isRanged) RangeAttackPlayer();
             if (playerInAttackRange && canSeePlayer && isMelee) MeleeAttackPlayer();
-        }
-        else
-        {
-            if (canSeePlayer && !playerInAttackRange) RbChasePlayer();
-            if (playerInAttackRange && canSeePlayer && !isMelee) RbRangeAttackPlayer();
         }
 
         if (isAttackingPlayer)
@@ -267,18 +264,6 @@ public class EnemyAiTutorial : MonoBehaviour
         agent.SetDestination(player.position);
     }
 
-
-    public void RbChasePlayer()
-    {
-        if (airborne)
-        {
-            if (playerInPosRange)
-            {
-                rb.AddForce((NearestGround.transform.position - transform.position).normalized * speed);
-            }
-        }
-    }
-
     public void RangeAttackPlayer()
     {
         //Make sure enemy doesn't move
@@ -304,30 +289,6 @@ public class EnemyAiTutorial : MonoBehaviour
         if (playerInDiscomfortRange && canSeePlayer)
         {
 
-        }
-    }
-
-    public void RbRangeAttackPlayer()
-    {
-        transform.LookAt(player);
-
-        if (airborne)
-        {
-            rb.AddForce(transform.position);
-        }
-
-        isAttackingPlayer = true;
-
-        if (!alreadyAttacked)
-        {
-            ///Attack code here
-            Rigidbody rb = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
-            rb.AddForce(transform.forward * projectileSpeed, ForceMode.Impulse);
-            rb.AddForce(transform.up * upwardForce, ForceMode.Impulse);
-            ///End of attack code
-
-            alreadyAttacked = true;
-            Invoke(nameof(ResetAttack), timeBetweenAttacks);
         }
     }
 
@@ -378,5 +339,7 @@ public class EnemyAiTutorial : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, landingRange);
         Gizmos.color = Color.white;
         Gizmos.DrawWireSphere(transform.position, discomfortRange);
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, sightRange);
     }
 }  
