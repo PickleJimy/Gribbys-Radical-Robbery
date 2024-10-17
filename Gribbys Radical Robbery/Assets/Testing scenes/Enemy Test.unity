@@ -1166,6 +1166,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4aa781173aef9174c84b5c45bc2cd51b, type: 3}
+--- !u!1 &700023395 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4557186989183690077, guid: 4aa781173aef9174c84b5c45bc2cd51b, type: 3}
+  m_PrefabInstance: {fileID: 700023394}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &907090868
 GameObject:
   m_ObjectHideFlags: 0
@@ -3762,12 +3767,70 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 515640977}
+    - target: {fileID: 1771460009701807404, guid: d7c845a99b23a6249b8f8d7329a74790, type: 3}
+      propertyPath: visionCube
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1771460009701807404, guid: d7c845a99b23a6249b8f8d7329a74790, type: 3}
+      propertyPath: minJumpHeight
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3541616119989274097, guid: d7c845a99b23a6249b8f8d7329a74790, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4398385805509987073, guid: d7c845a99b23a6249b8f8d7329a74790, type: 3}
       propertyPath: m_Name
       value: Melee Enemy
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    - target: {fileID: 4773590052279576751, guid: d7c845a99b23a6249b8f8d7329a74790, type: 3}
+      propertyPath: radius
+      value: 4.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 4773590052279576751, guid: d7c845a99b23a6249b8f8d7329a74790, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4773590052279576751, guid: d7c845a99b23a6249b8f8d7329a74790, type: 3}
+      propertyPath: playerRef
+      value: 
+      objectReference: {fileID: 700023395}
+    - target: {fileID: 4773590052279576751, guid: d7c845a99b23a6249b8f8d7329a74790, type: 3}
+      propertyPath: visionCubeAngle
+      value: 72
+      objectReference: {fileID: 0}
+    - target: {fileID: 4773590052279576751, guid: d7c845a99b23a6249b8f8d7329a74790, type: 3}
+      propertyPath: targetMask.m_Bits
+      value: 128
+      objectReference: {fileID: 0}
+    - target: {fileID: 4773590052279576751, guid: d7c845a99b23a6249b8f8d7329a74790, type: 3}
+      propertyPath: obstructionMask.m_Bits
+      value: 32776
+      objectReference: {fileID: 0}
+    - target: {fileID: 7264890293387406397, guid: d7c845a99b23a6249b8f8d7329a74790, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7264890293387406397, guid: d7c845a99b23a6249b8f8d7329a74790, type: 3}
+      propertyPath: m_ProvidesContacts
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7896345078166674136, guid: d7c845a99b23a6249b8f8d7329a74790, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7896345078166674136, guid: d7c845a99b23a6249b8f8d7329a74790, type: 3}
+      propertyPath: visionRadius
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 7896345078166674136, guid: d7c845a99b23a6249b8f8d7329a74790, type: 3}
+      propertyPath: obstructionMask.m_Bits
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 4773590052279576751, guid: d7c845a99b23a6249b8f8d7329a74790, type: 3}
+    m_RemovedGameObjects:
+    - {fileID: 2731021052471131212, guid: d7c845a99b23a6249b8f8d7329a74790, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d7c845a99b23a6249b8f8d7329a74790, type: 3}

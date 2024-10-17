@@ -2,6 +2,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 using System.Collections;
+using UnityEditor;
 
 public class EnemyAiTutorial : MonoBehaviour
 {
@@ -77,8 +78,8 @@ public class EnemyAiTutorial : MonoBehaviour
     public Animator Blade;
 
     //States
-    public float angle, sightRange, attackRange, jumpRange, posRange, discomfortRange;
-    public bool canSeePlayer, playerInAttackRange, playerInDiscomfortRange, isAttackingPlayer, attackingEnemy;
+    public float angle, visionAngle, sightRange, attackRange, jumpRange, posRange, discomfortRange;
+    public bool canSeePlayer, playerInVisionZone, playerInAttackRange, playerInDiscomfortRange, isAttackingPlayer, attackingEnemy;
 
     public void Start()
     {
@@ -124,6 +125,11 @@ public class EnemyAiTutorial : MonoBehaviour
         {
             angle = 140;
             sightRange = 0;
+        }
+
+        if (canSeePlayer && !playerInVisionZone)
+        {
+            transform.Rotate(player.position);
         }
 
         //Health
