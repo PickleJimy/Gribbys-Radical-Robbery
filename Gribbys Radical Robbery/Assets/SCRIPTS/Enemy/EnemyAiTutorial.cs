@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using System.Collections;
 using UnityEditor;
+using UnityEngine.UIElements;
 
 public class EnemyAiTutorial : MonoBehaviour
 {
@@ -22,6 +23,7 @@ public class EnemyAiTutorial : MonoBehaviour
     public GameObject NearestGround;
     public GameObject NextNearestGround;
     public float speed;
+    public float rotationSpeed;
 
     public LayerMask whatIsPlayer, enemyLandArea;
 
@@ -129,7 +131,12 @@ public class EnemyAiTutorial : MonoBehaviour
 
         if (canSeePlayer && !playerInVisionZone)
         {
-            transform.Rotate(player.position);
+            // Rotate to face the player's position
+            Vector3 directionToPlayer = player.position - transform.position;
+            directionToPlayer.y = 0;
+
+            Quaternion targetRotation = Quaternion.LookRotation(directionToPlayer);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
         }
 
         //Health
