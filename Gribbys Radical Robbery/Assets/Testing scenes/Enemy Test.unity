@@ -346,9 +346,10 @@ GameObject:
   - component: {fileID: 58053783}
   - component: {fileID: 58053782}
   - component: {fileID: 58053781}
+  - component: {fileID: 58053784}
   m_Layer: 6
   m_Name: Blade
-  m_TagString: Untagged
+  m_TagString: EnemyDamager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -441,6 +442,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 58053779}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &58053784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 58053779}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e7bb6f6cc87a804e86cad2317fb46ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 15
+  dealDamage: 1
 --- !u!1 &162436367
 GameObject:
   m_ObjectHideFlags: 0
