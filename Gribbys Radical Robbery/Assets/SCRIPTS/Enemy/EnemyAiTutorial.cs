@@ -75,7 +75,7 @@ public class EnemyAiTutorial : MonoBehaviour
     //Animation
     Animator _animator;
     string _currentState;
-    const string MELEE_ENEMY_ATTACK = "Blade_Attack";
+    const string MELEE_ENEMY = "Blade_Attack";
     public Animator MeleeEnemy;
     public Animator Blade;
 
@@ -313,7 +313,7 @@ public class EnemyAiTutorial : MonoBehaviour
         transform.LookAt(player);
 
         Blade.enabled = true;
-        Blade.SetBool(MELEE_ENEMY_ATTACK, true);
+        Blade.SetBool(MELEE_ENEMY, true);
 
         isAttackingPlayer = true;
 

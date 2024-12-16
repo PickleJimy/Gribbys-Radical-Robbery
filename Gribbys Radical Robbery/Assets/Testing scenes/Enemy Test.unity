@@ -1437,6 +1437,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1105845534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1105845504}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a290fa9d4c8e16c449c1767ffde1ba1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1142965612
 GameObject:
   m_ObjectHideFlags: 0
@@ -3965,7 +3977,7 @@ PrefabInstance:
     - target: {fileID: 1771460009701807404, guid: d7c845a99b23a6249b8f8d7329a74790, type: 3}
       propertyPath: Blade
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1105845519}
     - target: {fileID: 1771460009701807404, guid: d7c845a99b23a6249b8f8d7329a74790, type: 3}
       propertyPath: ground
       value: 
@@ -3977,7 +3989,7 @@ PrefabInstance:
     - target: {fileID: 1771460009701807404, guid: d7c845a99b23a6249b8f8d7329a74790, type: 3}
       propertyPath: MeleeEnemy
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1105845519}
     - target: {fileID: 1771460009701807404, guid: d7c845a99b23a6249b8f8d7329a74790, type: 3}
       propertyPath: visionCube
       value: 
@@ -4267,6 +4279,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4398385805509987073, guid: d7c845a99b23a6249b8f8d7329a74790, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1105845519}
+    - targetCorrespondingSourceObject: {fileID: 4398385805509987073, guid: d7c845a99b23a6249b8f8d7329a74790, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1105845534}
   m_SourcePrefab: {fileID: 100100000, guid: d7c845a99b23a6249b8f8d7329a74790, type: 3}
 --- !u!4 &8728926196071046700 stripped
 Transform:
