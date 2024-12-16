@@ -4227,6 +4227,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7896345078166674136, guid: d7c845a99b23a6249b8f8d7329a74790, type: 3}
+      propertyPath: playerRef
+      value: 
+      objectReference: {fileID: 700023395}
+    - target: {fileID: 7896345078166674136, guid: d7c845a99b23a6249b8f8d7329a74790, type: 3}
       propertyPath: visionRadius
       value: 12
       objectReference: {fileID: 0}
