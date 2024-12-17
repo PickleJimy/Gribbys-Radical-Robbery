@@ -1,5 +1,31 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1102 &-9222098736336186953
+AnimatorState:
+  serializedVersion: 6
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Melee Enemy Attack Pt 2
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours: []
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
+  m_Motion: {fileID: 0}
+  m_Tag: 
+  m_SpeedParameter: 
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
+  m_TimeParameter: 
 --- !u!1102 &-7790948502011972131
 AnimatorState:
   serializedVersion: 6
@@ -116,10 +142,13 @@ AnimatorStateMachine:
     m_Position: {x: 280, y: 130, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -1176307345788058781}
-    m_Position: {x: 500, y: 50, z: 0}
+    m_Position: {x: 470, y: 40, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -7751412536901235901}
     m_Position: {x: 40, y: 80, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: -9222098736336186953}
+    m_Position: {x: 620, y: 90, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
