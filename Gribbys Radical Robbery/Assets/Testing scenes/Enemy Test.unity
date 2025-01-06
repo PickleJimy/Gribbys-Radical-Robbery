@@ -1267,6 +1267,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player Full
       objectReference: {fileID: 0}
+    - target: {fileID: 4673118856923266449, guid: 4aa781173aef9174c84b5c45bc2cd51b, type: 3}
+      propertyPath: m_Radius
+      value: 1.04
+      objectReference: {fileID: 0}
     - target: {fileID: 5914859205975650791, guid: 4aa781173aef9174c84b5c45bc2cd51b, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -2020,16 +2024,6 @@ GameObject:
 Transform:
   m_CorrespondingSourceObject: {fileID: 5784016862870140827, guid: 188ab9e0716a2a248b25d5836d90b2ea, type: 3}
   m_PrefabInstance: {fileID: 7660511652521971095}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1618257238 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6486354619410565566, guid: 4aa781173aef9174c84b5c45bc2cd51b, type: 3}
-  m_PrefabInstance: {fileID: 700023394}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &1618257239 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5735455129656513871, guid: 4aa781173aef9174c84b5c45bc2cd51b, type: 3}
-  m_PrefabInstance: {fileID: 700023394}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1784240072
 GameObject:
@@ -3997,7 +3991,7 @@ PrefabInstance:
     - target: {fileID: 1771460009701807404, guid: d7c845a99b23a6249b8f8d7329a74790, type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 1618257239}
+      objectReference: {fileID: 515640977}
     - target: {fileID: 1771460009701807404, guid: d7c845a99b23a6249b8f8d7329a74790, type: 3}
       propertyPath: MeleeEnemy
       value: 
@@ -4092,7 +4086,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3541616119989274097, guid: d7c845a99b23a6249b8f8d7329a74790, type: 3}
       propertyPath: m_IncludeLayers.m_Bits
-      value: 2176
+      value: 128
       objectReference: {fileID: 0}
     - target: {fileID: 3684891700358179237, guid: d7c845a99b23a6249b8f8d7329a74790, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -4269,14 +4263,14 @@ PrefabInstance:
     - target: {fileID: 7896345078166674136, guid: d7c845a99b23a6249b8f8d7329a74790, type: 3}
       propertyPath: playerRef
       value: 
-      objectReference: {fileID: 1618257238}
+      objectReference: {fileID: 700023395}
     - target: {fileID: 7896345078166674136, guid: d7c845a99b23a6249b8f8d7329a74790, type: 3}
       propertyPath: visionRadius
       value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 7896345078166674136, guid: d7c845a99b23a6249b8f8d7329a74790, type: 3}
       propertyPath: targetMask.m_Bits
-      value: 2048
+      value: 128
       objectReference: {fileID: 0}
     - target: {fileID: 7896345078166674136, guid: d7c845a99b23a6249b8f8d7329a74790, type: 3}
       propertyPath: obstructionMask.m_Bits
