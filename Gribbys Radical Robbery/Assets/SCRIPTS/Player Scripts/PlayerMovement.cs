@@ -11,7 +11,7 @@ public class PlayerMovement : MonoBehaviour
     public float dashForce;
     public float dashTime;
     public float dashCooldown;
-    public bool readyToDash;
+    public static bool readyToDash;
     private bool dashing;
     public bool isMoving;
 
