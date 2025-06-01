@@ -466,7 +466,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 637850053}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 1f40798189e069d4db44f29256dedbe0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -510,12 +510,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 1f40798189e069d4db44f29256dedbe0, type: 3}
       propertyPath: m_Name
-      value: Page
+      value: Test Page About All he Lore of the Creation of This Fine Universe
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 1f40798189e069d4db44f29256dedbe0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1061742174}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 1f40798189e069d4db44f29256dedbe0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1061742175}
   m_SourcePrefab: {fileID: 100100000, guid: 1f40798189e069d4db44f29256dedbe0, type: 3}
 --- !u!1 &582854497
 GameObject:
@@ -622,6 +628,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &637850053 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5842032358472019204, guid: 05f3142ffa5ff4049af8f3df813f9de4, type: 3}
+  m_PrefabInstance: {fileID: 7790712343062249010}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &727945751
 GameObject:
   m_ObjectHideFlags: 0
@@ -1130,6 +1141,140 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: -45, y: 0, z: 0}
+--- !u!1 &1061742169 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 1f40798189e069d4db44f29256dedbe0, type: 3}
+  m_PrefabInstance: {fileID: 542137476}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1061742170 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 1f40798189e069d4db44f29256dedbe0, type: 3}
+  m_PrefabInstance: {fileID: 542137476}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &1061742174
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1061742169}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.00053342164, y: 0.0053227786, z: 0.0064338604}
+  m_Center: {x: -0.00008401471, y: -0.00016270987, z: -0.00006397775}
+--- !u!114 &1061742175
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1061742169}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bddae25f106aa6648ba3d0e81d2833eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  grabText: {fileID: 0}
+  grabKey: 0
+  pageMenu: {fileID: 7476028833970398693, guid: ecae407ffeaf8ca47a9a360c94984a34, type: 3}
+  wordsOnPage: "\r\tMany eons ago, the gods came together to create the universe.
+    Many of the gods had a part to play. The god of space oversaw the making of the
+    universe and established the laws of physics, the god of stone formed the base
+    for all planets, the god of fire created stars, and the god of water filled planets
+    with water and ice. The god of air gave the planet\u2019s atmosphere, the god
+    of life populated the planets with creatures and plants, and the god of death
+    established limits for all living things. Along with the magic god, these 8 gods
+    are known as the ancient gods. Many other gods had access to craft their own
+    planets, but the god of magic was not allowed. The other gods claimed that magic
+    would bring chaos to their orderly universe. The god of magic argued, but he
+    reluctantly accepted their decision, but in secret he created his own universe.\r\n\tHe
+    hid the universe inside a barren planet at the edge of their own universe. His
+    universe would be one full of magic and fantasy. It would later be known as the
+    fantasy realm. This universe had only one planet, with a sun and a moon. The
+    god knew he couldn\u2019t create all elements by himself, so he took parts of
+    other worlds and brought them together to form the fantasy realm. The main part
+    he added to the realm was a sapling that would grow to cover the sky and be the
+    center of the fantasy realm\u2019s civilization.\r\n\tAfter the realm was completed,
+    he watched as life began to spread and several creatures were born with magical
+    properties. There soon arose several races of intelligent species, such as; humans,
+    dwarves, elves, ogres, orcs, trolls, giants, and several others. These races
+    learned to use magic quite well. Humans learned all kinds of magic, for they
+    had no single aptitude for magic, but had to learn it. Elves had a natural ability
+    to use life based magic for healing and control of nature. Dwarves had learned
+    how to harness magic to forge and imbue spells into a weapon through the use
+    of runes. \r\n\tThe magic god was happy with the world he had created, but the
+    other gods discovered what he had done. They confronted the magic god and shattered
+    the planet housing the access to the fantasy realm. The shards of the planet
+    flew through the universe, giving off magical energy to some planets, one planet
+    being Earth (this led to the evolution of goblins). Some of the shards impacted
+    on planets, and afterward they began to pull other shards closer to them. This
+    is why most of the planets with the shards on them had several more shards impact
+    as well. After many of the shards settled onto the planets, they sat for many
+    thousands of years.\r\n\tDue to an unknown cause, portals opened on the shards,
+    allowing access to and from the fantasy realm. On Earth, it occurred around the
+    1400\u2019s. As the portals opened, elements from the fantasy realm leaked out
+    around the shards. The land surrounding became infused with magic and grew surrounding
+    vegetation to unnatural heights. Over time, the races of the fantasy realm began
+    to venture through the portals. Before, the races had hated each other, but they
+    had chosen to unite to explore the lands on the other side. They had built temples
+    on either side of the portals they had entered. The temples are guarded by advanced
+    magic golems created by a powerful wizard with the assistance of some dwarves.\r\n\tAs
+    the temples were being constructed, some of the races explored this unknown world,
+    Earth. They had discovered all sorts of creatures while they traveled. Many plants
+    and animals, not as extraordinary as the ones from their home realm, but still
+    new. They had also met some goblins, which they believed to be quite remarkable.
+    The goblins were native to the Earth, but they had great magic potential within
+    them. While the temples were still being constructed, some goblins managed to
+    sneak into the portal; and over time adapted to the magic and evolved. \r\n\tThe
+    races of the fantasy realm initially believed the goblins to be the dominant
+    species on Earth, but then they discovered the humans. They first thought they
+    were the humans from the fantasy realm, but the Earth humans were frightened
+    of the different races. They soon came to learn that these Earth humans just
+    happened to be very similar in appearance, but they had no magic capabilities.
+    \r\n\tA few humans of Earth were curious about the fantasy races, and investigated
+    their temple. They infiltrated the temple while the security was down, and they
+    discovered the portal. When they crossed the threshold between realms and saw
+    what was inside, they were baffled. So much land and power they could obtain
+    from this land, and they wanted it. The humans rushed back through the portal
+    and snuck back out of the temple and informed the King of England, Henry VIII,
+    and told him of the vast resource and power of the fantasy realm, and that they
+    should invade it. The King agreed and thus began the fantasy war.\r\n\tThe war
+    lasted all of 3 years, but had a devastating impact on the humans of Earth. Each
+    battle was a crushing defeat. The technology of the humans was nothing compared
+    to the magical might of the fantasy realm. In order to stop the war, the humans
+    allied with the goblins, who had a ruthless but intelligent king at the time.
+    The goblins had also obtained knowledge of magic from the fantasy realm, and
+    they had begun practicing it. Through tough negotiations, the goblin king managed
+    to convince the fantasy people to block off all the portals.\r\n\tThe fantasy
+    races began to build a door in front of the portal, and they promised to lock
+    it once they went through, but the goblin king was impatient and rushed them
+    through the portal and chained up the door. In the rush, some races were left
+    behind, those being elves, dwarves, and a few humans.\r\n\tIn the current age,
+    the magic infused biomes surrounding the portals still thrive. The elves that
+    were left behind began to shrink over time and lose intelligence due to their
+    inability to spread without being attacked by humans. And the dwarves who were
+    left behind shrank as well and became gnomes, adapted to being forced to live
+    in forests instead of caves. The humans that were left behind made a fortune
+    with their magical abilities. Although, some were captured and experimented on.
+    Others stayed in hiding and practiced their spells, and some just blended in
+    with society.\r\n\tThrough all this, the ancient gods vowed not to interfere,
+    but they did allow the births of other gods who have control of some of their
+    powers. Many of these gods were born from belief, such as Zues or Odin. While
+    others simply came to exist, such as Jimy, god of weirdness, who had become PickleJimy,
+    the god of pickles and weirdness. The magic god had long vanished from the universe.
+    Some say he had entered the fantasy realm. Others say he had simply ceased to
+    exist. Many have never known of the magic god's existence, but his actions have
+    formed all that is unique in this world.\r\n"
 --- !u!1 &1094428018
 GameObject:
   m_ObjectHideFlags: 0
@@ -1900,7 +2045,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 5842032358472019204, guid: 05f3142ffa5ff4049af8f3df813f9de4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1061742170}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 05f3142ffa5ff4049af8f3df813f9de4, type: 3}
 --- !u!1660057539 &9223372036854775807
@@ -1922,4 +2070,3 @@ SceneRoots:
   - {fileID: 3187307088607599870}
   - {fileID: 582854501}
   - {fileID: 1212914211}
-  - {fileID: 542137476}
