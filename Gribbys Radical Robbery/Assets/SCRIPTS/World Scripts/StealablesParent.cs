@@ -37,6 +37,10 @@ public class StealablesParent : MonoBehaviour
                 {
                     child.gameObject.GetComponent<StealableHealthItem>().grabText = grabText;
                 }
+                if (child.gameObject.GetComponent<StealablePage>() != null)
+                {
+                    child.gameObject.GetComponent<StealablePage>().grabText = grabText;
+                }
             }
         }
     }
