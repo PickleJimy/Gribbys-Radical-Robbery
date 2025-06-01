@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class LorePage : MonoBehaviour
 {
@@ -8,11 +11,17 @@ public class LorePage : MonoBehaviour
     public GameObject player;
     public GameObject playerCam;
 
+    public static string wordsOnPage;
+
+    public TextMeshProUGUI words;
+
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.Find("Player");
         playerCam = GameObject.Find("PlayerCam");
+
+        words.text = wordsOnPage;
 
         PauseGame();
     }
@@ -23,7 +32,16 @@ public class LorePage : MonoBehaviour
         
     }
 
-    void PauseGame()
+    public void Click(Button button)
+    {
+        if (button.name == "Close Button")
+        {
+            UnpauseGame();
+            Destroy(gameObject);
+        }
+    }
+
+        void PauseGame()
     {
         if (!PauseController.gameIsPaused)
         {

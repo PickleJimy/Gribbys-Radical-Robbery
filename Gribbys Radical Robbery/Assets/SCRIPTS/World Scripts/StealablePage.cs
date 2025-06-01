@@ -66,6 +66,7 @@ public class StealablePage : MonoBehaviour
 
         Instantiate(pageMenu, new Vector3(0, 0, 0), Quaternion.identity);
 
+        LorePage.wordsOnPage = wordsOnPage;
     }
 
     private void OnMouseExit()
