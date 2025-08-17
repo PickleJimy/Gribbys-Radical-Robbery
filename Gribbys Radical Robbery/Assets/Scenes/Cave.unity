@@ -14,13 +14,13 @@ OcclusionCullingSettings:
 RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 9
-  m_Fog: 1
+  m_Fog: 0
   m_FogColor: {r: 0.04, g: 0.035283018, b: 0.030566039, a: 1}
   m_FogMode: 3
   m_FogDensity: 0.4
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0.4433962, g: 0.39626253, b: 0.37437698, a: 1}
+  m_AmbientSkyColor: {r: 0, g: 0, b: 0, a: 1}
   m_AmbientEquatorColor: {r: 0, g: 0.26037732, b: 0.4339623, a: 1}
   m_AmbientGroundColor: {r: 0, g: 0, b: 0, a: 1}
   m_AmbientIntensity: 1
@@ -34,7 +34,7 @@ RenderSettings:
   m_SpotCookie: {fileID: 2800000, guid: deec68526554ff04395814f022a01873, type: 3}
   m_DefaultReflectionMode: 0
   m_DefaultReflectionResolution: 128
-  m_ReflectionBounces: 1
+  m_ReflectionBounces: 2
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
@@ -5297,10 +5297,42 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -6199722968780114398, guid: 07b7e6aa39ac1af4981a396fb563c406, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 289fcc2e757f67d42ae6497dca6a355a, type: 2}
+    - target: {fileID: -5869989567740756309, guid: 07b7e6aa39ac1af4981a396fb563c406, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1ea061dc744d7434ead5877c6ce1a25c, type: 2}
+    - target: {fileID: -5869989567740756309, guid: 07b7e6aa39ac1af4981a396fb563c406, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1ea061dc744d7434ead5877c6ce1a25c, type: 2}
+    - target: {fileID: -5659505179880870131, guid: 07b7e6aa39ac1af4981a396fb563c406, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 289fcc2e757f67d42ae6497dca6a355a, type: 2}
+    - target: {fileID: -277295911336054537, guid: 07b7e6aa39ac1af4981a396fb563c406, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 289fcc2e757f67d42ae6497dca6a355a, type: 2}
+    - target: {fileID: 367987412326559556, guid: 07b7e6aa39ac1af4981a396fb563c406, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 289fcc2e757f67d42ae6497dca6a355a, type: 2}
     - target: {fileID: 919132149155446097, guid: 07b7e6aa39ac1af4981a396fb563c406, type: 3}
       propertyPath: m_Name
       value: cave
       objectReference: {fileID: 0}
+    - target: {fileID: 1667801644242527616, guid: 07b7e6aa39ac1af4981a396fb563c406, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 289fcc2e757f67d42ae6497dca6a355a, type: 2}
+    - target: {fileID: 3228588871220446154, guid: 07b7e6aa39ac1af4981a396fb563c406, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 289fcc2e757f67d42ae6497dca6a355a, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -15861,7 +15893,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1414630823
 Transform:
   m_ObjectHideFlags: 0
@@ -15891,7 +15923,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Version: 3
   m_UsePipelineSettings: 1
-  m_AdditionalLightsShadowResolutionTier: 2
+  m_AdditionalLightsShadowResolutionTier: 1
   m_LightLayerMask: 1
   m_RenderingLayers: 1
   m_CustomShadowLayers: 0
@@ -15911,14 +15943,14 @@ Light:
   serializedVersion: 10
   m_Type: 0
   m_Shape: 0
-  m_Color: {r: 0.801, g: 0.61079204, b: 0.30480534, a: 1}
-  m_Intensity: 15
-  m_Range: 15
-  m_SpotAngle: 61.5837
-  m_InnerSpotAngle: 32.749542
+  m_Color: {r: 0.7254902, g: 0.6, b: 0.39215687, a: 1}
+  m_Intensity: 30
+  m_Range: 30
+  m_SpotAngle: 90
+  m_InnerSpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -15943,13 +15975,13 @@ Light:
       e32: 0
       e33: 1
     m_UseCullingMatrixOverride: 0
-  m_Cookie: {fileID: 2800000, guid: 81aac0ad5a23c8e4185301dc2ab9e1b4, type: 3}
+  m_Cookie: {fileID: 0}
   m_DrawHalo: 0
   m_Flare: {fileID: 0}
   m_RenderMode: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 261887
   m_RenderingLayerMask: 1
   m_Lightmapping: 4
   m_LightShadowCasterMode: 0
@@ -16077,7 +16109,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Version: 3
   m_UsePipelineSettings: 1
-  m_AdditionalLightsShadowResolutionTier: 2
+  m_AdditionalLightsShadowResolutionTier: 1
   m_LightLayerMask: 1
   m_RenderingLayers: 1
   m_CustomShadowLayers: 0
@@ -16097,9 +16129,9 @@ Light:
   serializedVersion: 10
   m_Type: 2
   m_Shape: 0
-  m_Color: {r: 0.354, g: 0.27230766, b: 0.13615383, a: 1}
-  m_Intensity: 1
-  m_Range: 0.85
+  m_Color: {r: 0.7264151, g: 0.5992121, b: 0.39404595, a: 1}
+  m_Intensity: 1.5
+  m_Range: 10
   m_SpotAngle: 56.688335
   m_InnerSpotAngle: 28.445295
   m_CookieSize: 10
