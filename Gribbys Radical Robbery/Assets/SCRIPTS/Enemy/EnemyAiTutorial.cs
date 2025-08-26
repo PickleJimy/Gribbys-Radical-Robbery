@@ -20,12 +20,10 @@ public class EnemyAiTutorial : MonoBehaviour
 
     //How it moves
     public Transform ground;
-    public GameObject NearestGround;
-    public GameObject NextNearestGround;
     public float speed;
     public float rotationSpeed;
 
-    public LayerMask whatIsPlayer, enemyLandArea;
+    public LayerMask whatIsPlayer;
 
     public float minJumpHeight;
     public float maxJumpHeight;
@@ -34,7 +32,6 @@ public class EnemyAiTutorial : MonoBehaviour
     public bool playerInJumpRange;
     public bool playerOnGround;
     public bool playerInPosRange;
-    public bool enemyInPosRange;
 
     //Mechanics
     [Header("Ground Check")]
@@ -46,7 +43,6 @@ public class EnemyAiTutorial : MonoBehaviour
     public float jumpForce;
     public float jumpCooldown;
     public bool readyToJump;
-    public bool preparedToJump;
     public bool airborne;
     public float landingRange;
     public bool readyToLand;
@@ -80,8 +76,8 @@ public class EnemyAiTutorial : MonoBehaviour
     public Animator Blade;
 
     //States
-    public float angle, visionAngle, sightRange, attackRange, jumpRange, posRange, discomfortRange;
-    public bool canSeePlayer, playerInVisionZone, playerInAttackRange, playerInDiscomfortRange, isAttackingPlayer, attackingEnemy;
+    public float angle, visionAngle, sightRange, attackRange, jumpRange, posRange;
+    public bool canSeePlayer, playerInVisionZone, playerInAttackRange, isAttackingPlayer, attackingEnemy;
 
     public void Start()
     {
@@ -110,7 +106,6 @@ public class EnemyAiTutorial : MonoBehaviour
         playerInJumpRange = Physics.CheckSphere(transform.position, jumpRange, whatIsPlayer);
         readyToLand = Physics.CheckSphere(transform.position, landingRange, whatIsGround);
         playerInPosRange = ground.GetComponent<Goal>().playerInPosRange;
-        playerInDiscomfortRange = Physics.CheckSphere(transform.position, discomfortRange, whatIsPlayer);
 
         //Sight
         canSeePlayer = gameObject.GetComponent<FieldOfView>().canSeePlayer;
@@ -150,11 +145,6 @@ public class EnemyAiTutorial : MonoBehaviour
 
         playerOnGround = player.GetComponent<PlayerMovement>().grounded;
         grounded = Physics.Raycast(transform.position, Vector3.down, enemyHeight, whatIsGround);
-        NearestGround = gameObject.GetComponent<SenseGround>().NearestGround;
-        NextNearestGround = gameObject.GetComponent<SenseGround>().NearestGround;
-
-        if (player.transform.position.y >= rb.transform.position.y + minJumpHeight && playerInJumpRange) preparedToJump = true;
-        if (player.transform.position.y <= rb.transform.position.y + minJumpHeight && playerInJumpRange) preparedToJump = false;
 
         airborne = !grounded;
 
@@ -182,7 +172,7 @@ public class EnemyAiTutorial : MonoBehaviour
         }
 
         // when to jump
-        if (readyToJump && grounded && preparedToJump && playerOnGround && canSeePlayer && enemyInPosRange)
+        if (readyToJump && grounded && playerOnGround && canSeePlayer)
         {
             EnemyJump();
 
@@ -297,12 +287,6 @@ public class EnemyAiTutorial : MonoBehaviour
             alreadyAttacked = true;
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
         }
-
-        //Backing up from player
-        if (playerInDiscomfortRange && canSeePlayer)
-        {
-
-        }
     }
 
     public void MeleeAttackPlayer()
@@ -350,8 +334,6 @@ public class EnemyAiTutorial : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, jumpRange);
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(transform.position, landingRange);
-        Gizmos.color = Color.white;
-        Gizmos.DrawWireSphere(transform.position, discomfortRange);
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, sightRange);
     }
